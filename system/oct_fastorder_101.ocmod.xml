@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_fastorder_101</code>
+  <name>Phpner - Fast Order</name>
+  <version>1.0.1</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="system/library/url.php">
+     <operation error="skip">
+      <search><![CDATA[public function link($route, $args = '', $secure = false) {]]></search>
+      <add position="after"><![CDATA[
+        $get_route = isset($_GET['route']) ? $_GET['route'] : (isset($_GET['_route_']) ? $_GET['_route_'] : '');
+    
+        if ($route == 'checkout/checkout' && $get_route != 'checkout/checkout') {
+          $route = 'checkout/phpner_fastorder';
+        }
+
+        //if ($route == 'checkout/cart' && $get_route != 'checkout/cart') {
+        //  $connection = 'SSL';
+        //  $route = 'checkout/phpner_fastorder';
+        //}
+      ]]></add>
+    </operation>
+  </file>
+</modification>

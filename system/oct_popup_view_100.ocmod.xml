@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_popup_view_100</code>
+  <name>Phpner - Popup Product View</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/language/ru-ru/ru-ru.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        $_['button_popup_view'] = 'Быстрый просмотр';
+      ]]></add>
+    </operation>
+  </file>  
+  <file path="catalog/language/uk-ua/uk-ua.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        $_['button_popup_view'] = 'Швидкий перегляд';
+      ]]></add>
+    </operation>
+  </file>  
+  <file path="catalog/language/en-gb/en-gb.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        $_['button_popup_view'] = 'Quick view';
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/*.php">
+    <operation error="skip">
+      <search><![CDATA[public function Index() {]]></search>
+      <add position="after"><![CDATA[
+        $data['phpner_popup_view_data'] = $this->config->get('phpner_popup_view_data');
+        $data['button_popup_view'] = $this->language->get('button_popup_view');
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/manufacturer.php">
+    <operation error="skip">
+      <search><![CDATA[$manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);]]></search>
+      <add position="after"><![CDATA[
+        $data['phpner_popup_view_data'] = $this->config->get('phpner_popup_view_data');
+        $data['button_popup_view'] = $this->language->get('button_popup_view');
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/{latest,special,bestseller,featured}.php">
+    <operation error="skip">
+      <search><![CDATA[public function index($setting) {]]></search>
+      <add position="after"><![CDATA[
+        $data['phpner_popup_view_data'] = $this->config->get('phpner_popup_view_data');
+        $data['button_popup_view'] = $this->language->get('button_popup_view');
+      ]]></add>
+    </operation>
+  </file>
+</modification>

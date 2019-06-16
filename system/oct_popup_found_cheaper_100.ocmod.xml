@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_popup_found_cheaper_100</code>
+  <name>Phpner - Popup Found Cheaper</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="admin/controller/common/header.php">
+    <operation error="skip">
+      <search><![CDATA[public function index() {]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_found_cheaper start
+        $this->load->model('extension/module/phpner_popup_found_cheaper');
+        $this->load->language('extension/module/phpner_popup_found_cheaper');
+        
+        $phpner_popup_found_cheaper         = (array)$this->config->get('phpner_popup_found_cheaper_data');
+        $data['phpner_popup_found_cheaper'] = (array)$this->config->get('phpner_popup_found_cheaper_data');
+        // phpner_popup_found_cheaper end
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['alerts'] = $customer_total + $product_total + $review_total + $return_total + $affiliate_total;]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_found_cheaper start
+        if (isset($phpner_popup_found_cheaper['status']) && $phpner_popup_found_cheaper['status']) {
+          $data['text_phpner_popup_found_cheaper'] = $this->language->get('text_phpner_popup_found_cheaper');
+          $data['text_total_phpner_popup_found_cheaper'] = $this->language->get('text_total_phpner_popup_found_cheaper');
+          $data['phpner_popup_found_cheaper_url'] = $this->url->link('extension/module/phpner_popup_found_cheaper', 'token=' . $this->session->data['token'], 'SSL');
+          $data['total_phpner_popup_found_cheaper'] = $this->model_extension_module_phpner_popup_found_cheaper->getTotalCallArray();
+          $data['alerts'] = $data['alerts'] + $data['total_phpner_popup_found_cheaper'];
+        }
+        // phpner_popup_found_cheaper end
+      ]]></add>
+    </operation>
+  </file>
+  <file path="admin/view/template/common/header.tpl">
+     <operation error="skip">
+      <search><![CDATA[<li class="dropdown-header"><?php echo $text_order; ?></li>]]></search>
+      <add position="before"><![CDATA[
+        <?php if (isset($phpner_popup_found_cheaper['status']) && $phpner_popup_found_cheaper['status']) { ?>
+        <li class="dropdown-header"><?php echo $text_phpner_popup_found_cheaper; ?></li>
+        <li><a href="<?php echo $phpner_popup_found_cheaper_url; ?>" style="display: block; overflow: auto;"><span class="label label-warning pull-right"><?php echo $total_phpner_popup_found_cheaper; ?></span><?php echo $text_total_phpner_popup_found_cheaper; ?></a></li>
+        <li class="divider"></li>
+        <?php } ?>
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/language/en-gb/product/product.php">
+     <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_found_cheaper start
+        $_['text_phpner_popup_found_cheaper'] = 'Found_cheaper?';
+        // phpner_popup_found_cheaper end
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/language/ru-ru/product/product.php">
+     <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_found_cheaper start
+        $_['text_phpner_popup_found_cheaper'] = 'Нашли дешевле?';
+        // phpner_popup_found_cheaper end
+      ]]></add>
+    </operation>
+  </file>
+    <file path="catalog/language/uk-ua/product/product.php">
+     <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_found_cheaper start
+        $_['text_phpner_popup_found_cheaper'] = 'Знайшли дешевше?';
+        // phpner_popup_found_cheaper end
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/product.php">
+     <operation error="skip">
+      <search><![CDATA[public function index() {]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_found_cheaper start
+        $data['phpner_popup_found_cheaper_data'] = $this->config->get('phpner_popup_found_cheaper_data');
+        // phpner_popup_found_cheaper end
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[if ($product_info['quantity'] <= 0) {]]></search>
+      <add position="before"><![CDATA[
+        // phpner_popup_found_cheaper start
+        $data['text_phpner_popup_found_cheaper'] = $this->language->get('text_phpner_popup_found_cheaper');
+        // phpner_popup_found_cheaper end
+      ]]></add>
+    </operation>
+  </file>
+</modification>

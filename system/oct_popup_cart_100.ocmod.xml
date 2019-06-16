@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_popup_cart_100</code>
+  <name>Phpner - Popup Cart</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/common/cart.php">
+    <operation error="skip">
+      <search><![CDATA[$data['text_empty'] = $this->language->get('text_empty');]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_cart start
+        $data['phpner_popup_cart_data'] = $this->config->get('phpner_popup_cart_data');
+        // phpner_popup_cart end
+      ]]></add>
+    </operation>
+  </file>
+</modification>

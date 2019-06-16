@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_popup_purchase_100</code>
+  <name>Phpner - Popup Purchase</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/language/en-gb/product/product.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_purchase start
+        $_['text_phpner_popup_purchase'] = 'Purchase now';
+        // phpner_popup_purchase end
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/language/ru-ru/product/product.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_purchase start
+        $_['text_phpner_popup_purchase'] = 'Заказать в один клик';
+        // phpner_popup_purchase end
+      ]]></add>
+    </operation>
+  </file>  
+  <file path="catalog/language/uk-ua/product/product.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_purchase start
+        $_['text_phpner_popup_purchase'] = 'Замовити в один клік';
+        // phpner_popup_purchase end
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/product.php">
+    <operation error="skip">
+      <search><![CDATA[public function index() {]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_purchase start
+        $data['phpner_popup_purchase_data'] = $this->config->get('phpner_popup_purchase_data');
+        // phpner_popup_purchase end
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[if ($product_info['quantity'] <= 0) {]]></search>
+      <add position="before"><![CDATA[
+        // phpner_popup_purchase start
+        $data['text_phpner_popup_purchase'] = $this->language->get('text_phpner_popup_purchase');
+        // phpner_popup_purchase end
+      ]]></add>
+    </operation>
+  </file>
+</modification>

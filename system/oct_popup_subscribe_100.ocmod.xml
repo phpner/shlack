@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_popup_subscribe_100</code>
+  <name>Phpner - Popup Subscribe</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/common/footer.php">
+    <operation error="skip">
+      <search><![CDATA[public function index() {]]></search>
+      <add position="after"><![CDATA[
+        // subscribe start
+        $data['phpner_popup_subscribe_form_data'] = $this->config->get('phpner_popup_subscribe_form_data');
+        $data['phpner_popup_subscribe'] = $this->load->controller('extension/module/phpner_static_subscribe');
+        // subscribe end
+        ]]></add>
+    </operation>
+  </file>
+</modification>

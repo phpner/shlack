@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<modification>
+	<name>Phpner - Cool Email Template</name>
+	<code>phpner_store_cool_email_template_100</code>
+	<version>1.0.0</version>
+	<author>Phpner</author>
+	<link>http://phpner.net</link>
+	<file path="catalog/model/checkout/order.php">
+		<operation error="skip">
+			<search><![CDATA[$data['products'] = array();]]></search>
+			<add position="after"><![CDATA[
+				// phpner_store_cool_email_template start
+				$this->load->model('tool/image');
+				$this->load->model('catalog/product');
+				$data['phpner_store_data'] = $phpner_store_data = $this->config->get('phpner_store_data');
+
+				$phpner_store_cont_adress = $phpner_store_data['cont_adress'];
+
+        if (isset($phpner_store_cont_adress[$this->session->data['language']]) && !empty($phpner_store_cont_adress[$this->session->data['language']])) {
+          $data['phpner_store_cont_adress'] = html_entity_decode($phpner_store_cont_adress[$this->session->data['language']], ENT_QUOTES, 'UTF-8');
+        } else {
+          $data['phpner_store_cont_adress'] = false;
+        }  
+
+        if (isset($phpner_store_data['cont_phones']) && !empty($phpner_store_data['cont_phones'])) {
+	        $data['phpner_store_cont_phones'] = array_values(array_filter(explode(PHP_EOL, $phpner_store_data['cont_phones'])));
+	      } else {
+	        $data['phpner_store_cont_phones'] = false;
+	      }
+
+				$phpner_store_cont_clock = $phpner_store_data['cont_clock'];
+        
+	      if (isset($phpner_store_cont_clock[$this->session->data['language']]) && !empty($phpner_store_cont_clock[$this->session->data['language']])) {
+	        $data['phpner_store_cont_clock'] = array_values(array_filter(explode(PHP_EOL, $phpner_store_cont_clock[$this->session->data['language']])));
+	      } else {
+	        $data['phpner_store_cont_clock'] = false;
+	      }
+				// phpner_store_cool_email_template end
+			]]></add>
+		</operation>
+ 		<operation error="skip">
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				// phpner_store_cool_email_template start
+				$product_info = $this->model_catalog_product->getProduct($product['product_id']);
+				// phpner_store_cool_email_template end
+			]]></add>
+		</operation>   
+ 		<operation error="skip">
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add position="after"><![CDATA[
+				// phpner_store_cool_email_template start
+				'image' => ($product_info['image']) ? $this->model_tool_image->resize($product_info['image'], 100, 100) : '',
+				'href'  => $this->url->link('product/product', 'product_id=' . $product['product_id']),
+				// phpner_store_cool_email_template end
+			]]></add>
+		</operation>  		
+	</file>		
+</modification>

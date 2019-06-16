@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_product_stickers_100</code>
+  <name>Phpner - Product stickers</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="admin/controller/catalog/product.php">
+    <operation error="skip">
+      <search><![CDATA[$this->load->model('design/layout');]]></search>
+      <add position="before"><![CDATA[
+        $data['phpner_product_stickers_data'] = $this->config->get('phpner_product_stickers_data');
+        $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+
+        if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+          $this->load->model('catalog/phpner_product_stickers');
+
+          $data['phpner_product_stickers'] = $this->model_catalog_phpner_product_stickers->getProductStickers();
+
+          if (isset($this->request->post['phpner_product_stickers'])) {
+            $data['product_sticker_id'] = $this->request->post['phpner_product_stickers'];
+          } elseif (!empty($product_info)) {
+            $data['product_sticker_id'] = unserialize($product_info['phpner_product_stickers']);
+          } else {
+            $data['product_sticker_id'] = array();
+          }
+
+          $data['enter_phpner_product_stickers'] = $this->language->get('enter_phpner_product_stickers');
+        }
+      ]]></add>
+    </operation>
+  </file>
+  <file path="admin/language/en-gb/catalog/product.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        $_['enter_phpner_product_stickers'] = 'Product stickers';
+      ]]></add>
+    </operation>
+  </file>
+  <file path="admin/language/ru-ru/catalog/product.php">
+    <operation error="skip">
+      <search><![CDATA[<?php]]></search>
+      <add position="after"><![CDATA[
+        $_['enter_phpner_product_stickers'] = 'Стикеры';
+      ]]></add>
+    </operation>
+  </file>
+  <file path="admin/model/catalog/product.php">
+    <operation error="skip">
+      <search><![CDATA[if (isset($data['image'])) {]]></search>
+      <add position="before"><![CDATA[
+        $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+        
+        if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+          $this->db->query("UPDATE " . DB_PREFIX . "product SET phpner_product_stickers = '" . $this->db->escape(isset($data['phpner_product_stickers']) ? serialize($data['phpner_product_stickers']) : '') . "' WHERE product_id = '" . (int)$product_id . "'");
+        }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['product_attribute'] = $this->getProductAttributes($product_id);]]></search>
+      <add position="before"><![CDATA[
+        $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+        
+        if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+          $data['phpner_product_stickers'] = array();
+        }
+      ]]></add>
+    </operation>
+  </file>
+  <file path="admin/view/template/catalog/product_form.tpl">
+     <operation error="skip">
+      <search><![CDATA[<div class="tab-pane" id="tab-data">]]></search>
+      <add position="after"><![CDATA[
+        <?php if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) { ?>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><?php echo $enter_phpner_product_stickers; ?></label>
+          <div class="col-sm-10">
+            <div class="well well-sm" style="height: 150px; overflow: auto;">
+              <?php foreach ($phpner_product_stickers as $product_sticker) { ?>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="phpner_product_stickers[<?php echo $product_sticker['product_sticker_id']; ?>]" value="<?php echo $product_sticker['product_sticker_id']; ?>" <?php echo (isset($product_sticker_id[$product_sticker['product_sticker_id']]) && !empty($product_sticker_id[$product_sticker['product_sticker_id']])) ? 'checked' : ''; ?>
+                  /> <?php echo $product_sticker['title']; ?>
+                </label>
+              </div>
+              <?php } ?>
+            </div>
+          </div>
+        </div>
+        <?php } ?>
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/*.php">
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="before"><![CDATA[
+        $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+        $phpner_product_stickers = array();
+
+        if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+          $this->load->model('catalog/phpner_product_stickers');
+
+          if (isset($result['phpner_product_stickers']) && $result['phpner_product_stickers']) {
+            $stickers = unserialize($result['phpner_product_stickers']);
+          } else {
+            $stickers = array();
+          }
+
+          if ($stickers) {
+              foreach ($stickers as $product_sticker_id) {
+                $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+                
+                if ($sticker_info) {
+                  $phpner_product_stickers[] = array(
+                    'text' => $sticker_info['text'],
+                    'color' => $sticker_info['color'],
+                    'background' => $sticker_info['background']
+                  );
+                }
+              }
+    
+              $sticker_sort_order = array();
+    
+              foreach ($stickers as $key => $product_sticker_id) {
+                $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+                
+                if ($sticker_info) {
+                  $sticker_sort_order[$key] = $sticker_info['sort_order'];
+                }
+              }
+              
+              array_multisort($sticker_sort_order, SORT_ASC, $phpner_product_stickers);
+          }
+        }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="after"><![CDATA[
+        'phpner_product_stickers' => $phpner_product_stickers,
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/product.php">
+    <operation error="skip">
+      <search><![CDATA[$data['model'] = $product_info['model'];]]></search>
+      <add position="before"><![CDATA[
+        $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+        $data['phpner_product_stickers'] = array();
+
+        if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+          $this->load->model('catalog/phpner_product_stickers');
+
+          if (isset($product_info['phpner_product_stickers']) && $product_info['phpner_product_stickers']) {
+            $stickers = unserialize($product_info['phpner_product_stickers']);
+          } else {
+            $stickers = array();
+          }
+
+          foreach ($stickers as $product_sticker_id) {
+            $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+            
+            if ($sticker_info) {
+              $data['phpner_product_stickers'][] = array(
+                'text' => $sticker_info['text'],
+                'color' => $sticker_info['color'],
+                'background' => $sticker_info['background']
+              );
+            }
+          }
+
+          $sticker_sort_order = array();
+
+          foreach ($stickers as $key => $product_sticker_id) {
+            $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+            
+            if ($sticker_info) {
+              $sticker_sort_order[$key] = $sticker_info['sort_order'];
+            }
+          }
+          
+          array_multisort($sticker_sort_order, SORT_ASC, $data['phpner_product_stickers']);
+        }
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/model/catalog/product.php">
+    <operation error="skip">
+      <search><![CDATA['product_id'       => $query->row['product_id'],]]></search>
+      <add position="after"><![CDATA[
+        'phpner_product_stickers'     => (isset($query->row['phpner_product_stickers'])) ? $query->row['phpner_product_stickers'] : array(),
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/{latest,special,bestseller}.php">
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="before"><![CDATA[
+        $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+        $phpner_product_stickers = array();
+
+        if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+          $this->load->model('catalog/phpner_product_stickers');
+
+          if (isset($result['phpner_product_stickers']) && $result['phpner_product_stickers']) {
+            $stickers = unserialize($result['phpner_product_stickers']);
+          } else {
+            $stickers = array();
+          }
+
+          foreach ($stickers as $product_sticker_id) {
+            $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+            
+            if ($sticker_info) {
+              $phpner_product_stickers[] = array(
+                'text' => $sticker_info['text'],
+                'color' => $sticker_info['color'],
+                'background' => $sticker_info['background']
+              );
+            }
+          }
+
+          $sticker_sort_order = array();
+
+          foreach ($stickers as $key => $product_sticker_id) {
+            $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+            
+            if ($sticker_info) {
+              $sticker_sort_order[$key] = $sticker_info['sort_order'];
+            }
+          }
+          
+          array_multisort($sticker_sort_order, SORT_ASC, $phpner_product_stickers);
+        }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="after"><![CDATA[
+        'phpner_product_stickers' => $phpner_product_stickers,
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/featured.php">
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="before"><![CDATA[
+        $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+        $phpner_product_stickers = array();
+
+        if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+          $this->load->model('catalog/phpner_product_stickers');
+
+          if (isset($product_info['phpner_product_stickers']) && $product_info['phpner_product_stickers']) {
+            $stickers = unserialize($product_info['phpner_product_stickers']);
+          } else {
+            $stickers = array();
+          }
+
+          foreach ($stickers as $product_sticker_id) {
+            $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+            
+            if ($sticker_info) {
+              $phpner_product_stickers[] = array(
+                'text' => $sticker_info['text'],
+                'color' => $sticker_info['color'],
+                'background' => $sticker_info['background']
+              );
+            }
+          }
+
+          $sticker_sort_order = array();
+
+          foreach ($stickers as $key => $product_sticker_id) {
+            $sticker_info = $this->model_catalog_phpner_product_stickers->getProductSticker($product_sticker_id);
+            
+            if ($sticker_info) {
+              $sticker_sort_order[$key] = $sticker_info['sort_order'];
+            }
+          }
+          
+          array_multisort($sticker_sort_order, SORT_ASC, $phpner_product_stickers);
+        }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="after"><![CDATA[
+        'phpner_product_stickers' => $phpner_product_stickers,
+      ]]></add>
+    </operation>
+  </file>
+</modification>

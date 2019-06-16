@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_page_bar_100</code>
+  <name>Phpner - Page Bar</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/common/footer.php">
+    <operation error="skip">
+      <search><![CDATA[$data['contact'] = $this->url->link('information/contact');]]></search>
+      <add position="before"><![CDATA[
+        // start: phpner_page_bar
+        $data['phpner_page_bar_data'] = $this->config->get('phpner_page_bar_data');
+        $phpner_page_bar_data = $this->config->get('phpner_page_bar_data');
+        $data['phpner_page_bar'] = (isset($phpner_page_bar_data['status']) && $phpner_page_bar_data['status'] == 1) ? $this->load->controller('extension/module/phpner_page_bar') : '';
+        // end: phpner_page_bar
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/compare.php">
+ 	  <operation error="skip">
+      <search><![CDATA[public function add() {]]></search>
+      <add position="after"><![CDATA[
+        // start: phpner_page_bar
+        $phpner_page_bar_data = $this->config->get('phpner_page_bar_data');
+        // end: phpner_page_bar
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[if (count($this->session->data['compare']) >= 4) {]]></search>
+      <add position="replace" offset="2"><![CDATA[
+        // start: phpner_page_bar
+        if (isset($phpner_page_bar_data['status']) && $phpner_page_bar_data['status'] == 1) {
+        
+        } else {
+          if (count($this->session->data['compare']) >= 4) {
+						array_shift($this->session->data['compare']);
+					}
+        }
+        // end: phpner_page_bar
+      ]]></add>
+    </operation>
+  </file>
+</modification>

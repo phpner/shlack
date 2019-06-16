@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_popup_call_phone_100</code>
+  <name>Phpner - Call Phone</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/common/{header,footer}.php">
+     <operation error="skip">
+      <search><![CDATA[public function index() {]]></search>
+      <add position="after"><![CDATA[
+        // phpner_popup_call_phone start
+        $data['phpner_popup_call_phone_data'] = $this->config->get('phpner_popup_call_phone_data');
+        $data['popup_call_phone_text'] = $this->language->load('extension/module/phpner_popup_call_phone');
+        // phpner_popup_call_phone end
+      ]]></add>
+    </operation>
+  </file>
+</modification>

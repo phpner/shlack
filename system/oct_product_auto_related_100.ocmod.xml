@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_product_auto_related_100</code>
+  <name>Phpner - Auto Related Products</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/product/product.php">
+    <operation error="skip">
+      <search><![CDATA[$results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);]]></search>
+      <add position="replace"><![CDATA[
+        $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+        
+        $phpner_product_auto_related_data = $this->config->get('phpner_product_auto_related_data');
+        
+        if (isset($phpner_product_auto_related_data) && $phpner_product_auto_related_data['status'] != 0) {
+          
+          // $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+          // phpner_product_auto_related start
+          $phpner_product_auto_related_data = $this->config->get('phpner_product_auto_related_data');
+
+          $this->load->model('extension/module/phpner_product_auto_related');
+
+          $data_info = array(
+            'product_id'          => $this->request->get['product_id'],
+            'sort'                => 'p.product_id',
+            'filter_category_id'  => (isset($category_id)) ? $category_id : 0,
+            'filter_sub_category' => 1,
+            'order'               => 'DESC',
+            'start'               => 0,
+            'limit'               => $phpner_product_auto_related_data['limit']
+          );
+
+          $results += $this->model_extension_module_phpner_product_auto_related->getProductAutoRelated($data_info);
+        }
+        // phpner_product_auto_related end
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[if ($result['image']) {]]></search>
+      <add position="before"><![CDATA[
+        if (isset($phpner_product_auto_related_data['status']) && $phpner_product_auto_related_data['status']) {
+          if ($result['image']) {
+            $image_auto_related = $this->model_tool_image->resize($result['image'], $phpner_product_auto_related_data['width'], $phpner_product_auto_related_data['height']);
+          } else {
+            $image_auto_related = $this->model_tool_image->resize('placeholder.png', $phpner_product_auto_related_data['width'], $phpner_product_auto_related_data['height']);
+          }
+        } else {
+          if ($result['image']) {
+            $image_auto_related = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+          } else {
+            $image_auto_related = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+          }
+        }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA['thumb'       => $image,]]></search>
+      <add position="replace"><![CDATA[
+        'thumb' => $image_auto_related, 
+        'saving'   => round((($result['price'] - $result['special'])/($result['price'] + 0.01))*100, 0),
+      ]]></add>
+    </operation>    
+  </file>
+</modification>

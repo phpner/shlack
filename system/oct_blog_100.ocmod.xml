@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<modification>
+
+    <code>phpner_blog_100</code>
+
+    <name>Phpner - Blog</name>
+
+    <version>1.0.0</version>
+
+    <author>Phpner</author>
+
+    <link>http://phpner.net/</link>
+
+    <file path="catalog/controller/startup/seo_url.php">
+
+        <operation error="skip">
+
+            <search><![CDATA[if ($url[0] == 'manufacturer_id') {]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        if ($url[0] == 'phpner_blog_article_id') {
+
+          $this->request->get['phpner_blog_article_id'] = $url[1];
+
+        }
+
+
+
+        if ($url[0] == 'phpner_blog_category_id') {
+
+          if (!isset($this->request->get['cpath'])) {
+
+            $this->request->get['cpath'] = $url[1];
+
+          } else {
+
+            $this->request->get['cpath'] .= '_' . $url[1];
+
+          }
+
+        }
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {]]></search>
+
+            <add position="replace"><![CDATA[
+
+        // phpner_blog start
+
+        //if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+
+        if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id' && $url[0] != 'phpner_blog_category_id' && $url[0] != 'phpner_blog_article_id') {
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[} elseif (isset($this->request->get['manufacturer_id'])) {]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        } elseif (isset($this->request->get['phpner_blog_article_id'])) {
+
+          $this->request->get['route'] = 'phpner/blog_article';
+
+        } elseif (isset($this->request->get['cpath'])) {
+
+          $this->request->get['route'] = 'phpner/blog_category';
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {]]></search>
+
+            <add position="replace"><![CDATA[
+
+        // phpner_blog start
+
+        //if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+
+        if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id') || ($data['route'] == 'phpner/blog_article' && $key == 'phpner_blog_article_id')) {
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[} elseif ($key == 'path') {]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        } elseif ($key == 'cpath') {
+
+          $categories = explode('_', $value);
+
+
+
+          foreach ($categories as $category) {
+
+            $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'phpner_blog_category_id=" . (int)$category . "'");
+
+
+
+            if ($query->num_rows && $query->row['keyword']) {
+
+              $url .= '/' . $query->row['keyword'];
+
+            } else {
+
+              $url = '';
+
+
+
+              break;
+
+            }
+
+          }
+
+
+
+          unset($data[$key]);
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+    </file>
+
+    <file path="catalog/controller/startup/seo_pro.php">
+
+        <operation error="skip">
+
+            <search><![CDATA[} elseif (count($url) > 1) {]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        } elseif ($url[0] == 'phpner_blog_category_id') {
+
+          if (!isset($this->request->get['cpath'])) {
+
+            $this->request->get['cpath'] = $url[1];
+
+          } else {
+
+            $this->request->get['cpath'] .= '_' . $url[1];
+
+          }
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[} elseif (isset($this->request->get['path'])) {]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        } elseif (isset($this->request->get['phpner_blog_article_id'])) {
+
+          $this->request->get['route'] = 'phpner/blog_article';
+
+          if (!isset($this->request->get['cpath'])) {
+
+            $path = $this->getPathByProduct($this->request->get['phpner_blog_article_id']);
+
+            if ($path) $this->request->get['cpath'] = $path;
+
+          }
+
+        } elseif (isset($this->request->get['cpath'])) {
+
+          $this->request->get['route'] = 'phpner/blog_category';
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[case 'product/product/review':]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        case 'phpner/blog_article':
+
+          if (isset($data['phpner_blog_article_id'])) {
+
+            $tmp = $data;
+
+            $data = array();
+
+            if ($this->config->get('config_seo_url_include_path')) {
+
+              $data['cpath'] = $this->getphpner_PathByBlogArticle($tmp['phpner_blog_article_id']);
+
+              if (!$data['cpath']) return $link;
+
+            }
+
+            $data['phpner_blog_article_id'] = $tmp['phpner_blog_article_id'];
+
+            if (isset($tmp['tracking'])) {
+
+              $data['tracking'] = $tmp['tracking'];
+
+            }
+
+          }
+
+          break;
+
+
+
+        case 'phpner/blog_category':
+
+          if (isset($data['cpath'])) {
+
+            $category = explode('_', $data['cpath']);
+
+            $category = end($category);
+
+            $data['cpath'] = $this->getphpner_PathByBlogCategory($category);
+
+            if (!$data['cpath']) return $link;
+
+          }
+
+        break;
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[case 'information_id':]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        case 'phpner_blog_article_id':
+
+        case 'phpner_blog_category_id':
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[case 'path':]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        case 'cpath':
+
+          $categories = explode('_', $value);
+
+          foreach($categories as $category) {
+
+            $queries[] = 'phpner_blog_category_id=' . $category;
+
+          }
+
+          unset($data[$key]);
+
+          break;
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+        <operation error="skip">
+
+            <search><![CDATA[private function validate() {]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        private function getphpner_PathByBlogArticle($phpner_blog_article_id) {
+
+          $phpner_blog_article_id = (int)$phpner_blog_article_id;
+
+          if ($phpner_blog_article_id < 1) return false;
+
+
+
+          static $path = null;
+
+          if (!isset($path)) {
+
+            $path = $this->cache->get('phpner_blog_article.seopath');
+
+            if (!isset($path)) $path = array();
+
+          }
+
+
+
+          if (!isset($path[$phpner_blog_article_id])) {
+
+            $query = $this->db->query("SELECT phpner_blog_category_id FROM " . DB_PREFIX . "phpner_blog_article_to_category WHERE phpner_blog_article_id = '" . $phpner_blog_article_id . "' ORDER BY main_phpner_blog_category_id DESC LIMIT 1");
+
+
+
+            $path[$phpner_blog_article_id] = $this->getphpner_PathByBlogCategory($query->num_rows ? (int)$query->row['phpner_blog_category_id'] : 0);
+
+
+
+            $this->cache->set('phpner_blog_article.seopath', $path);
+
+          }
+
+
+
+          return $path[$phpner_blog_article_id];
+
+        }
+
+
+
+        private function getphpner_PathByBlogCategory($phpner_blog_category_id) {
+
+          $phpner_blog_category_id = (int)$phpner_blog_category_id;
+
+          if ($phpner_blog_category_id < 1) return false;
+
+
+
+          static $path = null;
+
+          if (!isset($path)) {
+
+            $path = $this->cache->get('phpner_blog_category.seopath');
+
+            if (!isset($path)) $path = array();
+
+          }
+
+
+
+          if (!isset($path[$phpner_blog_category_id])) {
+
+            $max_level = 10;
+
+
+
+            $sql = "SELECT CONCAT_WS('_'";
+
+            for ($i = $max_level-1; $i >= 0; --$i) {
+
+              $sql .= ",t$i.phpner_blog_category_id";
+
+            }
+
+            $sql .= ") AS cpath FROM " . DB_PREFIX . "phpner_blog_category t0";
+
+            for ($i = 1; $i < $max_level; ++$i) {
+
+              $sql .= " LEFT JOIN " . DB_PREFIX . "phpner_blog_category t$i ON (t$i.phpner_blog_category_id = t" . ($i-1) . ".phpner_blog_category_parent_id)";
+
+            }
+
+            $sql .= " WHERE t0.phpner_blog_category_id = '" . $phpner_blog_category_id . "'";
+
+
+
+            $query = $this->db->query($sql);
+
+
+
+            $path[$phpner_blog_category_id] = $query->num_rows ? $query->row['cpath'] : false;
+
+
+
+            $this->cache->set('phpner_blog_category.seopath', $path);
+
+          }
+
+
+
+          return $path[$phpner_blog_category_id];
+
+        }
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+
+    </file>
+    <file path="catalog/controller/information/sitemap.php">
+
+        <operation error="skip">
+
+            <search><![CDATA[$data['categories'] = array();]]></search>
+
+            <add position="before"><![CDATA[
+
+        // phpner_blog start
+
+        $data['phpner_blog_text'] = $this->load->language('phpner/blog_articles');;
+        $data['phpner_blog'] = $this->url->link('phpner/blog_articles');
+
+        $this->load->model('phpner/blog_category');
+        $this->load->model('phpner/blog_article');
+
+        $data['phpner_blog_categories'] = array();
+
+        $phpner_blog_categories = $this->model_phpner_blog_category->getCategories(0);
+
+        foreach ($phpner_blog_categories as $phpner_blog_category) {
+          $phpner_blog_children_data = array();
+
+          $phpner_blog_children = $this->model_phpner_blog_category->getCategories($phpner_blog_category['phpner_blog_category_id']);
+
+          foreach($phpner_blog_children as $phpner_blog_child) {
+
+            $phpner_blog_articles_child = array();
+
+            $phpner_blog_articles_child_results = $this->model_phpner_blog_article->getArticles(array('filter_category_id' => $phpner_blog_child['phpner_blog_category_id']));
+
+            foreach ($phpner_blog_articles_child_results as $phpner_blog_articles_child_result) {
+              $phpner_blog_articles_child[] = array(
+                'name' => $phpner_blog_articles_child_result['name'],
+                'href' => $this->url->link('phpner/blog_article', 'cpath=' . $phpner_blog_category['phpner_blog_category_id'] . '_' . $phpner_blog_child['phpner_blog_category_id'] . '&phpner_blog_article_id=' . $phpner_blog_articles_child_result['phpner_blog_article_id'])
+              );
+            }
+
+            $phpner_blog_children_data[] = array(
+              'name' => $phpner_blog_child['name'],
+              'articles' => $phpner_blog_articles_child,
+              'href' => $this->url->link('phpner/blog_category', 'cpath=' . $phpner_blog_category['phpner_blog_category_id'] . '_' . $phpner_blog_child['phpner_blog_category_id'])
+            );
+          }
+
+          $phpner_blog_articles = array();
+
+          $phpner_blog_articles_results = $this->model_phpner_blog_article->getArticles(array('filter_category_id' => $phpner_blog_category['phpner_blog_category_id']));
+
+          foreach ($phpner_blog_articles_results as $phpner_blog_articles_result) {
+            $phpner_blog_articles[] = array(
+              'name' => $phpner_blog_articles_result['name'],
+              'href' => $this->url->link('phpner/blog_article', 'cpath=' . $phpner_blog_category['phpner_blog_category_id'] . '&phpner_blog_article_id=' . $phpner_blog_articles_result['phpner_blog_article_id'])
+            );
+          }
+
+          $data['phpner_blog_categories'][] = array(
+            'name'        => $phpner_blog_category['name'],
+            'children'    => $phpner_blog_children_data,
+            'articles'    => $phpner_blog_articles,
+            'href'        => $this->url->link('phpner/blog_category', 'cpath=' . $phpner_blog_category['phpner_blog_category_id'])
+          );
+        }
+
+        // phpner_blog end
+
+      ]]></add>
+
+        </operation>
+    </file>
+    <file path="catalog/controller/common/header.php">
+        <operation error="skip">
+            <search><![CDATA[$data['text_home'] = $this->language->get('text_home');]]></search>
+            <add position="before"><![CDATA[
+        // phpner_blog start
+        if (isset($this->request->get['phpner_blog_article_id'])) {
+          $phpner_blog_article_id = (int)$this->request->get['phpner_blog_article_id'];
+        } else {
+          $phpner_blog_article_id = 0;
+        }
+
+        $this->load->model('phpner/blog_article');
+        $article_info = $this->model_phpner_blog_article->getArticle($phpner_blog_article_id);
+
+        $data['og_meta_description'] = "";
+
+        if ($article_info) {
+          $this->load->model('tool/image');
+          $data['og_image'] = $this->model_tool_image->resize($article_info['image'], 500, 500);
+          $data['og_meta_description'] = utf8_substr(strip_tags(html_entity_decode($article_info['meta_description'], ENT_QUOTES, 'UTF-8')), 0, 250);
+        }
+        // phpner_blog end
+        ]]></add>
+        </operation>
+    </file>
+</modification>

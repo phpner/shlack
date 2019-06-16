@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_megamenu_100</code>
+  <name>Phpner - Megamenu</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/common/header.php">
+    <operation error="skip">
+      <search><![CDATA[$data['language'] = $this->load->controller('common/language');]]></search>
+      <add position="before"><![CDATA[
+        // start: phpner_megamenu
+				$data['categories'] = array();
+
+				foreach ($categories as $category) {
+					if ($category['top']) {
+						// Level 2
+						$children_data = array();
+
+						$children = $this->model_catalog_category->getCategories($category['category_id']);
+
+						foreach ($children as $child) {
+							$filter_data = array(
+								'filter_category_id'  => $child['category_id'],
+								'filter_sub_category' => true
+							);
+
+							// Level 3
+							$children_data_2 = array();
+
+							$children_2 = $this->model_catalog_category->getCategories($category['category_id']);
+
+							foreach ($children_2 as $child_2) {
+								$filter_data = array(
+									'filter_category_id'  => $child_2['category_id'],
+									'filter_sub_category' => true
+								);
+
+								$children_data_2[] = array(
+									'children' => $children_data_2,
+									'name'  => $child_2['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+									'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'] . '_' . $child_2['category_id'])
+								);
+							}
+
+							$children_data[] = array(
+								'children' => $children_data_2,
+								'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+								'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+							);
+						}
+
+						// Level 1
+						$data['categories'][] = array(
+							'name'     => $category['name'],
+							'children' => $children_data,
+							'column'   => $category['column'] ? $category['column'] : 1,
+							'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
+						);
+					}
+				}
+		
+        $data['phpner_megamenu_data'] = $this->config->get('phpner_megamenu_data');
+        $phpner_megamenu_data = $this->config->get('phpner_megamenu_data');
+        $data['phpner_megamenu'] = (isset($phpner_megamenu_data['status']) && $phpner_megamenu_data['status'] == 1) ? $this->load->controller('extension/module/phpner_megamenu') : '';
+        // end: phpner_megamenu
+      ]]></add>
+    </operation>
+  </file>
+</modification>

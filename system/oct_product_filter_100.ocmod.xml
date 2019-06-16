@@ -1,0 +1,1715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_product_filter_100</code>
+  <name>Phpner - Product Filter</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="admin/model/catalog/product.php">
+    <operation error="skip">
+      <search><![CDATA[public function addProduct($data) {]]></search>
+      <add position="before"><![CDATA[
+        public function checkphpner_IfTableExist($table_name) {
+          return $this->db->query("
+            SELECT 
+              COUNT(*) as total 
+            FROM information_schema.TABLES 
+            WHERE 
+              TABLE_SCHEMA = '".DB_DATABASE."' 
+            AND 
+              TABLE_NAME = '".$table_name."'
+          ")->row['total'];
+        }
+
+        public function checkIfColumnExist($table_name, $table_column) {
+          return $this->db->query("
+            SELECT
+              COUNT(*) as total
+            FROM information_schema.COLUMNS
+            WHERE
+              TABLE_SCHEMA = '".DB_DATABASE."'
+            AND
+              TABLE_NAME = '".$table_name."'
+            AND
+              COLUMN_NAME  = '".$table_column."'
+          ")->row['total'];
+        }
+
+        public function phpner_conver_cyrillic($string, $replace = false) {
+          $array = array(
+            "А"=>"a",
+            "Б"=>"b",
+            "В"=>"v",
+            "Г"=>"g",
+            "Д"=>"d",
+            "Е"=>"e",
+            "Ё"=>"yo",
+            "Ж"=>"zh",
+            "З"=>"z",
+            "И"=>"i",
+            "Й"=>"j",
+            "К"=>"k",
+            "Л"=>"l",
+            "М"=>"m",
+            "Н"=>"n",
+            "О"=>"o",
+            "П"=>"p",
+            "Р"=>"r",
+            "С"=>"s",
+            "Т"=>"t",
+            "У"=>"u",
+            "Ф"=>"f",
+            "Х"=>"kh",
+            "Ц"=>"ts",
+            "Ч"=>"ch",
+            "Ш"=>"sh",
+            "Щ"=>"sch",
+            "Ъ"=>"",
+            "Ы"=>"y",
+            "Ь"=>"",
+            "Э"=>"e",
+            "Ю"=>"yu",
+            "Я"=>"ya",
+            "а"=>"a",
+            "б"=>"b",
+            "в"=>"v",
+            "г"=>"g",
+            "д"=>"d",
+            "е"=>"e",
+            "ё"=>"yo",
+            "ж"=>"zh",
+            "з"=>"z",
+            "и"=>"i",
+            "й"=>"j",
+            "к"=>"k",
+            "л"=>"l",
+            "м"=>"m",
+            "н"=>"n",
+            "о"=>"o",
+            "п"=>"p",
+            "р"=>"r",
+            "с"=>"s",
+            "т"=>"t",
+            "у"=>"u",
+            "ф"=>"f",
+            "х"=>"kh",
+            "ц"=>"ts",
+            "ч"=>"ch",
+            "ш"=>"sh",
+            "щ"=>"sch",
+            "ъ"=>"",
+            "ы"=>"y",
+            "ь"=>"",
+            "э"=>"e",
+            "ю"=>"yu",
+            "я"=>"ya"
+          );
+
+          $string = preg_replace('/\s{2,}/ui', ' ', $string);
+          $string = preg_replace('/[^a-zA-Zа-яА-Я0-9_\s]/ui', '', $string);
+          $string = preg_replace('/\s/ui', '_', $string);
+
+          if ($replace) {
+            return strtr($this->phpner_normalize_string(trim($string), true), $array);
+          } else {
+            return strtr($this->phpner_normalize_string(trim($string)), $array);
+          }
+        }
+
+        public function phpner_normalize_string($string, $replace = false, $lower = true) {
+          $result = trim($string);
+
+          if ($lower) {
+            $result = mb_strtolower($result);
+          }
+
+          if ($replace) {
+            $result = str_replace(" ", "_", $result);
+          }
+
+          return $result;
+        }
+
+        public function addphpner_ProductFilterData($product_id, $data, $delete = true) {
+          $this->load->model('localisation/language');
+          $phpner_languages = $this->model_localisation_language->getLanguages();
+          $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+          $phpner_product_filter_status = $this->config->get('phpner_product_filter_status');
+
+          if ($phpner_product_filter_status) {
+            if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+              if ($phpner_languages && isset($data['phpner_product_stickers'])) {
+                foreach ($phpner_languages as $phpner_language) {
+                  foreach ($data['phpner_product_stickers'] as $phpner_product_sticker_id) {
+                    if ($delete) {
+                      $this->db->query("
+                        DELETE 
+                        FROM ".DB_PREFIX."phpner_filter_product_sticker
+                        WHERE 
+                          product_id = '".(int)$product_id."' 
+                        AND 
+                          product_sticker_id = '".(int)$phpner_product_sticker_id."'
+                      ");
+                    }
+
+                    $phpner_sticker_info = $this->db->query("
+                      SELECT 
+                        DISTINCT * 
+                      FROM ".DB_PREFIX."phpner_product_stickers pst
+                      LEFT JOIN ".DB_PREFIX."phpner_product_stickers_description pstd ON (pst.product_sticker_id = pstd.product_sticker_id)
+                      WHERE 
+                        pst.product_sticker_id = '".(int)$phpner_product_sticker_id."'
+                      AND 
+                        pstd.language_id = '".(int)$phpner_language['language_id']."'
+                    ")->row;
+                    
+                    if ($phpner_sticker_info) {
+                      $this->db->query("
+                        INSERT INTO ".DB_PREFIX."phpner_filter_product_sticker
+                        SET 
+                          product_id = '".(int)$product_id."', 
+                          language_id  = '".(int)$phpner_language['language_id']."',
+                          product_sticker_id = '".(int)$phpner_sticker_info['product_sticker_id']."',
+                          product_sticker_value = '".$this->db->escape($this->phpner_normalize_string($phpner_sticker_info['text'], false, false))."',
+                          product_sticker_value_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_sticker_info['text'], true))."_".(int)$phpner_sticker_info['product_sticker_id']."'
+                      ");
+                    }
+                  }
+                }
+              }
+            }
+
+            if ( isset($data['product_attribute']) ) {
+              foreach ($data['product_attribute'] as $product_attribute) {
+                if ($product_attribute['attribute_id']) {
+                  if ($delete) {
+                    $this->db->query("
+                      DELETE 
+                      FROM ".DB_PREFIX."phpner_filter_product_attribute
+                      WHERE 
+                        product_id = '".(int)$product_id."' 
+                      AND 
+                        attribute_id = '".(int)$product_attribute['attribute_id']."'
+                    ");
+                  }
+
+                  foreach ($product_attribute['product_attribute_description'] as $language_id => $product_attribute_description) {
+                    $phpner_attribute_data = $this->db->query("
+                      SELECT 
+                        a.attribute_group_id, 
+                        a.sort_order, 
+                        ad.name 
+                      FROM ".DB_PREFIX."attribute a 
+                      LEFT JOIN ".DB_PREFIX."attribute_description ad ON (a.attribute_id = ad.attribute_id) 
+                      WHERE 
+                        a.attribute_id = '".(int)$product_attribute['attribute_id']."' 
+                      AND 
+                        ad.language_id = '".(int)$language_id."'
+                    ")->row;
+                    
+                    if ($delete) {
+                      $this->db->query("
+                        DELETE 
+                        FROM ".DB_PREFIX."phpner_filter_product_attribute
+                        WHERE 
+                          product_id = '".(int)$product_id."' 
+                        AND 
+                          attribute_id = '".(int)$product_attribute['attribute_id']."' 
+                        AND 
+                          language_id = '".(int)$language_id."'
+                      ");
+                    }
+
+                    if ($phpner_attribute_data) {
+                      $this->db->query("
+                        INSERT INTO ".DB_PREFIX."phpner_filter_product_attribute
+                        SET 
+                          product_id = '".(int)$product_id."', 
+                          attribute_id = '".(int)$product_attribute['attribute_id']."', 
+                          attribute_group_id = '".(int)$phpner_attribute_data['attribute_group_id']."',
+                          sort_order = '".(int)$phpner_attribute_data['sort_order']."',
+                          language_id = '".(int)$language_id."', 
+                          attribute_value = '".$this->db->escape($this->phpner_normalize_string($product_attribute_description['text'], false, false))."',
+                          attribute_value_mod = '".$this->db->escape($this->phpner_conver_cyrillic($product_attribute_description['text'], true))."_".(int)$product_attribute['attribute_id']."',
+                          attribute_name = '".$this->db->escape($this->phpner_normalize_string($phpner_attribute_data['name'], false, false))."',
+                          attribute_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_attribute_data['name'], true))."_".(int)$product_attribute['attribute_id']."'
+                      ");
+                    }
+                  }
+                }
+              }
+            }
+
+            if (isset($data['product_option'])) {
+              foreach ($data['product_option'] as $product_option) {
+                if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') {
+                  if (isset($product_option['product_option_value'])) {
+                    if ($phpner_languages) {
+                      foreach ($phpner_languages as $phpner_language) {
+                        $phpner_option_info = $this->db->query("
+                          SELECT * 
+                          FROM `".DB_PREFIX."option` o 
+                          LEFT JOIN ".DB_PREFIX."option_description od ON (o.option_id = od.option_id) 
+                          WHERE 
+                            o.option_id = '".(int)$product_option['option_id']."' 
+                          AND 
+                            od.language_id = '".(int)$phpner_language['language_id']."'
+                        ")->row;
+
+                        foreach ($product_option['product_option_value'] as $product_option_value) {
+                          $phpner_option_value_info = $this->db->query("
+                            SELECT * 
+                            FROM ".DB_PREFIX."option_value ov 
+                            LEFT JOIN ".DB_PREFIX."option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) 
+                            WHERE 
+                              ov.option_value_id = '".(int)$product_option_value['option_value_id']."' 
+                            AND 
+                              ovd.language_id = '".(int)$phpner_language['language_id']."'
+                          ")->row;
+                          
+                          if ($phpner_option_value_info) {
+                            $this->db->query("
+                              INSERT INTO ".DB_PREFIX."phpner_filter_product_option
+                              SET 
+                                product_id = '".(int)$product_id."', 
+                                language_id = '".(int)$phpner_language['language_id']."',
+                                option_id = '".(int)$product_option['option_id']."', 
+                                option_name = '".$this->db->escape($this->phpner_normalize_string($phpner_option_info['name'], false, false))."',
+                                option_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_option_info['name'], true))."_".(int)$product_option['option_id']."',
+                                option_value_id = '".(int)$product_option_value['option_value_id']."', 
+                                option_value_name  = '".$this->db->escape($phpner_option_value_info['name'])."',
+                                option_value_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_option_value_info['name'], true))."_".(int)$product_option['option_id']."',
+                                option_value_image = '".$this->db->escape($phpner_option_value_info['image'])."'
+                            ");
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            if (isset($data['product_filter'])) {
+              foreach ($data['product_filter'] as $filter_id) {
+                if ($phpner_languages) {
+                  foreach ($phpner_languages as $phpner_language) {
+                    $phpner_standard_info = $this->db->query("
+                      SELECT 
+                        *, 
+                        (SELECT 
+                          name 
+                        FROM ".DB_PREFIX."filter_group_description fgd 
+                        WHERE 
+                          f.filter_group_id = fgd.filter_group_id 
+                        AND 
+                          fgd.language_id = '".(int)$phpner_language['language_id']."'
+                        ) AS `group` 
+                      FROM ".DB_PREFIX."filter f 
+                      LEFT JOIN ".DB_PREFIX."filter_description fd ON (f.filter_id = fd.filter_id) 
+                      WHERE 
+                        f.filter_id = '".(int)$filter_id."' 
+                      AND 
+                        fd.language_id = '".(int)$phpner_language['language_id']."'
+                    ")->row;
+
+                    if ($phpner_standard_info) {
+                      $this->db->query("
+                        INSERT INTO ".DB_PREFIX."phpner_filter_product_standard
+                        SET 
+                          product_id = '".(int)$product_id."', 
+                          sort_order = '".(int)$phpner_standard_info['sort_order']."',
+                          language_id = '".(int)$phpner_language['language_id']."',
+                          filter_id = '".(int)$filter_id."', 
+                          filter_group_id = '".(int)$phpner_standard_info['filter_group_id']."',
+                          filter_name = '".$this->db->escape($this->phpner_normalize_string($phpner_standard_info['group'], false, false))."',
+                          filter_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_standard_info['group'], true))."_".(int)$phpner_standard_info['filter_group_id']."',
+                          filter_value = '".$this->db->escape($this->phpner_normalize_string($phpner_standard_info['name'], false, false))."',
+                          filter_value_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_standard_info['name'], true))."_".(int)$filter_id."'
+                      ");
+                    }
+                  }
+                }
+              }
+            }
+
+            if (isset($data['phpner_product_manufacturers'])) {
+              if ($this->checkphpner_IfTableExist(DB_PREFIX."manufacturer_description") && $this->checkIfColumnExist(DB_PREFIX . "manufacturer_description", "name")) {
+                foreach ($data['phpner_product_manufacturers'] as $manufacturer_id) {
+                  if ($phpner_languages) {
+                    foreach ($phpner_languages as $phpner_language) {
+                      $phpner_manufacturer_info = $this->db->query("
+                        SELECT 
+                          m.manufacturer_id, 
+                          md.name, 
+                          m.image 
+                        FROM `".DB_PREFIX."manufacturer` m 
+                        LEFT JOIN ".DB_PREFIX."manufacturer_description md ON (m.manufacturer_id = md.manufacturer_id) 
+                        WHERE 
+                          m.manufacturer_id = '".(int)$manufacturer_id."' 
+                        AND 
+                          md.language_id = '".(int)$phpner_language['language_id']."'
+                      ")->row;
+
+                      if ($phpner_manufacturer_info) {
+                        $this->db->query("
+                          INSERT INTO ".DB_PREFIX."phpner_filter_product_manufacturer
+                          SET 
+                            product_id = '".(int)$product_id."', 
+                            language_id = '".(int)$phpner_language['language_id']."',
+                            manufacturer_id = '".(int)$manufacturer_id."', 
+                            manufacturer_name = '".$this->db->escape($this->phpner_normalize_string($phpner_manufacturer_info['name'], false, false))."',
+                            manufacturer_image = '".$this->db->escape($phpner_manufacturer_info['image'])."'
+                        ");
+                      } 
+                    }
+                  }
+                }
+              } else {
+                foreach ($data['phpner_product_manufacturers'] as $manufacturer_id) {
+                  if ($phpner_languages) {
+                    foreach ($phpner_languages as $phpner_language) {
+                      $phpner_manufacturer_info = $this->db->query("
+                        SELECT 
+                          m.manufacturer_id, 
+                          m.name, 
+                          m.image 
+                        FROM `".DB_PREFIX."manufacturer` m 
+                        WHERE 
+                          m.manufacturer_id = '".(int)$manufacturer_id."'
+                      ")->row;
+
+                      if ($phpner_manufacturer_info) {
+                        $this->db->query("
+                          INSERT INTO ".DB_PREFIX."phpner_filter_product_manufacturer
+                          SET 
+                            product_id = '".(int)$product_id."', 
+                            language_id = '".(int)$phpner_language['language_id']."',
+                            manufacturer_id = '".(int)$manufacturer_id."', 
+                            manufacturer_name = '".$this->db->escape($this->phpner_normalize_string($phpner_manufacturer_info['name'], false, false))."',
+                            manufacturer_image = '".$this->db->escape($phpner_manufacturer_info['image'])."'
+                        ");
+                      } 
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        public function editphpner_ProductFilterData($product_id, $data) {
+          $this->load->model('localisation/language');
+          $phpner_languages = $this->model_localisation_language->getLanguages();
+          $phpner_product_stickers_data = $this->config->get('phpner_product_stickers_data');
+          $phpner_product_filter_status = $this->config->get('phpner_product_filter_status');
+
+          if ($phpner_product_filter_status) {
+            if (isset($phpner_product_stickers_data['status']) && $phpner_product_stickers_data['status']) {
+              $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_sticker WHERE product_id = '".(int)$product_id."'");
+
+              if ($phpner_languages && isset($data['phpner_product_stickers'])) {
+                foreach ($phpner_languages as $phpner_language) {
+                  foreach ($data['phpner_product_stickers'] as $phpner_product_sticker_id) {
+                    $this->db->query("
+                      DELETE 
+                      FROM ".DB_PREFIX."phpner_filter_product_sticker
+                      WHERE 
+                        product_id = '".(int)$product_id."' 
+                      AND 
+                        product_sticker_id = '".(int)$phpner_product_sticker_id."'
+                    ");
+
+                    $phpner_sticker_info = $this->db->query("
+                      SELECT 
+                        DISTINCT * 
+                      FROM ".DB_PREFIX."phpner_product_stickers pst
+                      LEFT JOIN ".DB_PREFIX."phpner_product_stickers_description pstd ON (pst.product_sticker_id = pstd.product_sticker_id)
+                      WHERE 
+                        pst.product_sticker_id = '".(int)$phpner_product_sticker_id."'
+                      AND 
+                        pstd.language_id = '".(int)$phpner_language['language_id']."'
+                    ")->row;
+                    
+                    if ($phpner_sticker_info) {
+                      $this->db->query("
+                        INSERT INTO ".DB_PREFIX."phpner_filter_product_sticker
+                        SET 
+                          product_id = '".(int)$product_id."', 
+                          language_id  = '".(int)$phpner_language['language_id']."',
+                          product_sticker_id = '".(int)$phpner_sticker_info['product_sticker_id']."',
+                          product_sticker_value = '".$this->db->escape($this->phpner_normalize_string($phpner_sticker_info['text'], false, false))."',
+                          product_sticker_value_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_sticker_info['text'], true))."_".(int)$phpner_sticker_info['product_sticker_id']."'
+                      ");
+                    }
+                  }
+                }
+              }
+            }
+
+            $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_attribute WHERE product_id = '".(int)$product_id."'");
+          
+            if (!empty($data['product_attribute'])) {
+              foreach ($data['product_attribute'] as $product_attribute) {
+                if ($product_attribute['attribute_id']) {
+                  $this->db->query("
+                    DELETE 
+                    FROM ".DB_PREFIX."phpner_filter_product_attribute
+                    WHERE 
+                      product_id = '".(int)$product_id."' 
+                    AND 
+                      attribute_id = '".(int)$product_attribute['attribute_id']."'
+                  ");
+                  
+                  foreach ($product_attribute['product_attribute_description'] as $language_id => $product_attribute_description) {
+                    $phpner_attribute_data = $this->db->query("
+                      SELECT 
+                        a.attribute_group_id, 
+                        a.sort_order, 
+                        ad.name 
+                      FROM ".DB_PREFIX."attribute a 
+                      LEFT JOIN ".DB_PREFIX."attribute_description ad ON (a.attribute_id = ad.attribute_id) 
+                      WHERE 
+                        a.attribute_id = '".(int)$product_attribute['attribute_id']."' 
+                      AND 
+                        ad.language_id = '".(int)$language_id."'
+                    ")->row;
+
+                    if ($phpner_attribute_data) {
+                      $this->db->query("
+                        INSERT INTO ".DB_PREFIX."phpner_filter_product_attribute
+                        SET 
+                          product_id = '".(int)$product_id."', 
+                          attribute_id = '".(int)$product_attribute['attribute_id']."', 
+                          attribute_group_id = '".(int)$phpner_attribute_data['attribute_group_id']."',
+                          sort_order = '".(int)$phpner_attribute_data['sort_order']."',
+                          language_id = '".(int)$language_id."', 
+                          attribute_value = '".$this->db->escape($this->phpner_normalize_string($product_attribute_description['text'], false, false))."',
+                          attribute_value_mod = '".$this->db->escape($this->phpner_conver_cyrillic($product_attribute_description['text'], true))."_".(int)$product_attribute['attribute_id']."',
+                          attribute_name = '".$this->db->escape($this->phpner_normalize_string($phpner_attribute_data['name'], false, false))."',
+                          attribute_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_attribute_data['name'], true))."_".(int)$product_attribute['attribute_id']."'
+                      ");
+                    }
+                  }
+                }
+              }
+            }
+
+            $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_option WHERE product_id = '".(int)$product_id."'");
+
+            if (isset($data['product_option'])) {
+              foreach ($data['product_option'] as $product_option) {
+                if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') {
+                  if (isset($product_option['product_option_value'])) {
+                    if ($phpner_languages) {
+                      foreach ($phpner_languages as $phpner_language) {
+                        $phpner_option_info = $this->db->query("
+                          SELECT * 
+                          FROM `".DB_PREFIX."option` o 
+                          LEFT JOIN ".DB_PREFIX."option_description od ON (o.option_id = od.option_id) 
+                          WHERE 
+                            o.option_id = '".(int)$product_option['option_id']."' 
+                          AND 
+                            od.language_id = '".(int)$phpner_language['language_id']."'
+                        ")->row;
+
+                        foreach ($product_option['product_option_value'] as $product_option_value) {
+                          $phpner_option_value_info = $this->db->query("
+                            SELECT * 
+                            FROM ".DB_PREFIX."option_value ov 
+                            LEFT JOIN ".DB_PREFIX."option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) 
+                            WHERE 
+                              ov.option_value_id = '".(int)$product_option_value['option_value_id']."' 
+                            AND 
+                              ovd.language_id = '".(int)$phpner_language['language_id']."'
+                          ")->row;
+                          
+                          if ($phpner_option_value_info) {
+                            $this->db->query("
+                              INSERT INTO ".DB_PREFIX."phpner_filter_product_option
+                              SET 
+                                product_id = '".(int)$product_id."', 
+                                language_id = '".(int)$phpner_language['language_id']."',
+                                option_id = '".(int)$product_option['option_id']."', 
+                                option_name = '".$this->db->escape($phpner_option_info['name'])."',
+                                option_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_option_info['name'], true))."_".(int)$product_option['option_id']."',
+                                option_value_id  = '".(int)$product_option_value['option_value_id']."', 
+                                option_value_name  = '".$this->db->escape($phpner_option_value_info['name'])."',
+                                option_value_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_option_value_info['name'], true))."_".(int)$product_option['option_id']."',
+                                option_value_image = '".$this->db->escape($phpner_option_value_info['image'])."'
+                            ");
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_standard WHERE product_id = '".(int)$product_id."'");
+            
+            if (isset($data['product_filter'])) {
+              foreach ($data['product_filter'] as $filter_id) {
+                if ($phpner_languages) {
+                  foreach ($phpner_languages as $phpner_language) {
+                    $phpner_standard_info = $this->db->query("
+                      SELECT 
+                        *, 
+                        (SELECT 
+                          name 
+                        FROM ".DB_PREFIX."filter_group_description fgd 
+                        WHERE 
+                          f.filter_group_id = fgd.filter_group_id 
+                        AND 
+                          fgd.language_id = '".(int)$phpner_language['language_id']."'
+                        ) AS `group` 
+                      FROM ".DB_PREFIX."filter f 
+                      LEFT JOIN ".DB_PREFIX."filter_description fd ON (f.filter_id = fd.filter_id) 
+                      WHERE 
+                        f.filter_id = '".(int)$filter_id."' 
+                      AND 
+                        fd.language_id = '".(int)$phpner_language['language_id']."'
+                    ")->row;
+
+                    if ($phpner_standard_info) {
+                      $this->db->query("
+                        INSERT INTO ".DB_PREFIX."phpner_filter_product_standard
+                        SET 
+                          product_id = '".(int)$product_id."', 
+                          sort_order = '".(int)$phpner_standard_info['sort_order']."',
+                          language_id = '".(int)$phpner_language['language_id']."',
+                          filter_id = '".(int)$filter_id."', 
+                          filter_group_id = '".(int)$phpner_standard_info['filter_group_id']."',
+                          filter_name = '".$this->db->escape($this->phpner_normalize_string($phpner_standard_info['group'], false, false))."',
+                          filter_name_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_standard_info['group'], true))."_".(int)$phpner_standard_info['filter_group_id']."',
+                          filter_value = '".$this->db->escape($this->phpner_normalize_string($phpner_standard_info['name'], false, false))."',
+                          filter_value_mod = '".$this->db->escape($this->phpner_conver_cyrillic($phpner_standard_info['name'], true))."_".(int)$filter_id."'
+                      ");
+                    }
+                  }
+                }
+              }
+            }
+
+            $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_manufacturer WHERE product_id = '".(int)$product_id."'");
+
+            if (isset($data['phpner_product_manufacturers'])) {
+              if ($this->checkphpner_IfTableExist(DB_PREFIX."manufacturer_description") && $this->checkIfColumnExist(DB_PREFIX . "manufacturer_description", "name")) {
+                foreach ($data['phpner_product_manufacturers'] as $manufacturer_id) {
+                  if ($phpner_languages) {
+                    foreach ($phpner_languages as $phpner_language) {
+                      $phpner_manufacturer_info = $this->db->query("
+                        SELECT 
+                          m.manufacturer_id, 
+                          md.name, 
+                          m.image 
+                        FROM `".DB_PREFIX."manufacturer` m 
+                        LEFT JOIN ".DB_PREFIX."manufacturer_description md ON (m.manufacturer_id = md.manufacturer_id) 
+                        WHERE 
+                          m.manufacturer_id = '".(int)$manufacturer_id."' 
+                        AND 
+                          md.language_id = '".(int)$phpner_language['language_id']."'
+                      ")->row;
+
+                      if ($phpner_manufacturer_info) {
+                        $this->db->query("
+                          INSERT INTO ".DB_PREFIX."phpner_filter_product_manufacturer
+                          SET 
+                            product_id = '".(int)$product_id."', 
+                            language_id = '".(int)$phpner_language['language_id']."',
+                            manufacturer_id = '".(int)$manufacturer_id."', 
+                            manufacturer_name = '".$this->db->escape($this->phpner_normalize_string($phpner_manufacturer_info['name'], false, false))."',
+                            manufacturer_image = '".$this->db->escape($phpner_manufacturer_info['image'])."'
+                        ");
+                      } 
+                    }
+                  }
+                }
+              } else {
+                foreach ($data['phpner_product_manufacturers'] as $manufacturer_id) {
+                  if ($phpner_languages) {
+                    foreach ($phpner_languages as $phpner_language) {
+                      $phpner_manufacturer_info = $this->db->query("
+                        SELECT 
+                          m.manufacturer_id, 
+                          m.name, 
+                          m.image 
+                        FROM `".DB_PREFIX."manufacturer` m 
+                        WHERE 
+                          m.manufacturer_id = '".(int)$manufacturer_id."'
+                      ")->row;
+
+                      if ($phpner_manufacturer_info) {
+                        $this->db->query("
+                          INSERT INTO ".DB_PREFIX."phpner_filter_product_manufacturer
+                          SET 
+                            product_id = '".(int)$product_id."', 
+                            language_id = '".(int)$phpner_language['language_id']."',
+                            manufacturer_id = '".(int)$manufacturer_id."', 
+                            manufacturer_name = '".$this->db->escape($this->phpner_normalize_string($phpner_manufacturer_info['name'], false, false))."',
+                            manufacturer_image = '".$this->db->escape($phpner_manufacturer_info['image'])."'
+                        ");
+                      } 
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        public function refreshphpner_ProductFilterData($type = false) {
+          $query = $this->db->query("SELECT DISTINCT product_id FROM ".DB_PREFIX."product")->rows;
+
+          if ($query) {
+            if ($type == 'attribute') {
+              $this->db->query("TRUNCATE ".DB_PREFIX."phpner_filter_product_attribute");
+            }
+
+            if ($type == 'filter') {
+              $this->db->query("TRUNCATE ".DB_PREFIX."phpner_filter_product_standard");
+            }
+
+            if ($type == 'option') {
+              $this->db->query("TRUNCATE ".DB_PREFIX."phpner_filter_product_option");
+            }
+
+            if ($type == 'stickers') {
+              $this->db->query("TRUNCATE ".DB_PREFIX."phpner_filter_product_sticker");
+            }
+
+            if ($type == 'manufacturers') {
+              $this->db->query("TRUNCATE ".DB_PREFIX."phpner_filter_product_manufacturer");
+            }
+
+            foreach ($query as $product) {
+              $data = array();
+
+              if ($type == 'attribute') {
+                $data['product_attribute'] = $this->getProductAttributes($product['product_id']);
+              }
+
+              if ($type == 'filter') {
+                $data['product_filter'] = $this->getProductFilters($product['product_id']);
+              }
+
+              if ($type == 'option') {
+                $data['product_option'] = $this->getProductOptions($product['product_id']);
+              }
+
+              if ($type == 'stickers') {
+                $data['phpner_product_stickers'] = $this->getphpner_ProductFilterStickers($product['product_id']);
+              }
+
+              if ($type == 'manufacturers') {
+                $data['phpner_product_manufacturers'] = $this->getphpner_ProductFilterManufacturers($product['product_id']);
+              }
+
+              $this->addphpner_ProductFilterData($product['product_id'], $data, false);
+            }
+          }
+        }
+
+        public function getphpner_ProductFilterStickers($product_id) {
+          $phpner_product_sticker_data = array();
+
+          $phpner_product_stickers_data_config = $this->config->get('phpner_product_stickers_data');
+
+          if (isset($phpner_product_stickers_data_config['status']) && $phpner_product_stickers_data_config['status']) {
+            $query = $this->db->query("
+              SELECT 
+                phpner_product_stickers
+              FROM ".DB_PREFIX."product 
+              WHERE 
+                product_id = '".(int)$product_id."'
+            ")->rows;
+
+            if ($query) {
+              foreach ($query as $product) {
+                if (isset($product['phpner_product_stickers']) && $product['phpner_product_stickers']) {
+                  $product_sticker_ids = unserialize($product['phpner_product_stickers']);
+                  if ($product_sticker_ids) {
+                    foreach ($product_sticker_ids as $product_sticker_id) {
+                      $phpner_product_sticker_data[] = $product_sticker_id;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          return $phpner_product_sticker_data;
+        }
+
+        public function getphpner_ProductFilterManufacturers($product_id) {
+          $query = $this->db->query("
+            SELECT 
+              manufacturer_id 
+            FROM ".DB_PREFIX."product 
+            WHERE 
+              product_id = '".(int)$product_id."'
+          ")->rows;
+
+          $phpner_product_manufacturer_data = array();
+
+          if ($query) {
+            foreach ($query as $product) {
+              if (isset($product['manufacturer_id']) && $product['manufacturer_id']) {
+                $phpner_product_manufacturer_data[] = $product['manufacturer_id'];
+              }
+            }
+          }
+
+          return $phpner_product_manufacturer_data;
+        }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[public function deleteProduct($product_id) {]]></search>
+      <add position="after"><![CDATA[
+        $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_option WHERE product_id = '".(int)$product_id."'");
+        $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_attribute WHERE product_id = '".(int)$product_id."'");
+        $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_sticker WHERE product_id = '".(int)$product_id."'");
+        $this->db->query("DELETE FROM ".DB_PREFIX."phpner_filter_product_standard WHERE product_id = '".(int)$product_id."'");
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$product_id = $this->db->getLastId();]]></search>
+      <add position="after"><![CDATA[
+        $this->addphpner_ProductFilterData($product_id, $data);
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[public function editProduct($product_id, $data) {]]></search>
+      <add position="after"><![CDATA[
+        $this->editphpner_ProductFilterData($product_id, $data);
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/category.php">
+    <operation error="skip">
+      <search><![CDATA[public function index() {]]></search>
+      <add position="after"><![CDATA[
+      $phpner_product_filter_data = $this->config->get('phpner_product_filter_data');
+      $phpner_product_filter_status = $this->config->get('phpner_product_filter_status');
+      $this->load->model('extension/module/phpner_product_filter');
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search index="0"><![CDATA[if (isset($this->request->get['sort'])) {]]></search>
+      <add position="before"><![CDATA[
+      if (isset($phpner_product_filter_data['default_sort'])) {
+        $phpner_product_filter_default_sort = explode('|', $phpner_product_filter_data['default_sort']);
+      } else {
+        $phpner_product_filter_default_sort = array(0 => 'p.sort_order', 1 => 'order=ASC');
+      }
+      $phpner_product_filter_default_order = str_replace('order=', '', $phpner_product_filter_default_sort[1]);
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search index="0"><![CDATA[$sort = $this->request->get['sort'];]]></search>
+      <add position="after"><![CDATA[
+      } elseif ($phpner_product_filter_status && $phpner_product_filter_data['default_sort']) {
+        $sort = $phpner_product_filter_default_sort[0];
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search index="0"><![CDATA[$order = $this->request->get['order'];]]></search>
+      <add position="after"><![CDATA[
+      } elseif ($phpner_product_filter_status && $phpner_product_filter_data['default_sort']) {
+        $order = $phpner_product_filter_default_order;
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->url->link('product/category', 'path=' . $path . $url)]]></search>
+      <add position="replace"><![CDATA[
+      (isset($phpner_product_filter_data['enable_seo']) && $phpner_product_filter_data['enable_seo'] && isset($this->request->get['route']) && preg_match('/filter/', $this->request->server['REQUEST_URI'])) ? $this->url->link('product/category', 'path=' . $path) : $this->url->link('product/category', 'path=' . $path . $url)
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['categories'] = array();]]></search>
+      <add position="before"><![CDATA[
+        $protocol = strtolower(substr($this->request->server["SERVER_PROTOCOL"], 0, 5)) == 'https' ? HTTPS_SERVER : HTTP_SERVER;
+
+        $value_seo_url = preg_replace('/\?sort=.{1,}/', '', $this->request->server['REQUEST_URI']);
+        $value_seo_url = preg_replace('/(\?|&)page=.{1,}/', '', $value_seo_url);
+
+        $phpner_server = rtrim($protocol, "/").$value_seo_url;
+
+	  if ($phpner_product_filter_status && isset($phpner_product_filter_data['enable_seo']) && $phpner_product_filter_data['enable_seo']) {
+        $get_main_url = parse_url($this->request->server['REQUEST_URI']);
+
+        if (isset($get_main_url['path'])) {
+          $seo_main_url = ltrim($get_main_url['path'], "/");
+        } else {
+          $seo_main_url = false;
+        }
+
+        $seo_data_info = $this->model_extension_module_phpner_product_filter->getSeo($seo_main_url);
+
+        if ($seo_data_info) {
+          $this->document->setTitle($seo_data_info['seo_title']);
+          $this->document->setDescription($seo_data_info['seo_meta_description']);
+          $this->document->setKeywords($seo_data_info['seo_meta_keywords']);
+          $data['heading_title'] = $seo_data_info['seo_h1'];
+          $data['description'] = html_entity_decode($seo_data_info['seo_description'], ENT_QUOTES, 'UTF-8');
+        }
+      }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');]]></search>
+      <add position="replace"><![CDATA[((isset($seo_data_info) && $seo_data_info) || $phpner_product_filter_status) ? (rtrim($phpner_server, "/"). '&page={page}') : ($this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}'));]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'canonical');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? ($this->document->addLink($phpner_server, 'canonical')) : ($this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'canonical'));]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'prev');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? '' : ($this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'prev'));]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page - 1), true), 'prev');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? '' : ($this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page - 1), true), 'prev'));]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1), true), 'next');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? '' : ($this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1), true), 'next'));]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/manufacturer.php">
+    <operation error="skip">
+      <search><![CDATA[public function info() {]]></search>
+      <add position="after"><![CDATA[
+      $phpner_product_filter_data = $this->config->get('phpner_product_filter_data');
+      $phpner_product_filter_status = $this->config->get('phpner_product_filter_status');
+      $this->load->model('extension/module/phpner_product_filter');
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search index="0"><![CDATA[if (isset($this->request->get['sort'])) {]]></search>
+      <add position="before"><![CDATA[
+      if (isset($phpner_product_filter_data['default_sort'])) {
+        $phpner_product_filter_default_sort = explode('|', $phpner_product_filter_data['default_sort']);
+      } else {
+        $phpner_product_filter_default_sort = array(0 => 'p.sort_order', 1 => 'order=ASC');
+      }
+      $phpner_product_filter_default_order = str_replace('order=', '', $phpner_product_filter_default_sort[1]);
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search index="0"><![CDATA[$sort = $this->request->get['sort'];]]></search>
+      <add position="after"><![CDATA[
+      } elseif ($phpner_product_filter_status && $phpner_product_filter_data['default_sort']) {
+        $sort = $phpner_product_filter_default_sort[0];
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search index="0"><![CDATA[$order = $this->request->get['order'];]]></search>
+      <add position="after"><![CDATA[
+      } elseif ($phpner_product_filter_status && $phpner_product_filter_data['default_sort']) {
+        $order = $phpner_product_filter_default_order;
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->url->link('product/category', 'path=' . $path . $url)]]></search>
+      <add position="replace"><![CDATA[
+      (isset($phpner_product_filter_data['enable_seo']) && $phpner_product_filter_data['enable_seo'] && isset($this->request->get['route']) && preg_match('/filter/', $this->request->server['REQUEST_URI'])) ? $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id']) : $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url)
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['products'] = array();]]></search>
+      <add position="before"><![CDATA[
+        $protocol = strtolower(substr($this->request->server["SERVER_PROTOCOL"], 0, 5)) == 'https' ? HTTPS_SERVER : HTTP_SERVER;
+
+        $value_seo_url = preg_replace('/\?sort=.{1,}/', '', $this->request->server['REQUEST_URI']);
+        $value_seo_url = preg_replace('/(\?|&)page=.{1,}/', '', $value_seo_url);
+
+        $phpner_server = rtrim($protocol, "/").$value_seo_url;
+      
+	    if ($phpner_product_filter_status && isset($phpner_product_filter_data['enable_seo']) && $phpner_product_filter_data['enable_seo']) {
+        $get_main_url = parse_url($this->request->server['REQUEST_URI']);
+
+        if (isset($get_main_url['path'])) {
+          $seo_main_url = ltrim($get_main_url['path'], "/");
+        } else {
+          $seo_main_url = false;
+        }
+
+        $seo_data_info = $this->model_extension_module_phpner_product_filter->getSeo($seo_main_url);
+
+        if ($seo_data_info) {
+          $this->document->setTitle($seo_data_info['seo_title']);
+          $this->document->setDescription($seo_data_info['seo_meta_description']);
+          $this->document->setKeywords($seo_data_info['seo_meta_keywords']);
+          $data['heading_title'] = $seo_data_info['seo_h1'];
+          $data['description'] = html_entity_decode($seo_data_info['seo_description'], ENT_QUOTES, 'UTF-8');
+        }
+      }
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] .  $url . '&page={page}');]]></search>
+      <add position="replace"><![CDATA[((isset($seo_data_info) && $seo_data_info) || $phpner_product_filter_status) ? (rtrim($phpner_server, "/"). '&page={page}') : ($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] .  $url . '&page={page}'));
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'canonical');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? ($this->document->addLink($phpner_server, 'canonical')) : ($this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'canonical'));]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'prev');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? '' : ($this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'prev'));]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page - 1), true), 'prev');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? '' : ($this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page - 1), true), 'prev'));]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page + 1), true), 'next');]]></search>
+      <add position="replace"><![CDATA[(isset($seo_data_info) && $seo_data_info && isset($phpner_server)) ? '' : ($this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page + 1), true), 'next'));]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/{category,manufacturer}.php">
+    <operation error="skip">
+      <search><![CDATA[$product_total = $this->model_catalog_product->getTotalProducts($filter_data);]]></search>
+      <add position="replace" offset="3"><![CDATA[
+      // SEO phpner_ product filter: start
+      if ($phpner_product_filter_status && isset($phpner_product_filter_data['enable_seo']) && $phpner_product_filter_data['enable_seo'] && isset($this->request->get['route']) && preg_match('/filter/', $this->request->server['REQUEST_URI'])) {
+        if ($this->request->get['route'] == 'product/category') {
+          $phpner_filter_path = (isset($this->request->get['path'])) ? explode('_', (string)$this->request->get['path']) : array();
+          $phpner_filter_global_id = end($phpner_filter_path);
+          $phpner_filter_global_type = 'category';
+        } elseif ($this->request->get['route'] == 'product/manufacturer/info') {
+          $phpner_filter_global_id = (isset($this->request->get['manufacturer_id'])) ? (int)$this->request->get['manufacturer_id'] : 0;
+          $phpner_filter_global_type = 'manufacturer';
+        } elseif ($this->request->get['route'] == 'product/special') {
+          $phpner_filter_global_type = 'special';
+        } else {
+          $phpner_filter_global_id = 0;
+          $phpner_filter_global_type = 'category';
+        }
+
+        $customer_group_id = ($this->customer->isLogged()) ? (int)$this->customer->getGroupId() : (int)$this->config->get('config_customer_group_id');
+        $store_id = (int)$this->config->get('config_store_id');
+        $language_id = (int)$this->config->get('config_language_id');
+        $phpner_filter_page = (isset($this->request->get['page'])) ? (int)$this->request->get['page'] : 1;
+        $phpner_filter_limit = (isset($this->request->get['limit'])) ? (int)$this->request->get['limit'] : $this->config->get($this->config->get('config_theme') . '_product_limit');
+
+        $get_main_url = parse_url($this->request->server['REQUEST_URI']);
+
+        if (isset($get_main_url['path'])) {
+          $seo_main_url = ltrim($get_main_url['path'], "/");
+        } else {
+          $seo_main_url = false;
+        }
+
+        $seo_data_info = $this->model_extension_module_phpner_product_filter->getSeo($seo_main_url);
+
+        $seo_main_url_md5 = md5($seo_main_url);
+
+        if ($seo_data_info) {
+          $filter_data = $this->cache->get('phpner.seo_page.'.$phpner_filter_global_type.'.'.(int)$store_id.'.'.(int)$customer_group_id.'.'.(int)$language_id.'.'.(int)$phpner_filter_global_id.'.'.(int)$phpner_filter_page.'.'.$seo_main_url_md5);
+        
+          if (!$filter_data) {
+            $phpner_filter_url = explode("/", $this->request->server['REQUEST_URI']);
+
+            // SEO special only: start
+            if (preg_match('/special-only/', $this->request->server['REQUEST_URI'])) {
+              preg_match('/special-only/', $this->request->server['REQUEST_URI'], $matches);
+              
+              if ($matches[0]) {
+                $phpner_filter_special_only = 1;
+              }
+            }
+            // SEO special only: end
+
+            // SEO price: start
+            if (preg_match('/price-[0-9]{1,}-[0-9]{1,}/', $this->request->server['REQUEST_URI'])) {
+              preg_match('/price-[0-9]{1,}-[0-9]{1,}/', $this->request->server['REQUEST_URI'], $matches);
+
+              $phpner_filter_price = explode('-', $matches[0]);
+
+              if (isset($phpner_filter_price[1]) && $phpner_filter_price[2]) {
+                $phpner_filter_min_price = preg_replace("/[^.0-9]/", '', $phpner_filter_price[1]);
+                $phpner_filter_max_price = preg_replace("/[^.0-9]/", '', $phpner_filter_price[2]);
+              }
+            }
+            // SEO price: end
+
+            // SEO tag: start
+            if (preg_match('/tag-[a-z0-9(_|.)]{1,}/', $this->request->server['REQUEST_URI'])) {
+              preg_match('/tag-[a-z0-9(_|.)]{1,}/', $this->request->server['REQUEST_URI'], $matches);
+
+              $get_phpner_filter_tag = explode('-', $matches[0]);
+
+              if (isset($get_phpner_filter_tag[1])) {
+                $phpner_filter_tag = $get_phpner_filter_tag[1];
+              }
+            }
+            // SEO tag: end
+
+            // SEO brand: start
+            if (in_array("filter", $phpner_filter_url)) {
+              $phpner_filter_brand = array();
+
+              foreach ($phpner_filter_url as $manufacturer_url_item) {
+                $manufacturer_query_query = $this->db->query("SELECT query FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($manufacturer_url_item) . "'");
+                
+                if ($manufacturer_query_query->num_rows) {
+                  if (preg_match('/manufacturer_id=[0-9]{1,}/', $manufacturer_query_query->row['query'])) {
+                    preg_match('/manufacturer_id=[0-9]{1,}/', $manufacturer_query_query->row['query'], $manufacturer_id);
+                    preg_match('/[0-9]{1,}/', $manufacturer_id[0], $query_value);
+
+                    if (isset($query_value[0])) {
+                      $phpner_filter_brand[] = $query_value[0];
+                    }
+                  }
+                }
+              }
+            }
+            // SEO brand: end
+
+            // SEO attribute: start
+            if (in_array("filter", $phpner_filter_url)) {
+              $phpner_filter_attribute = array();
+
+              foreach ($phpner_filter_url as $attribute_url_item) {
+                $query_attribute_name_mod = $this->db->query("SELECT filter_attribute_id FROM " . DB_PREFIX . "phpner_filter_product_attribute WHERE attribute_name_mod = '" . $this->db->escape($attribute_url_item) . "' AND language_id ='".(int)$this->config->get('config_language_id')."'");
+                
+                if ($query_attribute_name_mod->num_rows) {
+                  foreach ($phpner_filter_url as $attribute_url_item_2) {
+                    $query_attribute_value_mod = $this->db->query("SELECT filter_attribute_id FROM " . DB_PREFIX . "phpner_filter_product_attribute WHERE attribute_value_mod = '" . $this->db->escape($attribute_url_item_2) . "' AND attribute_name_mod = '".$this->db->escape($attribute_url_item)."' AND language_id ='".(int)$this->config->get('config_language_id')."'")->num_rows;
+
+                    if ($query_attribute_value_mod) {
+                      $phpner_filter_attribute[$attribute_url_item][] = $attribute_url_item_2;
+                    }
+                  }
+                }
+              }
+            }
+            // SEO attribute: end
+
+            // SEO option: start
+            if (in_array("filter", $phpner_filter_url)) {
+              $phpner_filter_option = array();
+
+              foreach ($phpner_filter_url as $option_url_item) {
+                $query_option_name_mod = $this->db->query("SELECT filter_option_id FROM " . DB_PREFIX . "phpner_filter_product_option WHERE option_name_mod = '" . $this->db->escape($option_url_item) . "'AND language_id ='".(int)$this->config->get('config_language_id')."'");
+                
+                if ($query_option_name_mod->num_rows) {
+                  foreach ($phpner_filter_url as $option_url_item_2) {
+                    $query_option_value_id = $this->db->query("SELECT option_value_id FROM " . DB_PREFIX . "phpner_filter_product_option WHERE option_value_name_mod = '" . $this->db->escape($option_url_item_2) . "' AND option_name_mod = '" . $this->db->escape($option_url_item) . "' AND language_id ='".(int)$this->config->get('config_language_id')."' GROUP BY option_value_id");
+
+                    if ($query_option_value_id->num_rows) {
+                      $phpner_filter_option[$option_url_item][] = $query_option_value_id->row['option_value_id'];
+                    }
+                  }
+                }
+              }
+            }
+            // SEO option: end
+
+            // SEO standard: start
+            if (in_array("filter", $phpner_filter_url)) {
+              $phpner_filter_standard = array();
+
+              foreach ($phpner_filter_url as $standard_url_item) {
+                $query_filter_name_mod = $this->db->query("SELECT filter_filter_id FROM " . DB_PREFIX . "phpner_filter_product_standard WHERE filter_name_mod = '" . $this->db->escape($standard_url_item) . "' AND language_id ='".(int)$this->config->get('config_language_id')."'");
+                
+                if ($query_filter_name_mod->num_rows) {
+                  foreach ($phpner_filter_url as $standard_url_item_2) {
+                    $query_standard_value_mod = $this->db->query("SELECT filter_filter_id FROM " . DB_PREFIX . "phpner_filter_product_standard WHERE filter_value_mod = '" . $this->db->escape($standard_url_item_2) . "' AND filter_name_mod = '" . $this->db->escape($standard_url_item) . "' AND language_id ='".(int)$this->config->get('config_language_id')."'")->num_rows;
+
+                    if ($query_standard_value_mod) {
+                      $phpner_filter_standard[$standard_url_item][] = $standard_url_item_2;
+                    }
+                  }
+                }
+              }
+            }
+            // SEO standard: end
+
+            // SEO sticker: start
+            if (in_array("filter", $phpner_filter_url)) {
+              $phpner_filter_sticker = array();
+
+              foreach ($phpner_filter_url as $sticker_url_item) {
+                $sticker_query_query = $this->db->query("SELECT product_sticker_id FROM " . DB_PREFIX . "phpner_filter_product_sticker WHERE product_sticker_value_mod = '" . $this->db->escape($sticker_url_item) . "' AND language_id ='".(int)$this->config->get('config_language_id')."' GROUP BY product_sticker_id");
+                
+                if ($sticker_query_query->num_rows) {
+                  $phpner_filter_sticker[] = $sticker_query_query->row['product_sticker_id'];
+                }
+              }
+            }
+            // SEO sticker: end
+
+            // SEO stock: start
+            if (in_array("filter", $phpner_filter_url)) {
+              $phpner_filter_stock = array();
+              foreach ($phpner_filter_url as $stock_url_item) {
+                if (in_array($stock_url_item, array('in_stock', 'out_of_stock', 'ending_stock'))) {
+                  $phpner_filter_stock[] = $stock_url_item;
+                }
+              }
+            }
+            // SEO stock: end
+
+            // SEO rating: start
+            if (in_array("filter", $phpner_filter_url)) {
+              $phpner_filter_rating = array();
+
+              foreach ($phpner_filter_url as $rating_url_item) {
+                if (preg_match('/rating-[0-9]{1,}/', $rating_url_item)) {
+                  preg_match('/rating-[0-9]{1,}/', $rating_url_item, $rating_value);
+                  preg_match('/([0-9]{1,})/', $rating_url_item, $rating_id);
+
+                  $phpner_filter_rating[] = $rating_id[1];
+                }
+              }
+            }
+            // SEO rating: end
+
+            if (isset($phpner_product_filter_data['default_sort'])) {
+              $phpner_product_filter_default_sort = explode('|', $phpner_product_filter_data['default_sort']);
+            } else {
+              $phpner_product_filter_default_sort = array(0 => 'p.sort_order', 1 => 'order=ASC');
+            }
+
+            $phpner_product_filter_default_order = str_replace('order=', '', $phpner_product_filter_default_sort[1]);
+
+            $filter_data = array(
+              'filter_data'       => array(
+                'option_logic_with_other'                  => $phpner_product_filter_data['option_logic_with_other'],
+                'option_logic_between_option'              => $phpner_product_filter_data['option_logic_between_option'],
+                'attribute_logic_with_other'               => $phpner_product_filter_data['attribute_logic_with_other'],
+                'attribute_logic_between_attribute'        => $phpner_product_filter_data['attribute_logic_between_attribute'],
+                'standard_logic_with_other'                => $phpner_product_filter_data['standard_logic_with_other'],
+                'standard_logic_between_standard'          => $phpner_product_filter_data['standard_logic_between_standard'],
+                'manufacturer_logic_with_other'            => $phpner_product_filter_data['manufacturer_logic_with_other'],
+                'stock_ending_value'                       => $phpner_product_filter_data['stock_ending_value'],
+                'stock_logic_with_other'                   => $phpner_product_filter_data['stock_logic_with_other'],
+                'stock_logic_between_stock'                => $phpner_product_filter_data['stock_logic_between_stock'],
+                'review_logic_with_other'                  => $phpner_product_filter_data['review_logic_with_other'],
+                'review_logic_between_review'              => $phpner_product_filter_data['review_logic_between_review'],
+                'sticker_logic_with_other'                 => $phpner_product_filter_data['sticker_logic_with_other'],
+                'sticker_logic_between_sticker'            => $phpner_product_filter_data['sticker_logic_between_sticker'],
+                'tag_logic_with_other'                     => $phpner_product_filter_data['tag_logic_with_other'],
+                'customer_group_id'                        => ($this->customer->isLogged()) ? (int)$this->customer->getGroupId() : (int)$this->config->get('config_customer_group_id'),
+                'store_id'                                 => $this->config->get('config_store_id'),
+                'language_id'                              => $this->config->get('config_language_id')
+              ),
+              'special_only'      => (isset($phpner_filter_special_only)) ? $phpner_filter_special_only : '',
+              'global_type'       => $phpner_filter_global_type,
+              'global_id'         => $phpner_filter_global_id,
+              'sort'              => (isset($phpner_filter_sort)) ? $phpner_filter_sort : $phpner_product_filter_default_sort[0],
+              'order'             => (isset($phpner_filter_order)) ? $phpner_filter_order : $phpner_product_filter_default_order,
+              'start'             => ($phpner_filter_page - 1) * $phpner_filter_limit,
+              'limit'             => $phpner_filter_limit,
+              'page'              => $phpner_filter_page,
+              'low_price'         => (isset($phpner_filter_min_price)) ? floor($phpner_filter_min_price / $this->currency->getValue($this->session->data['currency'])) : '',
+              'high_price'        => (isset($phpner_filter_max_price)) ? ceil($phpner_filter_max_price / $this->currency->getValue($this->session->data['currency'])) : '',
+              'tag'               => (isset($phpner_filter_tag)) ? $phpner_filter_tag : '',
+              'manufacturer'      => (isset($phpner_filter_brand)) ? $phpner_filter_brand : array(),
+              'stock'             => (isset($phpner_filter_stock)) ? $phpner_filter_stock : array(),
+              'rating'            => (isset($phpner_filter_rating)) ? $phpner_filter_rating : array(),
+              'sticker'           => (isset($phpner_filter_sticker)) ? $phpner_filter_sticker : array(),
+              'option'            => (isset($phpner_filter_option)) ? $phpner_filter_option : array(),
+              'attribute'         => (isset($phpner_filter_attribute)) ? $phpner_filter_attribute : array(),
+              'standard'          => (isset($phpner_filter_standard)) ? $phpner_filter_standard : array(),
+            );
+
+            $this->cache->set('phpner.seo_page.'.$phpner_filter_global_type.'.'.(int)$store_id.'.'.(int)$customer_group_id.'.'.(int)$language_id.'.'.(int)$phpner_filter_global_id.'.'.(int)$phpner_filter_page.'.'.$seo_main_url_md5, $filter_data);
+          }
+
+          $results = $this->model_extension_module_phpner_product_filter->getProducts($filter_data, 'products');
+
+          $product_total = $this->model_extension_module_phpner_product_filter->getProducts($filter_data, 'total');
+        } else {
+          $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+
+          $results = $this->model_catalog_product->getProducts($filter_data);
+        }
+      } else {
+        $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+
+        $results = $this->model_catalog_product->getProducts($filter_data);
+      }
+      // SEO phpner_ product filter: end
+      ]]></add>
+    </operation>
+  </file>
+ <file path="catalog/model/catalog/product.php">
+    <operation error="skip">
+      <search><![CDATA[$sort_data = array(]]></search>
+      <add position="after"><![CDATA['p.viewed',]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";]]></search>
+      <add position="after"><![CDATA[
+		$phpner_product_filter_data = $this->config->get('phpner_product_filter_data');
+		
+		if (!isset($phpner_product_filter_data['show_no_quantity_products'])) {
+			$phpner_product_filter_data['show_no_quantity_products'] = 1;
+		}
+		
+		if (!isset($phpner_product_filter_data['no_quantity_last'])) {
+			$phpner_product_filter_data['no_quantity_last'] = 1;
+		}
+		
+		if (isset($phpner_product_filter_data['show_no_quantity_products']) and !$phpner_product_filter_data['show_no_quantity_products']) {
+			$sql .= " AND p.quantity > 0";
+		}
+	  ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$sql .= " ORDER BY LCASE(" . $data['sort'] . ")";]]></search>
+      <add position="replace"><![CDATA[
+		$sql .= " ORDER BY ";
+		if (isset($phpner_product_filter_data['no_quantity_last']) and $phpner_product_filter_data['no_quantity_last']) {
+			$sql .= "p.quantity > 0 DESC, ";
+		}
+		$sql .= "LCASE(" . $data['sort'] . ")";
+	  ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";]]></search>
+      <add position="replace"><![CDATA[
+		$sql .= " ORDER BY ";
+		if (isset($phpner_product_filter_data['no_quantity_last']) and $phpner_product_filter_data['no_quantity_last']) {
+			$sql .= "p.quantity > 0 DESC, ";
+		}
+		$sql .= "(CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+	  ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$sql .= " ORDER BY " . $data['sort'];]]></search>
+      <add position="replace"><![CDATA[
+		$sql .= " ORDER BY ";
+		if (isset($phpner_product_filter_data['no_quantity_last']) and $phpner_product_filter_data['no_quantity_last']) {
+			$sql .= "p.quantity > 0 DESC, ";
+		}
+		$sql .= $data['sort'];
+	  ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$sql .= " ORDER BY p.sort_order";]]></search>
+      <add position="replace"><![CDATA[
+		$sql .= " ORDER BY ";
+		if (isset($phpner_product_filter_data['no_quantity_last']) and $phpner_product_filter_data['no_quantity_last']) {
+			$sql .= "p.quantity > 0 DESC, ";
+		}
+		$sql .= "p.sort_order";
+	  ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/startup/seo_pro.php">
+    <operation error="skip">
+      <search><![CDATA[$this->url->addRewrite($this);]]></search>
+      <add position="after" offset="5"><![CDATA[
+      // SEO phpner_ product filter: start
+      $phpner_product_filter_data = $this->config->get('phpner_product_filter_data');
+      $phpner_product_filter_status = $this->config->get('phpner_product_filter_status');
+      
+      if ($phpner_product_filter_status && isset($phpner_product_filter_data['enable_seo']) && $phpner_product_filter_data['enable_seo'] && (isset($this->request->get['phpner_filter']) || preg_match('/filter/', $this->request->server['REQUEST_URI']))) {
+        $phpner_filter_url = explode("/", $this->request->server['REQUEST_URI']);
+        
+        // SEO global filter: start
+        $this->cache_data['keywords']['filter'] = 'phpner_filter=1';
+        $this->cache_data['queries']['phpner_filter=1'] = 'filter';
+        // SEO global filter: end
+
+        // SEO special only: start
+        $this->cache_data['keywords']['special-only'] = 'special_only=1';
+        $this->cache_data['queries']['special_only=1'] = 'special-only';
+        // SEO special only: end
+
+        // SEO price: start
+        if (preg_match('/price-[0-9]{1,}-[0-9]{1,}/', $this->request->server['REQUEST_URI'])) {
+          preg_match('/price-[0-9]{1,}-[0-9]{1,}/', $this->request->server['REQUEST_URI'], $matches);
+
+          $phpner_filter_price = explode('-', $matches[0]);
+
+          $min_price = preg_replace("/[^.0-9]/", '', $phpner_filter_price[1]);
+          $max_price = preg_replace("/[^.0-9]/", '', $phpner_filter_price[2]);
+
+          $this->cache_data['keywords']['price-'.$min_price.'-'.$max_price] = 'price='.$min_price.','.$max_price;
+          $this->cache_data['queries']['price='.$min_price.','.$max_price] = 'price-'.$min_price.'-'.$max_price;
+        } elseif (isset($this->session->data['low_price']) && isset($this->session->data['high_price'])) {
+          $min_price = floor($this->session->data['low_price']);
+          $max_price = ceil($this->session->data['high_price']);
+
+          $this->cache_data['keywords']['price-'.$min_price.'-'.$max_price] = 'price='.$min_price.','.$max_price;
+          $this->cache_data['queries']['price='.$min_price.','.$max_price] = 'price-'.$min_price.'-'.$max_price;
+        }
+        // SEO price: end
+
+        // SEO tag: start
+        if (preg_match('/tag-[a-z0-9(_|.)]{1,}/', $this->request->server['REQUEST_URI'])) {
+          preg_match('/tag-[a-z0-9(_|.)]{1,}/', $this->request->server['REQUEST_URI'], $matches);
+
+          $phpner_filter_tag = explode('-', $matches[0]);
+
+          $this->cache_data['keywords']['tag-'.$phpner_filter_tag[1]] = 'tag='.$phpner_filter_tag[1];
+          $this->cache_data['queries']['tag='.$phpner_filter_tag[1]] = 'tag-'.$phpner_filter_tag[1];
+        } elseif (isset($this->request->get['tag'])) {
+          $this->cache_data['keywords']['tag-'.$this->request->get['tag']] = 'tag='.$this->request->get['tag'];
+          $this->cache_data['queries']['tag='.$this->request->get['tag']] = 'tag-'.$this->request->get['tag'];
+        } elseif (isset($this->session->data['phpner_tag'])) {
+          $this->cache_data['keywords']['tag-'.$this->session->data['phpner_tag']] = 'tag='.$this->session->data['phpner_tag'];
+          $this->cache_data['queries']['tag='.$this->session->data['phpner_tag']] = 'tag-'.$this->session->data['phpner_tag'];
+        }
+        // SEO tag: end
+
+        // SEO brand: start
+        if (in_array("filter", $phpner_filter_url)) {
+          foreach ($phpner_filter_url as $manufacturer_url_item) {
+            $manufacturer_query_query = $this->db->query("SELECT query FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($manufacturer_url_item) . "'");
+            
+            if ($manufacturer_query_query->num_rows) {
+              if (preg_match('/manufacturer_id=[0-9]{1,}/', $manufacturer_query_query->row['query'])) {
+                preg_match('/manufacturer_id=[0-9]{1,}/', $manufacturer_query_query->row['query'], $manufacturer_id);
+                preg_match('/[0-9]{1,}/', $manufacturer_id[0], $query_value);
+
+                if (isset($query_value[0]) && !preg_match('/brand_page=true/', $this->request->server['REQUEST_URI'])) {
+                  $this->cache_data['keywords'][$manufacturer_url_item] = 'm_n_'.$query_value[0].'='.$query_value[0];
+                  $this->cache_data['queries']['m_n_'.$query_value[0].'='.$query_value[0]] = $manufacturer_url_item;
+                }
+              }
+            }
+          }
+        } elseif (isset($this->session->data['phpner_brand'])) {
+          preg_match_all('/m_n_[0-9]{1,}=[0-9]{1,}+/', ltrim($this->session->data['phpner_brand'], "&"), $manufacturer_get_values);
+
+          if (isset($manufacturer_get_values[0])) {
+            foreach ($manufacturer_get_values[0] as $manufacturer_get_value) {
+              $manufacturer_get_values_res = rtrim($manufacturer_get_value, "&");
+              if (preg_match('/m_n_[0-9]{1,}/', $manufacturer_get_values_res)) {
+                preg_match('/m_n_[0-9]{1,}/', $manufacturer_get_values_res, $manufacturer_value);
+                preg_match('/=([0-9]{1,})/', $manufacturer_get_values_res, $manufacturer_id);
+                
+                if (isset($manufacturer_value[0]) && isset($manufacturer_id[1])) {
+                  $manufacturer_query_keyword = $this->db->query("SELECT LOWER(`keyword`) as 'keyword' FROM " . DB_PREFIX . "url_alias WHERE query = '" . $this->db->escape('manufacturer_id='.$manufacturer_id[1]) . "'")->row['keyword'];
+            
+                  if ($manufacturer_query_keyword) {
+                    $this->cache_data['keywords'][$manufacturer_query_keyword] = $manufacturer_value[0].'='.$manufacturer_id[1];
+                    $this->cache_data['queries'][$manufacturer_value[0].'='.$manufacturer_id[1]] = $manufacturer_query_keyword;
+                  }
+                }
+              }
+            }
+          }
+        }
+        // SEO brand: end
+
+        // SEO attribute: start
+        if (in_array("filter", $phpner_filter_url)) {
+          foreach ($phpner_filter_url as $attribute_url_item) {
+            $query_attribute_name_mod = $this->db->query("SELECT filter_attribute_id FROM " . DB_PREFIX . "phpner_filter_product_attribute WHERE attribute_name_mod = '" . $this->db->escape($attribute_url_item) . "'")->num_rows;
+            
+            if ($query_attribute_name_mod) {
+              $this->cache_data['keywords'][$attribute_url_item] = 'a_nm_'.$attribute_url_item.'='.$attribute_url_item;
+              $this->cache_data['queries']['a_nm_'.$attribute_url_item.'='.$attribute_url_item] = $attribute_url_item;
+            }
+
+            $query_attribute_value_mod = $this->db->query("SELECT filter_attribute_id FROM " . DB_PREFIX . "phpner_filter_product_attribute WHERE attribute_value_mod = '" . $this->db->escape($attribute_url_item) . "'")->num_rows;
+
+            if ($query_attribute_value_mod) {
+              $this->cache_data['keywords'][$attribute_url_item] = 'a_vm_'.$attribute_url_item.'='.$attribute_url_item;
+              $this->cache_data['queries']['a_vm_'.$attribute_url_item.'='.$attribute_url_item] = $attribute_url_item;
+            }
+
+          }
+        } elseif (isset($this->session->data['phpner_attribute'])) {
+          preg_match_all('/a_nm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(&a_vm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(.*?){1,})+/', ltrim($this->session->data['phpner_attribute'], "&"), $attribute_get_values);
+
+          if (isset($attribute_get_values[0])) {
+            foreach ($attribute_get_values[0] as $attribute_get_value) {
+              $attribute_get_values_res = rtrim($attribute_get_value, "&");
+
+              if (preg_match('/a_nm_[a-z0-9_]{1,}/', $attribute_get_values_res)) {
+
+                preg_match('/a_nm_[a-z0-9_]{1,}/', $attribute_get_values_res, $attribute_group_id);
+                preg_match('/a_nm_[a-z0-9_]{1,}=([a-z0-9_]{1,})/', $attribute_get_values_res, $attribute_group_value);
+                
+                $this->cache_data['keywords'][$attribute_group_value[1]] = $attribute_group_id[0].'='.$attribute_group_value[1];
+                $this->cache_data['queries'][$attribute_group_id[0].'='.$attribute_group_value[1]] = $attribute_group_value[1];
+              }
+
+              if (preg_match('/a_vm_[a-z0-9_]{1,}/', $attribute_get_values_res)) {
+
+                if (preg_match_all('/a_vm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(.*?){1,}/', $attribute_get_values_res)) {
+                  preg_match_all('/a_vm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(.*?){1,}/', $attribute_get_values_res, $attribute_get_values_res_array);
+                  
+                  if (isset($attribute_get_values_res_array[0])) {
+                    foreach ($attribute_get_values_res_array[0] as $attribute_get_values_res_array_value) {
+                      preg_match('/a_vm_[a-z0-9_]{1,}/', $attribute_get_values_res_array_value, $attribute_group_id);
+                      preg_match('/a_vm_[a-z0-9_]{1,}=([a-z0-9_]{1,})/', $attribute_get_values_res_array_value, $attribute_group_value);
+    
+                      $this->cache_data['keywords'][$attribute_group_value[1]] = $attribute_group_id[0].'='.$attribute_group_value[1];
+                      $this->cache_data['queries'][$attribute_group_id[0].'='.$attribute_group_value[1]] = $attribute_group_value[1];
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        // SEO attribute: end
+
+        // SEO option: start
+        if (in_array("filter", $phpner_filter_url)) {
+          foreach ($phpner_filter_url as $option_url_item) {
+            $query_option_name_mod = $this->db->query("SELECT filter_option_id FROM " . DB_PREFIX . "phpner_filter_product_option WHERE option_name_mod = '" . $this->db->escape($option_url_item) . "'")->num_rows;
+            
+            if ($query_option_name_mod) {
+              $this->cache_data['keywords'][$option_url_item] = 'o_nm_'.$option_url_item.'='.$option_url_item;
+              $this->cache_data['queries']['o_nm_'.$option_url_item.'='.$option_url_item] = $option_url_item;
+            }
+
+            $query_option_value_id = $this->db->query("SELECT option_value_id FROM " . DB_PREFIX . "phpner_filter_product_option WHERE option_value_name_mod = '" . $this->db->escape($option_url_item) . "' GROUP BY option_value_id");
+
+            if ($query_option_value_id->num_rows) {
+              $this->cache_data['keywords'][$option_url_item] = 'o_vm_'.$query_option_value_id->row['option_value_id'].'='.$query_option_value_id->row['option_value_id'];
+              $this->cache_data['queries']['o_vm_'.$query_option_value_id->row['option_value_id'].'='.$query_option_value_id->row['option_value_id']] = $option_url_item;
+            }
+
+          }
+        } elseif (isset($this->session->data['phpner_option'])) {
+          preg_match_all('/o_nm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(&o_vm_[0-9]{1,}=[0-9]{1,}(.*?){1,})+/', ltrim($this->session->data['phpner_option'], "&"), $option_get_values);
+
+          if (isset($option_get_values[0])) {
+            foreach ($option_get_values[0] as $option_get_value) {
+              $option_get_values_res = rtrim($option_get_value, "&");
+
+              if (preg_match('/o_nm_[a-z0-9_]{1,}/', $option_get_values_res)) {
+
+                preg_match('/o_nm_[a-z0-9_]{1,}/', $option_get_values_res, $option_group_id);
+                preg_match('/o_nm_[a-z0-9_]{1,}=([a-z0-9_]{1,})/', $option_get_values_res, $option_group_value);
+                
+                $this->cache_data['keywords'][$option_group_value[1]] = $option_group_id[0].'='.$option_group_value[1];
+                $this->cache_data['queries'][$option_group_id[0].'='.$option_group_value[1]] = $option_group_value[1];
+              }
+
+              if (preg_match('/o_vm_[0-9]{1,}/', $option_get_values_res)) {
+
+                if (preg_match_all('/o_vm_[0-9]{1,}=[0-9]{1,}(.*?){1,}/', $option_get_values_res)) {
+                  preg_match_all('/o_vm_[0-9]{1,}=[0-9]{1,}(.*?){1,}/', $option_get_values_res, $option_get_values_res_array);
+                  
+                  if (isset($option_get_values_res_array[0])) {
+                    foreach ($option_get_values_res_array[0] as $option_get_values_res_array_value) {
+                      preg_match('/o_vm_[0-9]{1,}/', $option_get_values_res_array_value, $option_group_id);
+                      preg_match('/o_vm_[0-9]{1,}=([0-9]{1,})/', $option_get_values_res_array_value, $option_group_value);
+
+                      if (isset($option_group_value[1])) {
+                        $query_option_value_mod = $this->db->query("SELECT option_value_name_mod FROM " . DB_PREFIX . "phpner_filter_product_option WHERE option_value_id = '" . (int)$option_group_value[1] . "' GROUP BY option_value_id");
+      
+                        if ($query_option_value_mod->num_rows) {
+                          $this->cache_data['keywords'][$query_option_value_mod->row['option_value_name_mod']] = $option_group_id[0].'='.$option_group_value[1];
+                          $this->cache_data['queries'][$option_group_id[0].'='.$option_group_value[1]] = $query_option_value_mod->row['option_value_name_mod'];
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        // SEO option: end
+
+        // SEO standard: start
+        if (in_array("filter", $phpner_filter_url)) {
+          foreach ($phpner_filter_url as $standard_url_item) {
+            $query_filter_name_mod = $this->db->query("SELECT filter_filter_id FROM " . DB_PREFIX . "phpner_filter_product_standard WHERE filter_name_mod = '" . $this->db->escape($standard_url_item) . "'")->num_rows;
+            
+            if ($query_filter_name_mod) {
+              $this->cache_data['keywords'][$standard_url_item] = 's_nm_'.$standard_url_item.'='.$standard_url_item;
+              $this->cache_data['queries']['s_nm_'.$standard_url_item.'='.$standard_url_item] = $standard_url_item;
+            }
+
+            $query_standard_value_mod = $this->db->query("SELECT filter_filter_id FROM " . DB_PREFIX . "phpner_filter_product_standard WHERE filter_value_mod = '" . $this->db->escape($standard_url_item) . "'")->num_rows;
+
+            if ($query_standard_value_mod) {
+              $this->cache_data['keywords'][$standard_url_item] = 's_vm_'.$standard_url_item.'='.$standard_url_item;
+              $this->cache_data['queries']['s_vm_'.$standard_url_item.'='.$standard_url_item] = $standard_url_item;
+            }
+
+          }
+        } elseif (isset($this->session->data['phpner_standard'])) {
+          preg_match_all('/s_nm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(&s_vm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(.*?){1,})+/', ltrim($this->session->data['phpner_standard'], "&"), $standard_get_values);
+
+          if (isset($standard_get_values[0])) {
+            foreach ($standard_get_values[0] as $standard_get_value) {
+              $standard_get_values_res = rtrim($standard_get_value, "&");
+
+              if (preg_match('/s_nm_[a-z0-9_]{1,}/', $standard_get_values_res)) {
+
+                preg_match('/s_nm_[a-z0-9_]{1,}/', $standard_get_values_res, $standard_group_id);
+                preg_match('/s_nm_[a-z0-9_]{1,}=([a-z0-9_]{1,})/', $standard_get_values_res, $standard_group_value);
+                
+                $this->cache_data['keywords'][$standard_group_value[1]] = $standard_group_id[0].'='.$standard_group_value[1];
+                $this->cache_data['queries'][$standard_group_id[0].'='.$standard_group_value[1]] = $standard_group_value[1];
+              }
+
+              if (preg_match('/s_vm_[a-z0-9_]{1,}/', $standard_get_values_res)) {
+
+                if (preg_match_all('/s_vm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(.*?){1,}/', $standard_get_values_res)) {
+                  preg_match_all('/s_vm_[a-z0-9_]{1,}=[a-z0-9_]{1,}(.*?){1,}/', $standard_get_values_res, $standard_get_values_res_array);
+                  
+                  if (isset($standard_get_values_res_array[0])) {
+                    foreach ($standard_get_values_res_array[0] as $standard_get_values_res_array_value) {
+                      preg_match('/s_vm_[a-z0-9_]{1,}/', $standard_get_values_res_array_value, $standard_group_id);
+                      preg_match('/s_vm_[a-z0-9_]{1,}=([a-z0-9_]{1,})/', $standard_get_values_res_array_value, $standard_group_value);
+    
+                      $this->cache_data['keywords'][$standard_group_value[1]] = $standard_group_id[0].'='.$standard_group_value[1];
+                      $this->cache_data['queries'][$standard_group_id[0].'='.$standard_group_value[1]] = $standard_group_value[1];
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        // SEO standard: end
+
+        // SEO sticker: start
+        if (in_array("filter", $phpner_filter_url)) {
+          foreach ($phpner_filter_url as $sticker_url_item) {
+            $sticker_query_query = $this->db->query("SELECT product_sticker_id FROM " . DB_PREFIX . "phpner_filter_product_sticker WHERE product_sticker_value_mod = '" . $this->db->escape($sticker_url_item) . "' AND language_id ='".(int)$this->config->get('config_language_id')."' GROUP BY product_sticker_id");
+            
+            if ($sticker_query_query->num_rows) {
+              $this->cache_data['keywords'][$sticker_url_item] = 'st_'.$sticker_query_query->row['product_sticker_id'].'='.$sticker_query_query->row['product_sticker_id'];
+              $this->cache_data['queries']['st_'.$sticker_query_query->row['product_sticker_id'].'='.$sticker_query_query->row['product_sticker_id']] = $sticker_url_item;          
+            }
+          }
+        } elseif (isset($this->session->data['phpner_sticker'])) {
+          preg_match_all('/st_[0-9]{1,}=[0-9]{1,}+/', ltrim($this->session->data['phpner_sticker'], "&"), $sticker_get_values);
+
+          if (isset($sticker_get_values[0])) {
+            foreach ($sticker_get_values[0] as $sticker_get_value) {
+              $sticker_get_values_res = rtrim($sticker_get_value, "&");
+
+              if (preg_match('/st_[0-9]{1,}/', $sticker_get_values_res)) {
+                preg_match('/st_[0-9]{1,}/', $sticker_get_values_res, $sticker_value);
+                preg_match('/=([0-9]{1,})/', $sticker_get_values_res, $product_sticker_id);
+                
+                if (isset($sticker_value[0]) && isset($product_sticker_id[1])) {
+                  $sticker_query_keyword = $this->db->query("SELECT product_sticker_value_mod FROM " . DB_PREFIX . "phpner_filter_product_sticker WHERE product_sticker_id = '" . (int)$product_sticker_id[1] . "' AND language_id ='".(int)$this->config->get('config_language_id')."' GROUP BY product_sticker_id")->row['product_sticker_value_mod'];
+            
+                  if ($sticker_query_keyword) {
+                    $this->cache_data['keywords'][$sticker_query_keyword] = $sticker_value[0].'='.$product_sticker_id[1];
+                    $this->cache_data['queries'][$sticker_value[0].'='.$product_sticker_id[1]] = $sticker_query_keyword;
+                  }
+                }
+              }
+            }
+          }
+        }
+        // SEO sticker: end
+
+        // SEO stock: start
+        if (in_array("filter", $phpner_filter_url)) {
+          foreach ($phpner_filter_url as $stock_url_item) {
+            if (in_array($stock_url_item, array('in_stock', 'out_of_stock', 'ending_stock'))) {
+              $this->cache_data['keywords'][$stock_url_item] = 's_s_'.$stock_url_item.'='.$stock_url_item;
+              $this->cache_data['queries']['s_s_'.$stock_url_item.'='.$stock_url_item] = $stock_url_item;
+            }
+          }
+        } elseif (isset($this->session->data['phpner_stock'])) {
+          preg_match_all('/s_s_[a-z0-9_]{1,}=[a-z0-9_]{1,}+/', ltrim($this->session->data['phpner_stock'], "&"), $stock_get_values);
+
+          if (isset($stock_get_values[0])) {
+            foreach ($stock_get_values[0] as $stock_get_value) {
+              $stock_get_values_res = rtrim($stock_get_value, "&");
+
+              if (preg_match('/s_s_[a-z0-9_]{1,}/', $stock_get_values_res)) {
+                preg_match('/s_s_[a-z0-9_]{1,}/', $stock_get_values_res, $stock_value);
+                preg_match('/=([a-z0-9_]{1,})/', $stock_get_values_res, $stock_id);
+                
+                if (isset($stock_value[0]) && isset($stock_id[1])) {
+                  $this->cache_data['keywords'][$stock_id[1]] = $stock_value[0].'='.$stock_id[1];
+                  $this->cache_data['queries'][$stock_value[0].'='.$stock_id[1]] = $stock_id[1];
+                }
+              }
+            }
+          }
+        }
+        // SEO stock: end
+
+        // SEO rating: start
+        if (in_array("filter", $phpner_filter_url)) {
+          foreach ($phpner_filter_url as $rating_url_item) {
+            if (preg_match('/rating-[0-9]{1,}/', $rating_url_item)) {
+              preg_match('/rating-[0-9]{1,}/', $rating_url_item, $rating_value);
+              preg_match('/([0-9]{1,})/', $rating_url_item, $rating_id);
+
+              $this->cache_data['keywords']['rating-'.$rating_id[1]] = 'r_'.$rating_id[1].'='.$rating_id[1];
+              $this->cache_data['queries']['r_'.$rating_id[1].'='.$rating_id[1]] = 'rating-'.$rating_id[1];
+            }
+          }
+        } elseif (isset($this->session->data['phpner_rating'])) {
+          preg_match_all('/r_[0-9]{1,}=[0-9]{1,}+/', ltrim($this->session->data['phpner_rating'], "&"), $rating_get_values);
+
+          if (isset($rating_get_values[0])) {
+            foreach ($rating_get_values[0] as $rating_get_value) {
+              $rating_get_values_res = rtrim($rating_get_value, "&");
+
+              if (preg_match('/r_[0-9]{1,}/', $rating_get_values_res)) {
+                preg_match('/r_[0-9]{1,}/', $rating_get_values_res, $rating_value);
+                preg_match('/=([0-9]{1,})/', $rating_get_values_res, $rating_id);
+                
+                if (isset($rating_value[0]) && isset($rating_id[1])) {
+                  $this->cache_data['keywords']['rating-'.$rating_id[1]] = $rating_value[0].'='.$rating_id[1];
+                  $this->cache_data['queries'][$rating_value[0].'='.$rating_id[1]] = 'rating-'.$rating_id[1];
+                }
+              }
+            }
+          }
+        }
+        // SEO rating: end
+      }
+      // SEO phpner_ product filter: end
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[case 'manufacturer_id':]]></search>
+      <add position="replace"><![CDATA[
+      // SEO phpner_ product filter: start
+      // case 'manufacturer_id':
+      // SEO phpner_ product filter: end
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[case 'path':]]></search>
+      <add position="after" offset="7"><![CDATA[
+      // SEO phpner_ product filter: start
+      case 'manufacturer_id':
+        $queries[] = $key . '=' . $value;
+        unset($data[$key]);
+        // $postfix = 1;
+        break;
+      case 'phpner_filter':
+      case 'special_only':
+      case 'price':
+      case 'tag':
+      case (preg_match('/m_n_/', $key) ? $key : false):
+      case (preg_match('/a_nm_/', $key) ? $key : false):
+      case (preg_match('/a_vm_/', $key) ? $key : false):
+      case (preg_match('/o_nm_/', $key) ? $key : false):
+      case (preg_match('/o_vm_/', $key) ? $key : false):
+      case (preg_match('/s_nm_/', $key) ? $key : false):
+      case (preg_match('/s_vm_/', $key) ? $key : false):
+      case (preg_match('/st_/', $key) ? $key : false):
+      case (preg_match('/r_/', $key) ? $key : false):
+      case (preg_match('/s_s_/', $key) ? $key : false):
+        $queries[] = $key . '=' . $value;
+        unset($data[$key]);
+        break;
+      // SEO phpner_ product filter: end
+      ]]></add>
+    </operation>
+  </file>
+</modification>

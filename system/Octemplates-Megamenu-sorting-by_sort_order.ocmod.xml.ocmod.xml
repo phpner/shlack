@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_megamenu_sortting_by_sort_order_100</code>
+  <name>Phpner - Megamenu sorting by sort_order</name>
+  <version>1.0.0</version>
+  <author>Phpner-demo</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/extension/module/phpner_megamenu.php">
+    <operation error="skip">
+      <search><![CDATA[$c_sort_order[$key] = $value['name'];]]></search>
+      <add position="replace"><![CDATA[
+        $c_sort_order[$key] = $value['sort_order'];
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$cs_sort_order[$key] = $value['name'];]]></search>
+      <add position="replace"><![CDATA[
+        $cs_sort_order[$key] = $value['sort_order'];
+      ]]></add>
+    </operation>    
+  </file>
+</modification>

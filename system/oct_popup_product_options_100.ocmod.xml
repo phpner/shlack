@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_popup_product_options_100</code>
+  <name>Phpner - Popup product options</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/common/footer.php">
+    <operation error="skip">
+      <search><![CDATA[public function index() {]]></search>
+      <add position="after"><![CDATA[
+        // popup_product_options start
+        $data['phpner_popup_product_options_data'] = $this->config->get('phpner_popup_product_options_data');
+        // popup_product_options end
+      ]]></add>
+    </operation>
+  </file>
+  <file path="catalog/controller/checkout/cart.php">
+    <operation error="skip">
+      <search><![CDATA[$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));]]></search>
+      <add position="replace"><![CDATA[
+        // popup_product_options start
+        $phpner_popup_product_options_data = $this->config->get('phpner_popup_product_options_data');
+        
+        if (isset($phpner_popup_product_options_data['status']) && $phpner_popup_product_options_data['status']) {
+            //$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
+        } else {
+            $json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
+        }
+        // popup_product_options end
+      ]]></add>
+    </operation>
+  </file>
+</modification>

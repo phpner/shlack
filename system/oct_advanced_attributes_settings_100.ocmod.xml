@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_advanced_attributes_settings_100</code>
+  <name>Phpner - Advanced attributes settings</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <!-- catalog actions -->
+  <file path="catalog/controller/product/{category,search,special,manufacturer}.php">
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="before"><![CDATA[
+        // phpner_advanced_attributes_settings start
+        $phpner_attributes = array();
+        $phpner_advanced_attributes_settings_data = $this->config->get('phpner_advanced_attributes_settings_data');
+
+        if (isset($phpner_advanced_attributes_settings_data['status']) && $phpner_advanced_attributes_settings_data['status']) {
+          foreach ($this->model_catalog_product->getProductAttributes($result['product_id']) as $attribute_group) {
+            foreach ($attribute_group['attribute'] as $attribute) {
+              if (isset($phpner_advanced_attributes_settings_data['allowed_attributes']) && (in_array($attribute['attribute_id'], $phpner_advanced_attributes_settings_data['allowed_attributes']))) {
+                $phpner_attributes[] = array(
+                  'name' => $attribute['name'],
+                  'text' => $attribute['text']
+                );
+              }
+            }
+          }
+        }
+        // phpner_advanced_attributes_settings end
+      ]]></add>
+    </operation>
+    <operation error="skip">
+      <search><![CDATA[$data['products'][] = array(]]></search>
+      <add position="after"><![CDATA[
+        // phpner_advanced_attributes_settings start
+        'phpner_attributes' => $phpner_attributes,
+        // phpner_advanced_attributes_settings end
+      ]]></add>
+    </operation>
+  </file>
+</modification>

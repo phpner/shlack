@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <code>phpner_product_viewed_100</code>
+  <name>Phpner - Recently Viewed Products</name>
+  <version>1.0.0</version>
+  <author>Phpner</author>
+  <link>http://phpner.net/</link>
+  <file path="catalog/controller/product/product.php">
+    <operation error="skip">
+      <search><![CDATA[$this->model_catalog_product->updateViewed($this->request->get['product_id']);]]></search>
+      <add position="after"><![CDATA[
+        // phpner_product_viewed start
+        $this->session->data['phpner_product_viewed'][] = $this->request->get['product_id'];
+        // phpner_product_viewed end
+      ]]></add>
+    </operation>    
+  </file>
+</modification>
