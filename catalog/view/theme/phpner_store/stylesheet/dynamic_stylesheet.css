@@ -1,46 +1,46 @@
 #top, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.wishlist, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.compare, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.wishlist, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.compare, .product-thumb .cart .phpner_-button.wishlist, .product-thumb .cart .phpner_-button.compare, .phpner_-day-goods-box .owl-carousel .owl-item .things-to-buy, .phpner_-product-tab ul.nav-tabs > li.active, .phpner_-product-tab ul.nav-tabs > li:hover, #back-top:hover, #uptocall-mini:hover .uptocall-mini-phone, .field-tip .tip-content, footer, .filtered input[type=checkbox]:checked+label::before, .filtered input[type=radio]:checked+label::before, #sstore-3-level>ul>li>a, .product-buttons-row .button-one-click, .product-buttons-row .button-wishlist, .product-buttons-row .button-compare, .product-tabs-row .nav-tabs>li.active>a, .product-tabs-row .nav-tabs>li.active>a:focus, .product-tabs-row .nav-tabs>li.active>a:hover, footer .actions button:hover, .popup-button:hover, #column-left .list-group, #column-right .list-group, .phpner_-news-panel .list-group {
-	background-color: #4F5F6F;
+	background-color: #rgb(86, 255, 17);
 }
 .phpner_-button:hover, .phpner_-button-inv {
-	background-color: #4F5F6F !important;
+	background-color: #rgb(86, 255, 17) !important;
 }
 a, #search .btn-lg, .phones-dropdown a, #menu .nav > li > a, .phpner_-carousel-header, .phpner_-category-item-text ul li a, .phpner_-category-item-text ul li a:visited, .phpner_-category-item-text ul li.phpner_-category-see-more a:hover, .phpner_-product-tab .owl-carousel .owl-item .name a, .phpner_-carousel-row .owl-carousel .owl-item .name a, .phpner_-day-goods-box .owl-carousel .owl-wrapper-outer .item .phpner_-day-goods-item .name a, .news-carousel-box .owl-carousel .owl-wrapper-outer .item .phpner_-news-item .name a, .phpner_-product-tab .owl-carousel .owl-buttons div, .phpner_-carousel-row .owl-carousel .owl-buttons div, .phpner_-day-goods-box .owl-carousel .owl-buttons div, .news-carousel-box .owl-carousel .owl-buttons div, .brands-carousel-box .owl-carousel .owl-buttons div, .news-carousel-box .owl-carousel .owl-wrapper-outer .item .phpner_-news-item .news-date, .news-carousel-box .owl-carousel .owl-wrapper-outer .item .phpner_-news-item .news-date span, .breadcrumb > li a, h1.cat-header, .sort-row .input-group-addon, .appearance .btn-group button, .box-heading, a.list-group-item, button.list-group-item, input[type='text'].form-control, select.form-control, input[type='password'].form-control, .filtered .link i, .filtered .checkbox input[type=checkbox]+label, .filtered .checkbox-inline input[type=checkbox]+label, .filtered .radio input[type=radio]+label, .filtered .radio-inline input[type=radio]+label, #sstore-3-level ul ul ul li a, .product-thumb h4 a, .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover, .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .product-header, .after-header-item, .found-cheaper a, .found-cheaper a:visited, .product-price h3, .number .btn-minus button i, .number .btn-plus button i, .product-info-li span, .product-info-li a, .product-info-li a:visited, .product-advantages-box a span, h2.popup-header, .popup-form-box input[type='text'], .popup-form-box input[type='tel'], .popup-form-box input[type='email'], #auth-popup .auth-popup-links a.reg-popup-link, .popup-text, .popup-text a, #product .control-label, .popup-form-box textarea, .phpner_-bottom-cart-in-cart p, .account-content .buttons div .button-back, .account-content .table-div table .button-back, .popup-text a:hover, .phpner_-carousel-header a:hover, #column-left .panel-default>.panel-heading, .phpner_-news-panel>.panel-heading, #column-right .panel-default>.panel-heading, #oneclick-popup #main-price {
- color: #4F5F6F;
+ color: #rgb(86, 255, 17);
 }
 #menu .nav > li:hover, .phpner_-slideshow-box .owl-controls .owl-page span {
-	border-color: #4F5F6F;
+	border-color: #rgb(86, 255, 17);
 }
 #filter-products-form .expanded .item-content .filter-results:hover .filter-tooltip-corner {
-	border-right-color: #4F5F6F;
+	border-right-color: #rgb(86, 255, 17);
 }
 .product-tabs-row .nav-tabs>li.active>a:before {
-	border-top-color: #4F5F6F;
+	border-top-color: #rgb(86, 255, 17);
 }
 #menu .nav > li:hover, #menu ul.flexMenu-popup > li:hover, .phpner_-button, .phpner_-button:visited, .phpner_-button:focus, #back-top, #uptocall-mini .uptocall-mini-phone, .phpner_-day-goods-box .owl-carousel .owl-wrapper-outer .item .phpner_-day-goods-item:hover .things-to-buy, .phpner_-day-goods-box .owl-carousel .owl-wrapper-outer .item .phpner_-day-goods-item:hover .things-to-buy .flip-clock-wrapper ul li a div div.inn, footer .actions button, #sstore-3-level ul>li.has-sub>a.toggle-a:before, #sstore-3-level ul>li.has-sub>a.toggle-a:after, .product-tabs-row .nav-tabs>li>a, ul.account-ul li a:hover, .popup-button, .phpner_-fastorder-header span, #column-left .panel-default>.panel-heading, #column-right .panel-default>.panel-heading, .phpner_-news-panel>.panel-heading, #column-left .list-group a.active, #column-left .list-group a.active:hover, #column-left .list-group a:hover, #column-right .list-group a.active, #column-right .list-group a.active:hover, #column-right .list-group a:hover, .phpner_-news-panel .list-group a.active, .phpner_-news-panel .list-group a.active:hover, .phpner_-news-panel .list-group a:hover{
-	background-color: #59C2E6;
+	background-color: #rgb(118, 218, 18);
 }
 .product-thumb .cart .phpner_-button.wishlist:hover, .product-thumb .cart .phpner_-button.compare:hover, .product-buttons-row .button-wishlist:hover, .product-buttons-row .button-compare:hover, .button-one-click:hover, .wishlist-tr, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.wishlist:hover, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.compare:hover, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.wishlist:hover, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.compare:hover, .product-thumb .cart .phpner_-button.wishlist:hover, .product-thumb .cart .phpner_-button.compare:hover, .phpner_-button-inv:hover  {
-	background-color: #59C2E6!important;
+	background-color: #rgb(118, 218, 18)!important;
 }
 #top .btn-link.btn-language:hover, #top .btn-link.btn-currency:hover, #top #top-right-links .dropdown-menu li a:hover, header .dropdown-menu li a:hover, #cart .cart-total-price, .buttons-top-box div a:hover, #menu .sale-ul > div .megamenu-sale-item .dropprice, .phpner_-slideshow-box .owl-controls .owl-buttons div:hover, .phpner_-category-item-text ul li.phpner_-category-see-more a, .phpner_-product-tab .owl-carousel .owl-item .price .price-new, .phpner_-carousel-row .owl-carousel .owl-item .price .price-new, .phpner_-day-goods-box .owl-carousel .owl-item .price .price-new, .phpner_-product-tab .owl-carousel .owl-buttons div:hover, .phpner_-carousel-row .owl-carousel .owl-buttons div:hover, .phpner_-day-goods-box .owl-carousel .owl-buttons div:hover, .news-carousel-box .owl-carousel .owl-buttons div:hover, .brands-carousel-box .owl-carousel .owl-buttons div:hover, footer h5, footer .h5, footer .first-row .socials-box a:hover, footer a:hover, footer .footer-contacts ul li i, .breadcrumb > li span, .appearance .btn-group button.active, .appearance .btn-group button:hover, .product-list .product-thumb h4 a:hover, .rating .fa-star, .rating .fa-star + .fa-star-o, .phpner_-product-stock span, .pagination>li:first-child>a, .pagination>li:first-child>span, .pagination>li>a, .pagination>li>span, .after-header-item .blue, .product-price h2, .number .btn-minus button:hover i, .number .btn-plus button:hover i, .product-advantages-box i, ul.account-ul li a, .account-content form legend, .account-content h2, .account-content .buttons div .button-back:hover, .account-content .table-div table .button-back:hover, .popup-text .item-link, .popup-text .blue, #product-options-popup .blue, #auth-popup .auth-popup-links a.forget-popup-link, #main-price, #cheaper-popup .main-price, .popup-text a, .phpner_-product-tab ul.nav-tabs > li a, .phpner_-fastorder-header, #checkout-fastorder-page .table .phpner_-bottom-cart-table-text, .fastorder-panel-group .phpner_-bottom-cart-total-cart .total-text span, .phpner_-carousel-header a, .phpner_-carousel-header a:visited, .phpner-category-item-box .phpner_-category-item-text .phpner_-category-item-header, .main-advantage-item .main-advantage-item-icon i, #oneclick-popup #main-price.oneclick-main-price, .phpner_-category-item-text ul li a:hover, .breadcrumb > li a:hover, #subcats .subcat-box:hover a, #cart-popup .popup-text span {
-	color: #59C2E6;
+	color: #rgb(118, 218, 18);
 }
 #top #top-right-links .dropdown-menu li a:hover, header .dropdown-menu li a:hover, #menu .megamenu-full-width a:hover, #menu .megamenu-full-width a.megamenu-parent-img:hover + a, .phpner_-product-tab .owl-carousel .owl-item .name a:hover, .phpner_-product-tab .owl-carousel .owl-item .image:hover + .name a, .phpner_-carousel-row .owl-carousel .owl-item .name a:hover, .phpner_-carousel-row .owl-carousel .owl-item .image:hover + .name a, .phpner_-day-goods-box .owl-carousel .owl-item .name a:hover, .phpner_-day-goods-box .owl-carousel .owl-item .image:hover + .name a, .news-carousel-box .owl-carousel .owl-item .name a:hover, .news-carousel-box .owl-carousel .owl-item .image:hover + .name a, #top .btn-link.language-select:hover, #top .btn-link.currency-select:hover, #menu .megamenu-full-width .see-all, footer .phpner_-text-terms a:hover, .popup-cart-box .phpner_-popup-cart-link {
-	color: #59C2E6!important;
+	color: #rgb(118, 218, 18)!important;
 }
 @media only screen and (min-width: 1024px) {
 	.product-grid .product-thumb:hover h4 a {
-		color: #59C2E6;
+		color: #rgb(118, 218, 18);
 	}
 }
 .phpner_-slideshow-box .owl-controls .owl-page.active span, .phpner_-slideshow-box .owl-controls .owl-page span:hover, .filtered input[type=checkbox]+label::before, .filtered input[type=radio]+label::before {
-	border-color: #59C2E6;
+	border-color: #rgb(118, 218, 18);
 }
 .selected-thumb {
-	border-color: #59C2E6!important;
+	border-color: #rgb(118, 218, 18)!important;
 }
 #top #top-left-links ul li a:hover, #top #top-right-links > ul > li:hover {
-	border-bottom-color: #59C2E6;
+	border-bottom-color: #rgb(118, 218, 18);
 }
 #top {
 	background-color: #4F5F6F;

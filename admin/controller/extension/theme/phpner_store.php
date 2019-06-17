@@ -9,7 +9,7 @@ class ControllerExtensionThemePhpnerStore extends Controller
         $data = array(  );
         $this->load->model("extension/extension");
         $this->load->model("setting/setting");
-        if( !in_array("phpner", $this->model_extension_extension->getInstalled("theme")) )
+        if( !in_array("phpner_store", $this->model_extension_extension->getInstalled("theme")) )
         {
             $this->response->redirect($this->url->link("extension/extension", "token=" . $this->session->data["token"] . "&type=theme", true));
         }
@@ -56,7 +56,7 @@ class ControllerExtensionThemePhpnerStore extends Controller
         $data["action"] = $this->url->link("extension/theme/phpner", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true);
         $data["cancel"] = $this->url->link("extension/extension", "token=" . $this->session->data["token"] . "&type=theme", true);
 
-        $this->response->redirect($this->url->link("extension/theme/phpner/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true));
+        $this->response->redirect($this->url->link("extension/theme/phpner_store/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true));
 
 
     }
@@ -89,17 +89,19 @@ class ControllerExtensionThemePhpnerStore extends Controller
         $this->load->model("extension/extension");
         $this->load->model("setting/setting");
         $this->load->model("tool/image");
-        if( !in_array("phpner", $this->model_extension_extension->getInstalled("theme")) )
+        if( !in_array("phpner_store", $this->model_extension_extension->getInstalled("theme")) )
         {
             $this->response->redirect($this->url->link("extension/extension", "token=" . $this->session->data["token"] . "&type=theme", true));
         }
 
-        $data = array_merge($data, $this->load->language("extension/theme/phpner"));
+        $data = array_merge($data, $this->load->language("extension/theme/phpner_store"));
         $this->document->setTitle($this->language->get("heading_title_sub"));
+        $this->document->addStyle("view/stylesheet/spectrum.css");
         if( $this->config->get("config_editor_default") )
         {
             $this->document->addScript("view/javascript/ckeditor/ckeditor.js");
             $this->document->addScript("view/javascript/ckeditor/ckeditor_init.js");
+
         }
         else
         {
@@ -131,21 +133,14 @@ class ControllerExtensionThemePhpnerStore extends Controller
             $curl_data =  array_merge($post, $curl_data);
 
 
-            $this->model_setting_setting->editSetting("phpner", $curl_data, $store_id);
-
-
-            //  $curl_data = $this->sendCurl($this->request->post);
-            /*   if( $curl_data["status"] == 200 && !empty($curl_data["response"]) )
-            {
-                $this->model_setting_setting->editSetting("phpner", $curl_data["response"], $store_id);
-            }*/
+            $this->model_setting_setting->editSetting("phpner_store", $curl_data, $store_id);
 
             $this->session->data["success"] = $this->language->get("text_success");
             $this->style_generate();
 
             if( isset($this->request->post["actionstay"]) && $this->request->post["actionstay"] == 1 )
             {
-                $this->response->redirect($this->url->link("extension/theme/phpner/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true));
+                $this->response->redirect($this->url->link("extension/theme/phpner_store/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true));
             }
             else
             {
@@ -188,17 +183,18 @@ class ControllerExtensionThemePhpnerStore extends Controller
         $data["error_image_wishlist"] = (isset($this->error["phpner_store_image_wishlist"]) ? $this->error["phpner_store_image_wishlist"] : "");
         $data["error_image_cart"] = (isset($this->error["phpner_store_image_cart"]) ? $this->error["phpner_store_image_cart"] : "");
         $data["error_image_location"] = (isset($this->error["phpner_store_image_location"]) ? $this->error["phpner_store_image_location"] : "");
-        $this->document->addStyle("view/stylesheet/phpner.css");
+        $this->document->addStyle("view/stylesheet/phpner_store.css");
         $data["breadcrumbs"] = array(  );
         $data["breadcrumbs"][] = array( "text" => $this->language->get("text_home"), "href" => $this->url->link("common/dashboard", "token=" . $this->session->data["token"], true) );
         $data["breadcrumbs"][] = array( "text" => $this->language->get("text_module"), "href" => $this->url->link("extension/extension", "token=" . $this->session->data["token"] . "&type=theme", true) );
-        $data["breadcrumbs"][] = array( "text" => $this->language->get("heading_title"), "href" => $this->url->link("extension/theme/phpner/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true) );
-        $data["action"] = $this->url->link("extension/theme/phpner/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true);
-        $data["cache"] = $this->url->link("extension/theme/phpner/cache", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true);
+        $data["breadcrumbs"][] = array( "text" => $this->language->get("heading_title"), "href" => $this->url->link("extension/theme/phpner_store/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true) );
+        $data["action"] = $this->url->link("extension/theme/phpner_store/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true);
+        $data["cache"] = $this->url->link("extension/theme/phpner_store/cache", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true);
         $data["cancel"] = $this->url->link("extension/extension", "token=" . $this->session->data["token"] . "&type=theme", true);
         if( $this->request->server["REQUEST_METHOD"] != "POST" )
         {
-            $phpner_store_status = $this->model_setting_setting->getSetting("phpner", $store_id);
+            $phpner_store_status = $this->model_setting_setting->getSetting("phpner_store", $store_id);
+
         }
 
 
@@ -218,7 +214,7 @@ class ControllerExtensionThemePhpnerStore extends Controller
         } else
         {
 
-            $data["value_002"] = $this->model_setting_setting->getSetting("phpner", $store_id);
+            $data["value_002"] = $this->model_setting_setting->getSetting("phpner_store", $store_id);
             $data["value_002"] = $data["value_002"]['phpner_store_data'];
         }
 
@@ -287,7 +283,7 @@ class ControllerExtensionThemePhpnerStore extends Controller
         $data["column_left"] = $this->load->controller("common/column_left");
         $data["footer"] = $this->load->controller("common/footer");
 
-        $this->response->setOutput($this->load->view("extension/theme/phpner", $data));
+        $this->response->setOutput($this->load->view("extension/theme/phpner_store", $data));
     }
 
     public function cache()
@@ -315,7 +311,7 @@ class ControllerExtensionThemePhpnerStore extends Controller
             $store_id = 0;
         }
 
-        $this->response->redirect($this->url->link("extension/theme/phpner/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true));
+        $this->response->redirect($this->url->link("extension/theme/phpner_store/main", "token=" . $this->session->data["token"] . "&store_id=" . $store_id, true));
     }
 
     public function install()
@@ -328,7 +324,7 @@ class ControllerExtensionThemePhpnerStore extends Controller
         $this->model_user_user_group->addPermission($this->user->getId(), "modify", "extension/theme/phpner");
         if( !in_array("phpner", $this->model_extension_extension->getInstalled("theme")) )
         {
-            $this->model_extension_extension->install("theme", "phpner");
+            $this->model_extension_extension->install("theme", "phpner_store");
 
 
         }
@@ -340,24 +336,12 @@ class ControllerExtensionThemePhpnerStore extends Controller
     public function uninstall()
     {
         $this->load->model("extension/extension");
-        $this->model_extension_extension->uninstall("theme", "phpner");
-    }
-
-    private function validate_verification()
-    {
-        if( !$this->user->hasPermission("modify", "extension/theme/phpner") )
-        {
-            $this->error["warning"] = $this->language->get("error_permission");
-        }
-
-
-
-        return (!$this->error ? true : false);
+        $this->model_extension_extension->uninstall("theme", "phpner_store");
     }
 
     private function validate()
     {
-        if( !$this->user->hasPermission("modify", "extension/theme/phpner") )
+        if( !$this->user->hasPermission("modify", "extension/theme/phpner_store") )
         {
             $this->error["warning"] = $this->language->get("error_permission");
         }
@@ -437,7 +421,7 @@ class ControllerExtensionThemePhpnerStore extends Controller
             $store_id = 0;
         }
 
-        $form_data = $this->model_setting_setting->getSetting("phpner", $store_id);
+        $form_data = $this->model_setting_setting->getSetting("phpner_store", $store_id);
         $form_data =  $form_data['phpner_store_data'];
 
         $styles = "";

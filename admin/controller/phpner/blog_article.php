@@ -397,7 +397,7 @@ class ControllerPhpnerBlogArticle extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer']      = $this->load->controller('common/footer');
         
-        $this->response->setOutput($this->load->view('/catalog/view/theme/phpner/stylesheet/_list.tpl', $data));
+        $this->response->setOutput($this->load->view('phpner/blog_article_list.tpl', $data));
     }
     
     protected function getForm() {

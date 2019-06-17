@@ -124,23 +124,23 @@
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_maincolor1; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[maincolor1]" value="<?php echo $value_002['maincolor1']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[maincolor1]" value="<?php echo $value_002['maincolor1']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_maincolor2; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[maincolor2]" value="<?php echo $value_002['maincolor2']; ?>" size="6" class="jscolor" /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[maincolor2]" value="<?php echo $value_002['maincolor2']; ?>" size="6" class="spectrum" /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_cat_color_price; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_color_price]" value="<?php echo $value_002['cat_color_price']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_color_price]" value="<?php echo $value_002['cat_color_price']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_cat_color_price_old; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_color_price_old]" value="<?php echo $value_002['cat_color_price_old']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_color_price_old]" value="<?php echo $value_002['cat_color_price_old']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_cat_color_price_new; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_color_price_new]" value="<?php echo (isset($value_002['cat_color_price_new']) && $value_002['cat_color_price_new']) ? $value_002['cat_color_price_new'] : 'CE0E5A'; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_color_price_new]" value="<?php echo (isset($value_002['cat_color_price_new']) && $value_002['cat_color_price_new']) ? $value_002['cat_color_price_new'] : 'CE0E5A'; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_enable_minify; ?></td>
@@ -259,123 +259,123 @@
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_head_1line_bg_1line; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_1line]" value="<?php echo $value_002['head_1line_bg_1line']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_1line]" value="<?php echo $value_002['head_1line_bg_1line']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_1line_bg_main; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_main]" value="<?php echo $value_002['head_1line_bg_main']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_main]" value="<?php echo $value_002['head_1line_bg_main']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_1line_color_1line_link; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_color_1line_link]" value="<?php echo $value_002['head_1line_color_1line_link']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_color_1line_link]" value="<?php echo $value_002['head_1line_color_1line_link']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_1line_color_1line_link_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_color_1line_link_hover]" value="<?php echo $value_002['head_1line_color_1line_link_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_color_1line_link_hover]" value="<?php echo $value_002['head_1line_color_1line_link_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_1line_bg_1line_link_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_1line_link_hover]" value="<?php echo $value_002['head_1line_bg_1line_link_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_1line_link_hover]" value="<?php echo $value_002['head_1line_bg_1line_link_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_1line_bg_tine_and_account; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_tine_and_account]" value="<?php echo $value_002['head_1line_bg_tine_and_account']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_tine_and_account]" value="<?php echo $value_002['head_1line_bg_tine_and_account']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_1line_bg_underscores_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_underscores_hover]" value="<?php echo $value_002['head_1line_bg_underscores_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_1line_bg_underscores_hover]" value="<?php echo $value_002['head_1line_bg_underscores_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                     <h2 class="titletd"><span><?php echo $text_head_dropdown_el; ?></span></h2>
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_head_dropdown_el_bg; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_dropdown_el_bg]" value="<?php echo $value_002['head_dropdown_el_bg']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_dropdown_el_bg]" value="<?php echo $value_002['head_dropdown_el_bg']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_dropdown_el_color_link; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_dropdown_el_color_link]" value="<?php echo $value_002['head_dropdown_el_color_link']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_dropdown_el_color_link]" value="<?php echo $value_002['head_dropdown_el_color_link']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_dropdown_el_color_link_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_dropdown_el_color_link_hover]" value="<?php echo $value_002['head_dropdown_el_color_link_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_dropdown_el_color_link_hover]" value="<?php echo $value_002['head_dropdown_el_color_link_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                     <h2 class="titletd"><span><?php echo $text_head_2ndline; ?></span></h2>
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_head_2ndline_color_tel_text; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_tel_text]" value="<?php echo $value_002['head_2ndline_color_tel_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_tel_text]" value="<?php echo $value_002['head_2ndline_color_tel_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_2ndline_color_tel_icon; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_tel_icon]" value="<?php echo $value_002['head_2ndline_color_tel_icon']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_tel_icon]" value="<?php echo $value_002['head_2ndline_color_tel_icon']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_2ndline_bg_cart; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_bg_cart]" value="<?php echo $value_002['head_2ndline_bg_cart']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_bg_cart]" value="<?php echo $value_002['head_2ndline_bg_cart']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_2ndline_color_cart_text; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_cart_text]" value="<?php echo $value_002['head_2ndline_color_cart_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_cart_text]" value="<?php echo $value_002['head_2ndline_color_cart_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_2ndline_color_cart_total; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_cart_total]" value="<?php echo $value_002['head_2ndline_color_cart_total']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_cart_total]" value="<?php echo $value_002['head_2ndline_color_cart_total']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_2ndline_color_cart_text_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_cart_text_hover]" value="<?php echo $value_002['head_2ndline_color_cart_text_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_2ndline_color_cart_text_hover]" value="<?php echo $value_002['head_2ndline_color_cart_text_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                     <h2 class="titletd"><span><?php echo $text_head_megamenu; ?></span></h2>
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_bg_link; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_bg_link]" value="<?php echo $value_002['head_megamenu_bg_link']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_bg_link]" value="<?php echo $value_002['head_megamenu_bg_link']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_bg_link_underscores_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_bg_link_underscores_hover]" value="<?php echo $value_002['head_megamenu_bg_link_underscores_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_bg_link_underscores_hover]" value="<?php echo $value_002['head_megamenu_bg_link_underscores_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_color_link_text; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_color_link_text]" value="<?php echo $value_002['head_megamenu_color_link_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_color_link_text]" value="<?php echo $value_002['head_megamenu_color_link_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_color_link_text_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_color_link_text_hover]" value="<?php echo $value_002['head_megamenu_color_link_text_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_color_link_text_hover]" value="<?php echo $value_002['head_megamenu_color_link_text_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                     <h2 class="titletd"><span><?php echo $text_head_megamenu_el; ?></span></h2>
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_el_bg; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_bg]" value="<?php echo $value_002['head_megamenu_el_bg']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_bg]" value="<?php echo $value_002['head_megamenu_el_bg']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_el_color_link; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_link]" value="<?php echo $value_002['head_megamenu_el_color_link']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_link]" value="<?php echo $value_002['head_megamenu_el_color_link']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_el_color_link_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_link_hover]" value="<?php echo $value_002['head_megamenu_el_color_link_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_link_hover]" value="<?php echo $value_002['head_megamenu_el_color_link_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_el_color_link_2_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_link_2_hover]" value="<?php echo $value_002['head_megamenu_el_color_link_2_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_link_2_hover]" value="<?php echo $value_002['head_megamenu_el_color_link_2_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_el_bg_link_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_bg_link_hover]" value="<?php echo $value_002['head_megamenu_el_bg_link_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_bg_link_hover]" value="<?php echo $value_002['head_megamenu_el_bg_link_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_el_color_price_in_specials; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_price_in_specials]" value="<?php echo $value_002['head_megamenu_el_color_price_in_specials']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_price_in_specials]" value="<?php echo $value_002['head_megamenu_el_color_price_in_specials']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_head_megamenu_el_color_price_old_in_specials; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_price_old_in_specials]" value="<?php echo $value_002['head_megamenu_el_color_price_old_in_specials']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[head_megamenu_el_color_price_old_in_specials]" value="<?php echo $value_002['head_megamenu_el_color_price_old_in_specials']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -828,35 +828,35 @@
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_foot_bg_foot; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_bg_foot]" value="<?php echo $value_002['foot_bg_foot']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_bg_foot]" value="<?php echo $value_002['foot_bg_foot']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_guarantee_icon; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_guarantee_icon]" value="<?php echo $value_002['foot_color_guarantee_icon']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_guarantee_icon]" value="<?php echo $value_002['foot_color_guarantee_icon']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_guarantee_icon_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_guarantee_icon_hover]" value="<?php echo $value_002['foot_color_guarantee_icon_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_guarantee_icon_hover]" value="<?php echo $value_002['foot_color_guarantee_icon_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_guarantee_text; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_guarantee_text]" value="<?php echo $value_002['foot_color_guarantee_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_guarantee_text]" value="<?php echo $value_002['foot_color_guarantee_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_heading_text; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_heading_text]" value="<?php echo $value_002['foot_color_heading_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_heading_text]" value="<?php echo $value_002['foot_color_heading_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_links; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_links]" value="<?php echo $value_002['foot_color_links']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_links]" value="<?php echo $value_002['foot_color_links']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_links_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_links_hover]" value="<?php echo $value_002['foot_color_links_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_links_hover]" value="<?php echo $value_002['foot_color_links_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_contact_icon; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_contact_icon]" value="<?php echo $value_002['foot_color_contact_icon']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_contact_icon]" value="<?php echo $value_002['foot_color_contact_icon']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -864,19 +864,19 @@
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_foot_bg_bar; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_bg_bar]" value="<?php echo $value_002['foot_bg_bar']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_bg_bar]" value="<?php echo $value_002['foot_bg_bar']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_bg_bar_el_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_bg_bar_el_hover]" value="<?php echo $value_002['foot_bg_bar_el_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_bg_bar_el_hover]" value="<?php echo $value_002['foot_bg_bar_el_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_bar_el_text; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_bar_el_text]" value="<?php echo $value_002['foot_color_bar_el_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_bar_el_text]" value="<?php echo $value_002['foot_color_bar_el_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_foot_color_bar_el_text_hover; ?></td>
-                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_bar_el_text_hover]" value="<?php echo $value_002['foot_color_bar_el_text_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[foot_color_bar_el_text_hover]" value="<?php echo $value_002['foot_color_bar_el_text_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -970,11 +970,11 @@
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_discountbg; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_discountbg]" value="<?php echo $value_002['cat_discountbg']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_discountbg]" value="<?php echo $value_002['cat_discountbg']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_discountcolor; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_discountcolor]" value="<?php echo $value_002['cat_discountcolor']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_discountcolor]" value="<?php echo $value_002['cat_discountcolor']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -982,31 +982,31 @@
                                                 <table class="form">
                                                     <tr>
                                                         <td><?php echo $text_cat_boxtext; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_boxtext]" value="<?php echo $value_002['cat_boxtext']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_boxtext]" value="<?php echo $value_002['cat_boxtext']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_boxbg; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_boxbg]" value="<?php echo $value_002['cat_boxbg']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_boxbg]" value="<?php echo $value_002['cat_boxbg']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_modulebg; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_modulebg]" value="<?php echo $value_002['cat_modulebg']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_modulebg]" value="<?php echo $value_002['cat_modulebg']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_itembg; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_itembg]" value="<?php echo $value_002['cat_itembg']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_itembg]" value="<?php echo $value_002['cat_itembg']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_plusminus; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_plusminus]" value="<?php echo $value_002['cat_plusminus']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_plusminus]" value="<?php echo $value_002['cat_plusminus']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_checkbox; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_checkbox]" value="<?php echo $value_002['cat_checkbox']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_checkbox]" value="<?php echo $value_002['cat_checkbox']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_checkboxactive; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_checkboxactive]" value="<?php echo $value_002['cat_checkboxactive']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_checkboxactive]" value="<?php echo $value_002['cat_checkboxactive']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1014,35 +1014,35 @@
                                                 <table class="form">
                                                     <tr>
                                                         <td><?php echo $text_cat_1levelbg; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_1levelbg]" value="<?php echo $value_002['cat_1levelbg']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_1levelbg]" value="<?php echo $value_002['cat_1levelbg']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_1levelcolor; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_1levelcolor]" value="<?php echo $value_002['cat_1levelcolor']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_1levelcolor]" value="<?php echo $value_002['cat_1levelcolor']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_2levelbg; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_2levelbg]" value="<?php echo $value_002['cat_2levelbg']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_2levelbg]" value="<?php echo $value_002['cat_2levelbg']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_2levelcolor; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_2levelcolor]" value="<?php echo $value_002['cat_2levelcolor']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_2levelcolor]" value="<?php echo $value_002['cat_2levelcolor']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_3levelbg; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3levelbg]" value="<?php echo $value_002['cat_3levelbg']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3levelbg]" value="<?php echo $value_002['cat_3levelbg']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_3levelcolor; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3levelcolor]" value="<?php echo $value_002['cat_3levelcolor']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3levelcolor]" value="<?php echo $value_002['cat_3levelcolor']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_3levelbgactive; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3levelbgactive]" value="<?php echo $value_002['cat_3levelbgactive']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3levelbgactive]" value="<?php echo $value_002['cat_3levelbgactive']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><?php echo $text_cat_3leveltextactive; ?></td>
-                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3leveltextactive]" value="<?php echo $value_002['cat_3leveltextactive']; ?>" size="6" class="jscolor"  /></td>
+                                                        <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[cat_3leveltextactive]" value="<?php echo $value_002['cat_3leveltextactive']; ?>" size="6" class="spectrum"  /></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -1263,55 +1263,55 @@
                                                     <table class="form">
                                                         <tr>
                                                             <td><?php echo $text_pr_color_button_add_ro_cart; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_add_ro_cart]" value="<?php echo $value_002['pr_color_button_add_ro_cart']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_add_ro_cart]" value="<?php echo $value_002['pr_color_button_add_ro_cart']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_button_add_ro_cart_hover; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_add_ro_cart_hover]" value="<?php echo $value_002['pr_color_button_add_ro_cart_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_add_ro_cart_hover]" value="<?php echo $value_002['pr_color_button_add_ro_cart_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_button_other; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_other]" value="<?php echo $value_002['pr_color_button_other']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_other]" value="<?php echo $value_002['pr_color_button_other']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_button_other_hover; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_other_hover]" value="<?php echo $value_002['pr_color_button_other_hover']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_button_other_hover]" value="<?php echo $value_002['pr_color_button_other_hover']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_bg_block; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_bg_block]" value="<?php echo $value_002['pr_bg_block']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_bg_block]" value="<?php echo $value_002['pr_bg_block']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_bg_tab; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_bg_tab]" value="<?php echo $value_002['pr_bg_tab']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_bg_tab]" value="<?php echo $value_002['pr_bg_tab']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_bg_tab_active; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_bg_tab_active]" value="<?php echo $value_002['pr_bg_tab_active']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_bg_tab_active]" value="<?php echo $value_002['pr_bg_tab_active']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_tab_text; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_tab_text]" value="<?php echo $value_002['pr_color_tab_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_tab_text]" value="<?php echo $value_002['pr_color_tab_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_image_border; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_image_border]" value="<?php echo $value_002['pr_color_image_border']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_image_border]" value="<?php echo $value_002['pr_color_image_border']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_guarantee_icon; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_guarantee_icon]" value="<?php echo $value_002['pr_color_guarantee_icon']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_guarantee_icon]" value="<?php echo $value_002['pr_color_guarantee_icon']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_guarantee_text; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_guarantee_text]" value="<?php echo $value_002['pr_color_guarantee_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_guarantee_text]" value="<?php echo $value_002['pr_color_guarantee_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_block_under_heading_text; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_block_under_heading_text]" value="<?php echo $value_002['pr_color_block_under_heading_text']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_block_under_heading_text]" value="<?php echo $value_002['pr_color_block_under_heading_text']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td><?php echo $text_pr_color_block_under_heading_icon; ?></td>
-                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_block_under_heading_icon]" value="<?php echo $value_002['pr_color_block_under_heading_icon']; ?>" size="6" class="jscolor" /></td>
+                                                            <td width="25%"><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[pr_color_block_under_heading_icon]" value="<?php echo $value_002['pr_color_block_under_heading_icon']; ?>" size="6" class="spectrum" /></td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -1323,31 +1323,31 @@
                                         <table class="form">
                                             <tr>
                                                 <td><?php echo $text_mob_mainlinebg; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mob_mainlinebg]" value="<?php echo $value_002['mob_mainlinebg']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mob_mainlinebg]" value="<?php echo $value_002['mob_mainlinebg']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_mod_mainline_iconcolor; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_mainline_iconcolor]" value="<?php echo $value_002['mod_mainline_iconcolor']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_mainline_iconcolor]" value="<?php echo $value_002['mod_mainline_iconcolor']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_mod_dropdown_headingbg; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_dropdown_headingbg]" value="<?php echo $value_002['mod_dropdown_headingbg']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_dropdown_headingbg]" value="<?php echo $value_002['mod_dropdown_headingbg']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_mod_dropdown_heading_and_buttoncolor; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_dropdown_heading_and_buttoncolor]" value="<?php echo $value_002['mod_dropdown_heading_and_buttoncolor']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_dropdown_heading_and_buttoncolor]" value="<?php echo $value_002['mod_dropdown_heading_and_buttoncolor']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_mod_dropdown_linktextcolor; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_dropdown_linktextcolor]" value="<?php echo $value_002['mod_dropdown_linktextcolor']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_dropdown_linktextcolor]" value="<?php echo $value_002['mod_dropdown_linktextcolor']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_mod_header_iconrcolor; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_header_iconrcolor]" value="<?php echo $value_002['mod_header_iconrcolor']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_header_iconrcolor]" value="<?php echo $value_002['mod_header_iconrcolor']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                             <tr>
                                                 <td><?php echo $text_mod_header_iconrbg; ?></td>
-                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_header_iconrbg]" value="<?php echo $value_002['mod_header_iconrbg']; ?>" size="6" class="jscolor"  /></td>
+                                                <td><input type="text" name="k4a4s474x55444b4o4x5m4k4m5h5b4a4m434[mod_header_iconrbg]" value="<?php echo $value_002['mod_header_iconrbg']; ?>" size="6" class="spectrum"  /></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -2027,7 +2027,17 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="view/javascript/phpner_store/jscolor.min.js"></script>
+    <script type="text/javascript" src="view/javascript/phpner_store/spectrum.js"></script>
+    <script>
+        $(".spectrum").spectrum({
+            preferredFormat: "rgb",
+            showInitial: true,
+            showInput: true,
+            showAlpha: true,
+            showPalette: true,
+            palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
+        });
+    </script>
     <script type="text/javascript"><!--
         $("ul.nav-tabs a").click(function (e) {
             e.preventDefault();
