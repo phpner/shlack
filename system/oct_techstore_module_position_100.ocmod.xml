@@ -60,7 +60,7 @@
   </file>
   <file path="catalog/controller/extension/module/phpner_p_special_timer.php">
     <operation error="skip">
-      <search><![CDATA[$this->load->model('phpner_store/p_special_timer');]]></search>
+      <search><![CDATA[$this->load->model('phpner/p_special_timer');]]></search>
       <add position="after"><![CDATA[$data['position'] = $setting['position'];]]></add>
     </operation>
   </file>

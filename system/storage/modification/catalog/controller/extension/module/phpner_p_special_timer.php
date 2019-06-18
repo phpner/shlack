@@ -25,6 +25,7 @@ class ControllerExtensionModulePhpnerPSpecialTimer extends Controller {
         $data['language_code'] = $this->session->data['language'];
 
         $this->load->model('phpner/p_special_timer');
+$data['position'] = $setting['position'];
         
         $this->load->model('tool/image');
         
@@ -168,7 +169,7 @@ class ControllerExtensionModulePhpnerPSpecialTimer extends Controller {
         }
         
         $data['module'] = $module++;
-        var_dump($data);
+        
         if ($data['products'] && count($data['products']) > 4) {
             return $this->load->view('extension/module/phpner_p_special_timer', $data);
         }

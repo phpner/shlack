@@ -441,39 +441,37 @@
       <change afterPath="$PROJECT_DIR$/../zakaz-7.ru/sass/_manu.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/controller/extension/theme/phpner_store.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/controller/extension/theme/phpner_store.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/controller/phpner/blog_article.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/controller/phpner/blog_article.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/view/template/extension/theme/phpner_store.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view/template/extension/theme/phpner_store.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/controller/extension/module/phpner_p_special_timer.php" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/controller/extension/module/phpner_p_special_timer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/controller/extension/module/phpner_popup_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/controller/extension/module/phpner_popup_view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalog/view/theme/phpner_store/stylesheet/dynamic_stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/view/theme/phpner_store/stylesheet/dynamic_stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.category.seopath.1560680956" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.currency.1560681791" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.language.1560681791" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.all_products.0.1.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.category.0.1.288.1560682979" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.manufacturers.0.1.1.0.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.option.0.1.1.0.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.standard.0.1.1.0.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_blog_article.seopath.1560681793" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_blog_category.seopath.1560681791" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_emplates.megamenu.1.0.1.1560681793" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.all_products.0.1.1560680895" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.category.0.1.250.1560680956" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.category.0.1.256.1560680960" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.category.0.1.363.1560680543" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.manufacturers.0.1.1.0.1560680895" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.manufacturers.0.1.1.363.1560680543" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.option.0.1.1.0.1560680895" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.option.0.1.1.363.1560680543" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.standard.0.1.1.0.1560680895" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_store.product_filter_pids.standard.0.1.1.363.1560680609" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.bestseller.1.0.1.15.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.bestseller.1.0.1.5.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.latest.1.0.1.5.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.seopath.1560682974" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.top_viewed.1.0.1.5.1560681850" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.seo_pro.1560681791" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.store.1560682688" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/phpner_store/phpner_product_filter/star_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/phpner_store/phpner_product_filter/star_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/phpner_store/phpner_product_filter/star_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/phpner_store/phpner_product_filter/star_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/phpner_store/phpner_product_filter/star_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/oct_techstore_100.ocmod.xml" beforeDir="false" afterPath="$PROJECT_DIR$/system/oct_techstore_100.ocmod.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/oct_techstore_module_position_100.ocmod.xml" beforeDir="false" afterPath="$PROJECT_DIR$/system/oct_techstore_module_position_100.ocmod.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.category.seopath.1560777558" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.currency.1560776181" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.information.1.1560774314" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.language.1560774585" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.order_status.1.1560774585" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.all_products.0.1.1560777578" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.manufacturers.0.1.1.0.1560777578" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.option.0.1.1.0.1560777578" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner.product_filter_pids.standard.0.1.1.0.1560777578" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.phpner_emplates.megamenu.1.0.1.1560776181" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.bestseller.1.0.1.15.1560777558" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.bestseller.1.0.1.5.1560777558" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.latest.1.0.1.5.1560777557" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.seopath.1560777558" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.product.top_viewed.1.0.1.5.1560777558" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.seo_pro.1560776181" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/cache/cache.store.1560777645" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/system/storage/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/system/storage/logs/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system/storage/logs/ocmod.log" beforeDir="false" afterPath="$PROJECT_DIR$/system/storage/logs/ocmod.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/storage/modification/catalog/controller/product/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/system/storage/modification/catalog/controller/product/product.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -489,63 +487,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/controller/phpner/blog_article.php">
+        <entry file="file://$PROJECT_DIR$/admin/controller/extension/module/phpner_p_special_timer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9707">
-              <caret line="571" column="34" selection-start-line="571" selection-start-column="7" selection-end-line="571" selection-end-column="34" />
+            <state relative-caret-position="187">
+              <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/controller/phpner/blog_category.php">
+        <entry file="file://$PROJECT_DIR$/system/storage/modification/catalog/controller/extension/module/phpner_p_special_timer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2862">
-              <caret line="319" column="38" selection-start-line="319" selection-start-column="11" selection-end-line="319" selection-end-column="38" />
+            <state relative-caret-position="724">
+              <caret line="48" column="57" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/catalog/controller/extension/module/phpner_p_special_timer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-276">
+              <caret line="7" column="71" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/controller/extension/theme/phpner_store.php">
+        <entry file="file://$PROJECT_DIR$/catalog/model/phpner/p_special_timer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15696">
-              <caret line="98" column="63" selection-start-line="98" selection-start-column="63" selection-end-line="98" selection-end-column="63" />
-              <folding>
-                <element signature="n#day_format#0;n#ControllerExtensionThemePhpnerStore#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/view/template/common/header.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-396">
-              <caret line="14" column="92" lean-forward="true" selection-start-line="14" selection-start-column="92" selection-end-line="14" selection-end-column="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/view/template/extension/theme/phpner_store.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="2038" column="11" selection-start-line="2038" selection-start-column="11" selection-end-line="2038" selection-end-column="11" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#84#91#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/model/extension/extension.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+            <state relative-caret-position="119">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -554,14 +526,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>phpner_store_news</find>
-      <find>stye</find>
-      <find>oct-category-item-box</find>
-      <find>phpner_store_customcss</find>
-      <find>phpner-category-item-box</find>
-      <find>customcss</find>
-      <find>phpner_-category-item-box</find>
-      <find>phpner_-</find>
       <find>phpner_store/blog_article</find>
       <find>$this-&gt;model_phpner_store_blog_article</find>
       <find>phpner_store</find>
@@ -584,6 +548,14 @@
       <find>jscolor.min.js</find>
       <find>jscolor</find>
       <find>spectrum.css</find>
+      <find>k4a4s474x55444b4o4x5m4k4m5h5b4a4m434</find>
+      <find>ControllerExtensionModulePhpnerPSpecialTimer</find>
+      <find>phpner_p_special_timer</find>
+      <find>model('phpner_store/</find>
+      <find>'phpner/p_special_timer</find>
+      <find>model_phpner_store_p_special_timer</find>
+      <find>getProducts</find>
+      <find>star_1.png</find>
     </findStrings>
     <replaceStrings>
       <replace>Phpner 2019</replace>
@@ -614,6 +586,8 @@
       <replace>phpner/blog_articles</replace>
       <replace>view/theme/phpner_store/</replace>
       <replace>/catalog/view/theme/phpner/stylesheet/</replace>
+      <replace>phpnerSettingsForm</replace>
+      <replace>model_phpner_p_special_timer</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\OSPanel\domains\open-2.ru\admin\controller\octemplates</dir>
@@ -629,9 +603,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin/controller/extension/module/phpner_blog_category.php" />
-        <option value="$PROJECT_DIR$/admin/controller/extension/module/phpner_blog_article.php" />
-        <option value="$PROJECT_DIR$/admin/controller/extension/module/phpner_advanced_options_settings.php" />
         <option value="$PROJECT_DIR$/admin/controller/extension/module/phpner_advanced_attributes_settings.php" />
         <option value="$PROJECT_DIR$/catalog/controller/extension/module/phpner_megamenu.php" />
         <option value="$PROJECT_DIR$/catalog/model/extension/module/Phpner_megamenu.php" />
@@ -645,7 +616,6 @@
         <option value="$PROJECT_DIR$/admin/model/design/phpner_banner_plus.php" />
         <option value="$PROJECT_DIR$/catalog/model/phpner_store/blog_article.php" />
         <option value="$PROJECT_DIR$/admin/controller/octemplates/blog_article.php" />
-        <option value="$PROJECT_DIR$/system/oct_techstore_100.ocmod.xml" />
         <option value="$PROJECT_DIR$/catalog/controller/extension/module/phpner_popup_view.php" />
         <option value="$PROJECT_DIR$/catalog/view/theme/phpner_store/stylesheet/popup.css" />
         <option value="$PROJECT_DIR$/catalog/model/phpner_store/p_special_timer.php" />
@@ -680,15 +650,19 @@
         <option value="$PROJECT_DIR$/admin/controller/phpner/blog_article.php" />
         <option value="$PROJECT_DIR$/admin/controller/extension/theme/phpner_store.php" />
         <option value="$PROJECT_DIR$/admin/view/template/extension/theme/phpner_store.tpl" />
+        <option value="$PROJECT_DIR$/system/oct_techstore_module_position_100.ocmod.xml" />
+        <option value="$PROJECT_DIR$/system/oct_techstore_100.ocmod.xml" />
+        <option value="$PROJECT_DIR$/system/storage/modification/catalog/controller/extension/module/phpner_p_special_timer.php" />
+        <option value="$PROJECT_DIR$/catalog/controller/extension/module/phpner_p_special_timer.php" />
       </list>
     </option>
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="159" />
-    <option name="y" value="191" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="170" />
+    <option name="y" value="11" />
     <option name="width" value="1605" />
-    <option name="height" value="1024" />
+    <option name="height" value="938" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -696,7 +670,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -719,56 +692,39 @@
               <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
               <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="extension" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="extension" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
-              <item name="extension" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
-              <item name="extension" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
               <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
               <item name="catalog" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
+              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
+              <item name="catalog" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
+              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
+              <item name="catalog" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="extension" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="opencart-1.ru" type="b2602c69:ProjectViewProjectNode" />
+              <item name="opencart-1.ru" type="462c0819:PsiDirectoryNode" />
+              <item name="catalog" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="extension" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -839,18 +795,19 @@
       <workItem from="1560526212337" duration="2709000" />
       <workItem from="1560675387442" duration="3767000" />
       <workItem from="1560679850642" duration="43000" />
-      <workItem from="1560767358163" duration="6258000" />
+      <workItem from="1560767358163" duration="10100000" />
+      <workItem from="1560803880906" duration="621000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136911000" />
+    <option name="totallyTimeSpent" value="141374000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="170" y="11" width="1605" height="938" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2217484" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2724919" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -879,34 +836,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/admin/view/template/extension/theme/phpner_store.tpl</url>
-          <line>2197</line>
+          <line>2199</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/catalog/model/design/phpner_banner_plus.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/controller/extension/module/phpner_product_tabs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catalog/controller/extension/module/phpner_carousel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/system/oct_techstore_menu_100.ocmod.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -935,24 +871,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catalog/controller/extension/module/phpner_p_special_timer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/catalog/view/theme/phpner_store/stylesheet/popup.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="765" selection-start-line="765" selection-end-line="765" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/system/oct_techstore_100.ocmod.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4940">
-          <caret line="581" column="30" selection-start-line="581" selection-start-column="30" selection-end-line="581" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -1150,13 +1072,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catalog/model/phpner/p_special_timer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/model/phpner/blog_article.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1175,13 +1090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
           <caret line="237" column="34" selection-start-line="237" selection-start-column="7" selection-end-line="237" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catalog/controller/phpner/blog_article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9707">
-          <caret line="571" column="34" selection-start-line="571" selection-start-column="7" selection-end-line="571" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1206,10 +1114,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catalog/controller/phpner/blog_category.php">
+    <entry file="file://$PROJECT_DIR$/admin/controller/common/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2862">
-          <caret line="319" column="38" selection-start-line="319" selection-start-column="11" selection-end-line="319" selection-end-column="38" />
+        <state relative-caret-position="-289">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/view/template/common/header.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="14" column="92" lean-forward="true" selection-start-line="14" selection-start-column="92" selection-end-line="14" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/view/template/extension/theme/phpner_store.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16815">
+          <caret line="1044" column="103" selection-start-line="1044" selection-start-column="85" selection-end-line="1044" selection-end-column="103" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#84#91#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1220,39 +1147,163 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/controller/common/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/view/template/common/header.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-396">
-          <caret line="14" column="92" lean-forward="true" selection-start-line="14" selection-start-column="92" selection-end-line="14" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/view/template/extension/theme/phpner_store.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="2038" column="11" selection-start-line="2038" selection-start-column="11" selection-end-line="2038" selection-end-column="11" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#84#91#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/controller/extension/theme/phpner_store.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15696">
-          <caret line="98" column="63" selection-start-line="98" selection-start-column="63" selection-end-line="98" selection-end-column="63" />
+        <state relative-caret-position="612">
+          <caret line="471" column="44" selection-start-line="471" selection-start-column="44" selection-end-line="471" selection-end-column="44" />
+          <caret line="474" column="44" selection-start-line="474" selection-start-column="44" selection-end-line="474" selection-end-column="44" />
+          <caret line="477" column="51" selection-start-line="477" selection-start-column="51" selection-end-line="477" selection-end-column="51" />
+          <caret line="484" column="48" selection-start-line="484" selection-start-column="48" selection-end-line="484" selection-end-column="48" />
+          <caret line="491" column="48" selection-start-line="491" selection-start-column="48" selection-end-line="491" selection-end-column="48" />
+          <caret line="498" column="37" selection-start-line="498" selection-start-column="37" selection-end-line="498" selection-end-column="37" />
+          <caret line="505" column="37" selection-start-line="505" selection-start-column="37" selection-end-line="505" selection-end-column="37" />
+          <caret line="512" column="48" selection-start-line="512" selection-start-column="48" selection-end-line="512" selection-end-column="48" />
+          <caret line="519" column="48" selection-start-line="519" selection-start-column="48" selection-end-line="519" selection-end-column="48" />
+          <caret line="526" column="51" selection-start-line="526" selection-start-column="51" selection-end-line="526" selection-end-column="51" />
+          <caret line="533" column="48" selection-start-line="533" selection-start-column="48" selection-end-line="533" selection-end-column="48" />
+          <caret line="540" column="37" selection-start-line="540" selection-start-column="37" selection-end-line="540" selection-end-column="37" />
+          <caret line="547" column="37" selection-start-line="547" selection-start-column="37" selection-end-line="547" selection-end-column="37" />
+          <caret line="554" column="37" selection-start-line="554" selection-start-column="37" selection-end-line="554" selection-end-column="37" />
+          <caret line="561" column="37" selection-start-line="561" selection-start-column="37" selection-end-line="561" selection-end-column="37" />
+          <caret line="568" column="48" selection-start-line="568" selection-start-column="48" selection-end-line="568" selection-end-column="48" />
+          <caret line="575" column="37" selection-start-line="575" selection-start-column="37" selection-end-line="575" selection-end-column="37" />
+          <caret line="582" column="37" selection-start-line="582" selection-start-column="37" selection-end-line="582" selection-end-column="37" />
+          <caret line="589" column="37" selection-start-line="589" selection-start-column="37" selection-end-line="589" selection-end-column="37" />
+          <caret line="596" column="48" selection-start-line="596" selection-start-column="48" selection-end-line="596" selection-end-column="48" />
+          <caret line="603" column="44" selection-start-line="603" selection-start-column="44" selection-end-line="603" selection-end-column="44" />
+          <caret line="610" column="37" selection-start-line="610" selection-start-column="37" selection-end-line="610" selection-end-column="37" />
+          <caret line="617" column="37" selection-start-line="617" selection-start-column="37" selection-end-line="617" selection-end-column="37" />
+          <caret line="624" column="48" selection-start-line="624" selection-start-column="48" selection-end-line="624" selection-end-column="48" />
+          <caret line="631" column="37" selection-start-line="631" selection-start-column="37" selection-end-line="631" selection-end-column="37" />
+          <caret line="638" column="37" selection-start-line="638" selection-start-column="37" selection-end-line="638" selection-end-column="37" />
+          <caret line="645" column="37" selection-start-line="645" selection-start-column="37" selection-end-line="645" selection-end-column="37" />
+          <caret line="652" column="48" selection-start-line="652" selection-start-column="48" selection-end-line="652" selection-end-column="48" />
+          <caret line="659" column="37" selection-start-line="659" selection-start-column="37" selection-end-line="659" selection-end-column="37" />
+          <caret line="666" column="37" selection-start-line="666" selection-start-column="37" selection-end-line="666" selection-end-column="37" />
+          <caret line="673" column="48" selection-start-line="673" selection-start-column="48" selection-end-line="673" selection-end-column="48" />
+          <caret line="680" column="37" selection-start-line="680" selection-start-column="37" selection-end-line="680" selection-end-column="37" />
+          <caret line="687" column="37" selection-start-line="687" selection-start-column="37" selection-end-line="687" selection-end-column="37" />
+          <caret line="694" column="37" selection-start-line="694" selection-start-column="37" selection-end-line="694" selection-end-column="37" />
+          <caret line="701" column="37" selection-start-line="701" selection-start-column="37" selection-end-line="701" selection-end-column="37" />
+          <caret line="708" column="37" selection-start-line="708" selection-start-column="37" selection-end-line="708" selection-end-column="37" />
+          <caret line="715" column="37" selection-start-line="715" selection-start-column="37" selection-end-line="715" selection-end-column="37" />
+          <caret line="722" column="37" selection-start-line="722" selection-start-column="37" selection-end-line="722" selection-end-column="37" />
+          <caret line="729" column="48" selection-start-line="729" selection-start-column="48" selection-end-line="729" selection-end-column="48" />
+          <caret line="736" column="48" selection-start-line="736" selection-start-column="48" selection-end-line="736" selection-end-column="48" />
+          <caret line="743" column="37" selection-start-line="743" selection-start-column="37" selection-end-line="743" selection-end-column="37" />
+          <caret line="750" column="37" selection-start-line="750" selection-start-column="37" selection-end-line="750" selection-end-column="37" />
+          <caret line="757" column="48" selection-start-line="757" selection-start-column="48" selection-end-line="757" selection-end-column="48" />
+          <caret line="764" column="37" selection-start-line="764" selection-start-column="37" selection-end-line="764" selection-end-column="37" />
+          <caret line="771" column="37" selection-start-line="771" selection-start-column="37" selection-end-line="771" selection-end-column="37" />
+          <caret line="778" column="37" selection-start-line="778" selection-start-column="37" selection-end-line="778" selection-end-column="37" />
+          <caret line="785" column="37" selection-start-line="785" selection-start-column="37" selection-end-line="785" selection-end-column="37" />
+          <caret line="792" column="37" selection-start-line="792" selection-start-column="37" selection-end-line="792" selection-end-column="37" />
+          <caret line="799" column="48" selection-start-line="799" selection-start-column="48" selection-end-line="799" selection-end-column="48" />
+          <caret line="806" column="48" selection-start-line="806" selection-start-column="48" selection-end-line="806" selection-end-column="48" />
+          <caret line="813" column="48" selection-start-line="813" selection-start-column="48" selection-end-line="813" selection-end-column="48" />
+          <caret line="820" column="37" selection-start-line="820" selection-start-column="37" selection-end-line="820" selection-end-column="37" />
+          <caret line="827" column="44" selection-start-line="827" selection-start-column="44" selection-end-line="827" selection-end-column="44" />
+          <caret line="834" column="48" selection-start-line="834" selection-start-column="48" selection-end-line="834" selection-end-column="48" />
+          <caret line="841" column="48" selection-start-line="841" selection-start-column="48" selection-end-line="841" selection-end-column="48" />
+          <caret line="848" column="37" selection-start-line="848" selection-start-column="37" selection-end-line="848" selection-end-column="37" />
+          <caret line="855" column="48" selection-start-line="855" selection-start-column="48" selection-end-line="855" selection-end-column="48" />
+          <caret line="862" column="37" selection-start-line="862" selection-start-column="37" selection-end-line="862" selection-end-column="37" />
+          <caret line="869" column="48" selection-start-line="869" selection-start-column="48" selection-end-line="869" selection-end-column="48" />
+          <caret line="876" column="37" selection-start-line="876" selection-start-column="37" selection-end-line="876" selection-end-column="37" />
+          <caret line="883" column="48" selection-start-line="883" selection-start-column="48" selection-end-line="883" selection-end-column="48" />
+          <caret line="890" column="37" selection-start-line="890" selection-start-column="37" selection-end-line="890" selection-end-column="37" />
+          <caret line="897" column="48" selection-start-line="897" selection-start-column="48" selection-end-line="897" selection-end-column="48" />
+          <caret line="904" column="48" selection-start-line="904" selection-start-column="48" selection-end-line="904" selection-end-column="48" />
+          <caret line="911" column="48" selection-start-line="911" selection-start-column="48" selection-end-line="911" selection-end-column="48" />
+          <caret line="918" column="48" selection-start-line="918" selection-start-column="48" selection-end-line="918" selection-end-column="48" />
+          <caret line="925" column="48" selection-start-line="925" selection-start-column="48" selection-end-line="925" selection-end-column="48" />
+          <caret line="932" column="48" selection-start-line="932" selection-start-column="48" selection-end-line="932" selection-end-column="48" />
+          <caret line="939" column="48" selection-start-line="939" selection-start-column="48" selection-end-line="939" selection-end-column="48" />
+          <caret line="942" column="48" selection-start-line="942" selection-start-column="48" selection-end-line="942" selection-end-column="48" />
+          <caret line="949" column="37" selection-start-line="949" selection-start-column="37" selection-end-line="949" selection-end-column="37" />
+          <caret line="956" column="44" selection-start-line="956" selection-start-column="44" selection-end-line="956" selection-end-column="44" />
+          <caret line="963" column="37" selection-start-line="963" selection-start-column="37" selection-end-line="963" selection-end-column="37" />
+          <caret line="970" column="37" selection-start-line="970" selection-start-column="37" selection-end-line="970" selection-end-column="37" />
+          <caret line="977" column="37" selection-start-line="977" selection-start-column="37" selection-end-line="977" selection-end-column="37" />
+          <caret line="984" column="37" selection-start-line="984" selection-start-column="37" selection-end-line="984" selection-end-column="37" />
+          <caret line="991" column="37" selection-start-line="991" selection-start-column="37" selection-end-line="991" selection-end-column="37" />
+          <caret line="999" column="49" selection-start-line="999" selection-start-column="49" selection-end-line="999" selection-end-column="49" />
+          <caret line="1006" column="38" selection-start-line="1006" selection-start-column="38" selection-end-line="1006" selection-end-column="38" />
+          <caret line="1013" column="49" selection-start-line="1013" selection-start-column="49" selection-end-line="1013" selection-end-column="49" />
+          <caret line="1020" column="38" selection-start-line="1020" selection-start-column="38" selection-end-line="1020" selection-end-column="38" />
+          <caret line="1027" column="38" selection-start-line="1027" selection-start-column="38" selection-end-line="1027" selection-end-column="38" />
+          <caret line="1034" column="38" selection-start-line="1034" selection-start-column="38" selection-end-line="1034" selection-end-column="38" />
+          <caret line="1041" column="50" selection-start-line="1041" selection-start-column="50" selection-end-line="1041" selection-end-column="50" />
+          <caret line="432" column="48" selection-start-line="432" selection-start-column="48" selection-end-line="432" selection-end-column="48" />
+          <caret line="435" column="48" selection-start-line="435" selection-start-column="48" selection-end-line="435" selection-end-column="48" />
+          <caret line="438" column="36" selection-start-line="438" selection-start-column="36" selection-end-line="438" selection-end-column="36" />
+          <caret line="441" column="44" selection-start-line="441" selection-start-column="44" selection-end-line="441" selection-end-column="44" />
+          <caret line="444" column="50" selection-start-line="444" selection-start-column="50" selection-end-line="444" selection-end-column="50" />
+          <caret line="447" column="48" selection-start-line="447" selection-start-column="48" selection-end-line="447" selection-end-column="48" />
+          <caret line="454" column="48" selection-start-line="454" selection-start-column="48" selection-end-line="454" selection-end-column="48" />
+          <caret line="457" column="48" selection-start-line="457" selection-start-column="48" selection-end-line="457" selection-end-column="48" />
+          <caret line="460" column="37" selection-start-line="460" selection-start-column="37" selection-end-line="460" selection-end-column="37" />
+          <caret line="463" column="37" selection-start-line="463" selection-start-column="37" selection-end-line="463" selection-end-column="37" />
+          <caret line="467" column="39" selection-start-line="467" selection-start-column="39" selection-end-line="467" selection-end-column="39" />
           <folding>
             <element signature="n#day_format#0;n#ControllerExtensionThemePhpnerStore#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/controller/phpner/blog_category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2862">
+          <caret line="319" column="38" selection-start-line="319" selection-start-column="11" selection-end-line="319" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/controller/phpner/blog_article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="571" column="34" selection-start-line="571" selection-start-column="7" selection-end-line="571" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/system/oct_techstore_module_position_100.ocmod.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="62" column="65" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/system/oct_techstore_100.ocmod.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="581" column="36" selection-start-line="581" selection-start-column="36" selection-end-line="581" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/controller/extension/module/phpner_p_special_timer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/system/storage/modification/catalog/controller/extension/module/phpner_p_special_timer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="48" column="57" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/controller/extension/module/phpner_p_special_timer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-276">
+          <caret line="7" column="71" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catalog/model/phpner/p_special_timer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>

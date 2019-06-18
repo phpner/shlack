@@ -223,7 +223,7 @@ class ControllerExtensionModulePhpnerPopupView extends Controller {
                 
                 $this->load->model('phpner/p_special_timer');
 
-                $product_info_special = $this->model_phpner_store_p_special_timer->getProduct($product_id);
+                $product_info_special = $this->model_phpner_p_special_timer->getProduct($product_id);
 
 
                 if ($product_info_special) {

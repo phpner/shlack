@@ -93144,3 +93144,4555 @@ LINE: 131
 CODE: public function unzip() {
 LINE: 292
 ----------------------------------------------------------------
+2019-06-17 15:59:05 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Phpner - Categorywall sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_category_wall.php
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 53
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 74
+----------------------------------------------------------------
+MOD: Phpner - Megamenu sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_megamenu.php
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 128
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 109
+----------------------------------------------------------------
+MOD: fondy_payment
+
+FILE: catalog/controller/checkout/checkout.php
+CODE: public function index() {
+LINE: 11
+
+FILE: catalog/view/theme/default/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+LINE: 26
+
+FILE: catalog/view/theme/phpner_store/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+MOD: Phpner - 3d level category module
+
+FILE: catalog/controller/extension/module/category.php
+CODE: public function index() {
+LINE: 2
+----------------------------------------------------------------
+MOD: Phpner - Advanced attributes settings
+
+FILE: catalog/controller/product/category.php
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 247
+
+FILE: catalog/controller/product/search.php
+CODE: $data['products'][] = array(
+LINE: 265
+CODE: $data['products'][] = array(
+LINE: 270
+
+FILE: catalog/controller/product/special.php
+CODE: $data['products'][] = array(
+LINE: 150
+CODE: $data['products'][] = array(
+LINE: 155
+
+FILE: catalog/controller/product/manufacturer.php
+CODE: $data['products'][] = array(
+LINE: 252
+CODE: $data['products'][] = array(
+LINE: 257
+----------------------------------------------------------------
+MOD: Phpner - Advanced options settings
+
+FILE: admin/controller/catalog/option.php
+CODE: protected function getForm() {
+LINE: 268
+CODE: public function autocomplete() {
+LINE: 469
+CODE: $option['type'] == 'image'
+LINE: 490
+CODE: if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'checkbox') {
+LINE: 524
+CODE: $json[] = array(
+LINE: 540
+
+FILE: admin/controller/catalog/product.php
+CODE: $data['entry_option'] = $this->language->get('entry_option');
+LINE: 674
+CODE: foreach ($product_images as $product_image) {
+LINE: 1348
+CODE: $data['product_options'] = array();
+LINE: 1224
+CODE: if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_model'])) {
+LINE: 1509
+CODE: 'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
+LINE: 1369
+CODE: $product_option_value_data[] = array(
+LINE: 1239
+LINE: 1576
+CODE: $product_option['type'] == 'checkbox'
+LINE: 1268
+
+FILE: admin/language/ru-ru/catalog/product.php
+CODE: <?php
+LINE: 7
+
+FILE: admin/language/ru-ru/catalog/option.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/model/catalog/product.php
+CODE: $product_option['type'] == 'image'
+LINE: 38
+LINE: 176
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 220
+CODE: $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape($product_image['image']) . "', sort_order = '" . (int)$product_image['sort_order'] . "'");
+LINE: 236
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 365
+CODE: public function copyProduct($product_id) {
+LINE: 332
+CODE: weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "'");
+LINE: 47
+LINE: 187
+CODE: $product_option_value_data[] = array(
+LINE: 581
+
+FILE: admin/view/template/catalog/option_form.tpl
+CODE: <optgroup label="<?php echo $text_file; ?>">
+LINE: 84
+CODE: if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image') {
+LINE: 160
+
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: $product_option['type'] == 'image'
+LINE: 588
+CODE: <td class="text-left"><?php echo $entry_subtract; ?></td>
+LINE: 602
+CODE: <td colspan="6"></td>
+LINE: 680
+CODE: html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
+LINE: 1280
+CODE: html += '        <td colspan="6"></td>';
+LINE: 1291
+CODE: <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
+LINE: 646
+CODE: html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
+LINE: 1384
+CODE: item['type'] == 'image'
+LINE: 1278
+CODE: <td class="text-left"><?php echo $entry_image; ?></td>
+LINE: 894
+CODE: <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
+LINE: 946
+CODE: html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+LINE: 1522
+
+FILE: admin/controller/sale/order.php
+CODE: public function info() {
+LINE: 764
+CODE: $data['direction'] = $this->language->get('direction');
+LINE: 1591
+LINE: 1829
+CODE: $option_data[] = array(
+LINE: 1034
+LINE: 1051
+LINE: 1770
+LINE: 1997
+CODE: $data['text_customer_detail'] = $this->language->get('text_customer_detail');
+LINE: 790
+
+FILE: admin/language/ru-ru/sale/order.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 163
+
+FILE: admin/view/template/sale/order_invoice.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 81
+
+FILE: admin/view/template/sale/order_shipping.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 97
+
+FILE: system/library/cart/cart.php
+CODE: pov.weight,
+LINE: 54
+LINE: 99
+CODE: if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
+LINE: 68
+CODE: foreach ($value as $product_option_value_id) {
+LINE: 128
+CODE: 'option_value_id'         => $option_value_query->row['option_value_id'],
+LINE: 104
+LINE: 170
+CODE: } elseif ($option_query->row['type'] == 'text' || $option_query->row['type'] == 'textarea' || $option_query->row['type'] == 'file' || $option_query->row['type'] == 'date' || $option_query->row['type'] == 'datetime' || $option_query->row['type'] == 'time') {
+LINE: 245
+
+FILE: catalog/controller/account/order.php
+CODE: $data['text_order_detail'] = $this->language->get('text_order_detail');
+LINE: 168
+CODE: $option_data[] = array(
+LINE: 323
+
+FILE: catalog/language/ru-ru/account/order.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/checkout/cart.php
+CODE: $data['button_checkout'] = $this->language->get('button_checkout');
+LINE: 43
+CODE: $option_data[] = array(
+LINE: 125
+
+FILE: catalog/language/ru-ru/checkout/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/product/product.php
+CODE: public function index() {
+LINE: 101
+CODE: public function index() {
+LINE: 110
+CODE: if ($product_info) {
+LINE: 276
+CODE: if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+LINE: 467
+CODE: $product_option_value_data[] = array(
+LINE: 487
+CODE: $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
+LINE: 424
+CODE: public function index() {
+LINE: 162
+
+FILE: catalog/language/ru-ru/product/product.php
+CODE: <?php
+LINE: 10
+CODE: $data['products'][] = array(
+LINE: 279
+CODE: $data['products'][] = array(
+LINE: 284
+CODE: $data['products'][] = array(
+LINE: 302
+CODE: $data['products'][] = array(
+LINE: 307
+CODE: $data['products'][] = array(
+LINE: 187
+CODE: $data['products'][] = array(
+LINE: 192
+CODE: $data['products'][] = array(
+LINE: 289
+CODE: $data['products'][] = array(
+LINE: 294
+
+FILE: catalog/model/catalog/product.php
+CODE: public function getProductImages($product_id) {
+LINE: 404
+CODE: $product_option_value_data[] = array(
+LINE: 354
+CODE: public function getProductOptions($product_id) {
+LINE: 337
+
+FILE: catalog/model/checkout/order.php
+CODE: `type` = '" . $this->db->escape($option['type']) . "'
+LINE: 15
+LINE: 63
+CODE: $data['title'] = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_id);
+LINE: 399
+CODE: $option_data[] = array(
+LINE: 549
+
+FILE: catalog/language/ru-ru/mail/order.php
+CODE: <?php
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Blog
+
+FILE: catalog/controller/startup/seo_url.php
+CODE: if ($url[0] == 'manufacturer_id') {
+LINE: 64
+CODE: if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+LINE: 72
+CODE: } elseif (isset($this->request->get['manufacturer_id'])) {
+LINE: 112
+CODE: if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+LINE: 132
+CODE: } elseif ($key == 'path') {
+LINE: 187
+
+FILE: catalog/controller/startup/seo_pro.php
+CODE: } elseif (count($url) > 1) {
+LINE: 90
+CODE: } elseif (isset($this->request->get['path'])) {
+LINE: 127
+CODE: case 'product/product/review':
+LINE: 245
+CODE: case 'information_id':
+LINE: 284
+CODE: case 'path':
+LINE: 312
+CODE: private function validate() {
+LINE: 542
+
+FILE: catalog/controller/information/sitemap.php
+CODE: $data['categories'] = array();
+LINE: 98
+
+FILE: catalog/controller/common/header.php
+CODE: $data['text_home'] = $this->language->get('text_home');
+LINE: 70
+----------------------------------------------------------------
+MOD: Phpner - Fast Order
+
+FILE: system/library/url.php
+CODE: public function link($route, $args = '', $secure = false) {
+LINE: 27
+----------------------------------------------------------------
+MOD: Phpner - Live search
+CODE: public function index() {
+LINE: 2
+
+FILE: catalog/controller/common/search.php
+CODE: if (isset($this->request->get['search'])) {
+LINE: 29
+----------------------------------------------------------------
+MOD: Phpner - Megamenu
+CODE: $data['language'] = $this->load->controller('common/language');
+LINE: 206
+----------------------------------------------------------------
+MOD: Phpner - Page Bar
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 55
+
+FILE: catalog/controller/product/compare.php
+CODE: public function add() {
+LINE: 163
+CODE: if (count($this->session->data['compare']) >= 4) {
+LINE: 184
+----------------------------------------------------------------
+MOD: Phpner - Call Phone
+CODE: public function index() {
+LINE: 9
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Cart
+
+FILE: catalog/controller/common/cart.php
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+----------------------------------------------------------------
+MOD: Phpner - Popup Found Cheaper
+
+FILE: admin/controller/common/header.php
+CODE: public function index() {
+LINE: 11
+CODE: $data['alerts'] = $customer_total + $product_total + $review_total + $return_total + $affiliate_total;
+LINE: 134
+
+FILE: admin/view/template/common/header.tpl
+CODE: <li class="dropdown-header"><?php echo $text_order; ?></li>
+LINE: 52
+
+FILE: catalog/language/en-gb/product/product.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/product/product.php
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 470
+----------------------------------------------------------------
+MOD: Phpner - Popup product options
+CODE: public function index() {
+LINE: 7
+CODE: $json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
+LINE: 410
+----------------------------------------------------------------
+MOD: Phpner - Popup Purchase
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 480
+----------------------------------------------------------------
+MOD: Phpner - Popup Subscribe
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Product View
+
+FILE: catalog/language/ru-ru/ru-ru.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/uk-ua/uk-ua.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/en-gb/en-gb.php
+CODE: <?php
+LINE: 3
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 166
+CODE: public function Index() {
+LINE: 94
+CODE: public function Index() {
+LINE: 6
+CODE: $manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);
+LINE: 124
+
+FILE: catalog/controller/extension/module/latest.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/special.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/bestseller.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/featured.php
+CODE: public function index($setting) {
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Auto Related Products
+CODE: $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+LINE: 658
+CODE: if ($result['image']) {
+LINE: 702
+CODE: 'thumb'       => $image,
+LINE: 734
+----------------------------------------------------------------
+MOD: Phpner - Product Filter
+CODE: public function addProduct($data) {
+LINE: 758
+CODE: public function deleteProduct($product_id) {
+LINE: 1131
+CODE: $product_id = $this->db->getLastId();
+LINE: 764
+CODE: public function editProduct($product_id, $data) {
+LINE: 901
+CODE: public function index() {
+LINE: 7
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 34
+CODE: $sort = $this->request->get['sort'];
+LINE: 39
+CODE: $order = $this->request->get['order'];
+LINE: 49
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+LINE: 106
+CODE: $data['categories'] = array();
+LINE: 216
+CODE: $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'canonical');
+LINE: 484
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'prev');
+LINE: 486
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page - 1), true), 'prev');
+LINE: 488
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1), true), 'next');
+LINE: 492
+CODE: public function info() {
+LINE: 74
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 97
+CODE: $sort = $this->request->get['sort'];
+LINE: 102
+CODE: $order = $this->request->get['order'];
+LINE: 112
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'] = array();
+LINE: 245
+CODE: $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] .  $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'canonical');
+LINE: 485
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'prev');
+LINE: 487
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page - 1), true), 'prev');
+LINE: 489
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page + 1), true), 'next');
+LINE: 493
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 243
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 255
+CODE: $sort_data = array(
+LINE: 159
+LINE: 214
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
+LINE: 93
+LINE: 569
+CODE: $sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
+LINE: 186
+LINE: 239
+CODE: $sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+LINE: 194
+CODE: $sql .= " ORDER BY " . $data['sort'];
+LINE: 202
+LINE: 259
+CODE: $sql .= " ORDER BY p.sort_order";
+LINE: 211
+LINE: 274
+CODE: $this->url->addRewrite($this);
+LINE: 391
+CODE: case 'manufacturer_id':
+LINE: 636
+CODE: case 'path':
+LINE: 707
+----------------------------------------------------------------
+MOD: Phpner - Product reviews
+
+FILE: admin/controller/catalog/review.php
+CODE: protected function getForm() {
+LINE: 427
+CODE: if (isset($this->request->post['product_id'])) {
+LINE: 571
+
+FILE: admin/model/catalog/review.php
+CODE: public function addReview($data) {
+LINE: 2
+CODE: public function editReview($review_id, $data) {
+LINE: 30
+CODE: public function getReview($review_id) {
+LINE: 62
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "review WHERE review_id = '" . (int)$review_id . "'");
+LINE: 67
+
+FILE: admin/view/template/catalog/review_form.tpl
+CODE: <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-review" class="form-horizontal">
+LINE: 62
+CODE: public function index() {
+LINE: 175
+CODE: $data['text_no_reviews'] = $this->language->get('text_no_reviews');
+LINE: 886
+CODE: $data['reviews'][] = array(
+LINE: 920
+CODE: $data['reviews'][] = array(
+LINE: 931
+CODE: public function review() {
+LINE: 871
+CODE: public function review() {
+LINE: 902
+
+FILE: catalog/model/catalog/review.php
+CODE: $review_id = $this->db->getLastId();
+LINE: 14
+CODE: public function getReviewsByProductId($product_id, $start = 0, $limit = 20) {
+LINE: 59
+----------------------------------------------------------------
+MOD: Phpner - Product stickers
+CODE: $this->load->model('design/layout');
+LINE: 1473
+
+FILE: admin/language/en-gb/catalog/product.php
+CODE: <?php
+LINE: 3
+CODE: <?php
+LINE: 3
+CODE: if (isset($data['image'])) {
+LINE: 773
+LINE: 918
+CODE: $data['product_attribute'] = $this->getProductAttributes($product_id);
+LINE: 1131
+CODE: <div class="tab-pane" id="tab-data">
+LINE: 122
+CODE: $data['products'][] = array(
+LINE: 634
+CODE: $data['products'][] = array(
+LINE: 637
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+LINE: 646
+CODE: $data['products'][] = array(
+LINE: 649
+CODE: $data['products'][] = array(
+LINE: 785
+CODE: $data['products'][] = array(
+LINE: 788
+CODE: $data['products'][] = array(
+LINE: 435
+CODE: $data['products'][] = array(
+LINE: 438
+CODE: $data['products'][] = array(
+LINE: 231
+CODE: $data['products'][] = array(
+LINE: 234
+CODE: $data['model'] = $product_info['model'];
+LINE: 520
+CODE: 'product_id'       => $query->row['product_id'],
+LINE: 14
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 95
+CODE: $data['products'][] = array(
+LINE: 98
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+----------------------------------------------------------------
+MOD: Phpner - Product tabs
+CODE: $this->load->model('design/layout');
+LINE: 1510
+CODE: <?php
+LINE: 7
+CODE: <?php
+LINE: 7
+CODE: if (isset($data['product_attribute'])) {
+LINE: 802
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
+LINE: 968
+LINE: 1209
+CODE: public function getProductAttributes($product_id) {
+LINE: 1402
+CODE: <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
+LINE: 35
+CODE: <div class="tab-pane" id="tab-option">
+LINE: 630
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 554
+----------------------------------------------------------------
+MOD: Phpner - Recently Viewed Products
+CODE: $this->model_catalog_product->updateViewed($this->request->get['product_id']);
+LINE: 882
+----------------------------------------------------------------
+MOD: Phpner - phpnerStore Template 1.0.0
+CODE: 'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
+LINE: 56
+CODE: public function index() {
+LINE: 10
+CODE: public function info() {
+LINE: 84
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/bestseller', $data);
+LINE: 113
+CODE: $data['products'][] = array(
+LINE: 101
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/latest', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/special', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/featured', $data);
+LINE: 123
+CODE: $data['products'][] = array(
+LINE: 108
+
+FILE: catalog/controller/information/contact.php
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 57
+LINE: 233
+CODE: if (isset($this->error['name'])) {
+LINE: 98
+CODE: if (!preg_match($this->config->get('config_mail_regexp'), $this->request->post['email'])) {
+LINE: 215
+
+FILE: catalog/controller/account/account.php
+CODE: $data['text_recurring'] = $this->language->get('text_recurring');
+LINE: 53
+
+FILE: catalog/controller/account/voucher.php
+CODE: if (isset($this->error['amount'])) {
+LINE: 123
+CODE: if (!isset($this->request->post['agree'])) {
+LINE: 267
+CODE: $data['telephone'] = $this->config->get('config_telephone');
+LINE: 170
+CODE: public function index() {
+LINE: 95
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 173
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 249
+CODE: $data['products'][] = array(
+LINE: 672
+CODE: $data['products'][] = array(
+LINE: 679
+CODE: $data['products'][] = array(
+LINE: 446
+CODE: $data['products'][] = array(
+LINE: 453
+CODE: public function index() {
+LINE: 176
+CODE: $data['model'] = $product_info['model'];
+LINE: 603
+CODE: if (empty($this->request->post['rating']) || $this->request->post['rating'] < 0 || $this->request->post['rating'] > 5) {
+LINE: 1205
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 7
+CODE: $data['button_grid'] = $this->language->get('button_grid');
+LINE: 169
+CODE: $data['categories'][] = array(
+LINE: 252
+CODE: $data['categories'][] = array(
+LINE: 257
+CODE: $data['products'][] = array(
+LINE: 676
+CODE: $data['products'][] = array(
+LINE: 683
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+CODE: $data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 63
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 408
+LINE: 517
+
+FILE: catalog/language/en-gb/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+
+FILE: catalog/controller/information/information.php
+CODE: $data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 46
+CODE: $data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 184
+CODE: $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 606
+----------------------------------------------------------------
+MOD: Phpner - Cool Email Template
+CODE: $data['products'] = array();
+LINE: 550
+CODE: $data['products'][] = array(
+LINE: 589
+CODE: $data['products'][] = array(
+LINE: 595
+----------------------------------------------------------------
+MOD: Phpner - phpner Store Template Left Menu
+
+FILE: admin/controller/common/column_left.php
+CODE: $catalog = array();
+LINE: 241
+
+FILE: admin/language/ru-ru/common/column_left.php
+CODE: <?php
+LINE: 33
+
+FILE: admin/language/en-gb/common/column_left.php
+CODE: <?php
+LINE: 23
+----------------------------------------------------------------
+MOD: Phpner HELPER - Module position
+
+FILE: catalog/controller/common/column_left.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/column_right.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_top.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_bottom.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/html.php
+CODE: $data['html'] = html_entity_decode($setting['module_description'][$this->config->get('config_language_id')]['description'], ENT_QUOTES, 'UTF-8');
+LINE: 6
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/phpner_p_special_timer.php
+CODE: $this->load->model('phpner_store/p_special_timer');
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Phpner - Preorder and Stock status
+CODE: public function index() {
+LINE: 100
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/en-gb/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/manufacturer.php
+CODE: <?php
+LINE: 6
+CODE: 'viewed'           => $query->row['viewed']
+LINE: 60
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 639
+CODE: $data['products'][] = array(
+LINE: 970
+CODE: $data['products'][] = array(
+LINE: 975
+CODE: $data['products'][] = array(
+LINE: 692
+CODE: 'price'       => $price,
+LINE: 722
+CODE: $data['products'][] = array(
+LINE: 460
+CODE: 'price'       => $price,
+LINE: 490
+CODE: $data['products'][] = array(
+LINE: 256
+CODE: 'price'       => $price,
+LINE: 286
+CODE: $data['products'][] = array(
+LINE: 686
+CODE: 'price'       => $price,
+LINE: 716
+CODE: $data['products'][] = array(
+LINE: 110
+CODE: 'price'       => $price,
+LINE: 128
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+
+FILE: catalog/controller/account/wishlist.php
+CODE: $data['products'][] = array(
+LINE: 115
+CODE: $data['products'][] = array(
+LINE: 120
+CODE: $data['products'][$product_id] = array(
+LINE: 129
+CODE: $data['products'][$product_id] = array(
+LINE: 134
+----------------------------------------------------------------
+MOD: OcStore 2.3.x track number
+CODE: $data['shipping_method'] = $order_info['shipping_method'];
+LINE: 567
+LINE: 953
+CODE: public function history() {
+LINE: 1572
+
+FILE: admin/model/sale/order.php
+CODE: $order_query->row['order_id'],
+LINE: 96
+CODE: $order_query->row['order_id'],
+LINE: 170
+CODE: <td><?php echo $text_reward; ?></td>
+LINE: 100
+CODE: <?php echo $footer; ?>
+LINE: 712
+
+FILE: catalog/model/account/order.php
+CODE: $order_query->row['order_id'],
+LINE: 46
+CODE: if ($order_info['invoice_no']) {
+LINE: 217
+
+FILE: catalog/view/theme/default/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 49
+
+FILE: catalog/view/theme/phpner_store/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 46
+----------------------------------------------------------------
+MOD: OCMod Editor
+
+FILE: admin/controller/extension/modification.php
+CODE: $data['refresh'] = $this->url->link('extension/modification/refresh', 'token=' . $this->session->data['token'] . $url, true);
+LINE: 656
+CODE: $data['modifications'][] = array(
+LINE: 678
+CODE: $data['tab_log'] = $this->language->get('tab_log');
+LINE: 720
+CODE: $this->response->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, true));
+LINE: 510
+
+FILE: admin/view/template/extension/modification.tpl
+CODE: <div class="pull-right">
+LINE: 5
+CODE: <?php if (!$modification['enabled']) { ?>
+LINE: 98
+----------------------------------------------------------------
+MOD: Octemplates demo buttons
+
+FILE: catalog/view/theme/phpner_store/template/common/header.tpl
+CODE: </header>
+LINE: 281
+----------------------------------------------------------------
+MOD: Octemplates - Categorywall sorting by sort_order
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Octemplates - Slideshow autoplay
+
+FILE: catalog/view/theme/phpner_store/template/extension/module/phpner_slideshow_plus.tpl
+CODE: autoPlay: false,
+LINE: 21
+----------------------------------------------------------------
+MOD: Octemplates - Megamenu sorting by sort_order
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Y.CMS for Opencart 2.0.x - 2.3.x
+CODE: // History
+LINE: 388
+CODE: </tfoot>
+LINE: 132
+REGEX: ~o.date_added, o.date_modified FROM~
+LINE: 175
+
+FILE: admin/language/en-gb/sale/order.php
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 8
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 14
+
+FILE: system/library/mail.php
+CODE: basename(urlencode($attachment))
+NOT FOUND - OPERATIONS ABORTED!
+CODE: 'shipping_code' => $result['shipping_code'],
+LINE: 220
+CODE: $data['button_add'] = $this->language->get('button_add');
+LINE: 256
+
+FILE: admin/view/template/sale/order_list.tpl
+CODE: <div class="pull-right">
+LINE: 7
+REGEX: ~(\<\/i\>\<\/)(button|a)(\>)(\<\/td\>)~
+LINE: 150
+CODE: $data['newsletter'] = $this->url->link('account/newsletter'
+LINE: 187
+
+FILE: catalog/controller/checkout/success.php
+CODE: if (isset($this->session->data['order_id'])) {
+LINE: 8
+
+FILE: catalog/view/theme/default/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 24
+
+FILE: catalog/view/theme/phpner_store/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 21
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+LINE: 93
+
+FILE: catalog/view/theme/phpner_store/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+NOT FOUND - OPERATIONS ABORTED!
+CODE: $('.alert').remove();
+LINE: 395
+LINE: 422
+LINE: 452
+LINE: 482
+LINE: 512
+LINE: 542
+LINE: 570
+LINE: 623
+LINE: 696
+CODE: $('#button-history').on('click', function() {
+LINE: 631
+----------------------------------------------------------------
+MOD: Local copy OCMOD
+
+FILE: admin/controller/extension/installer.php
+CODE: 'url'  => str_replace('&amp;', '&', $this->url->link('extension/installer/ftp', 'token=' . $this->session->data['token'],
+LINE: 131
+CODE: public function unzip() {
+LINE: 292
+----------------------------------------------------------------
+2019-06-17 16:02:16 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Phpner - Categorywall sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_category_wall.php
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 53
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 74
+----------------------------------------------------------------
+MOD: Phpner - Megamenu sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_megamenu.php
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 128
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 109
+----------------------------------------------------------------
+MOD: fondy_payment
+
+FILE: catalog/controller/checkout/checkout.php
+CODE: public function index() {
+LINE: 11
+
+FILE: catalog/view/theme/default/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+LINE: 26
+
+FILE: catalog/view/theme/phpner_store/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+MOD: Phpner - 3d level category module
+
+FILE: catalog/controller/extension/module/category.php
+CODE: public function index() {
+LINE: 2
+----------------------------------------------------------------
+MOD: Phpner - Advanced attributes settings
+
+FILE: catalog/controller/product/category.php
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 247
+
+FILE: catalog/controller/product/search.php
+CODE: $data['products'][] = array(
+LINE: 265
+CODE: $data['products'][] = array(
+LINE: 270
+
+FILE: catalog/controller/product/special.php
+CODE: $data['products'][] = array(
+LINE: 150
+CODE: $data['products'][] = array(
+LINE: 155
+
+FILE: catalog/controller/product/manufacturer.php
+CODE: $data['products'][] = array(
+LINE: 252
+CODE: $data['products'][] = array(
+LINE: 257
+----------------------------------------------------------------
+MOD: Phpner - Advanced options settings
+
+FILE: admin/controller/catalog/option.php
+CODE: protected function getForm() {
+LINE: 268
+CODE: public function autocomplete() {
+LINE: 469
+CODE: $option['type'] == 'image'
+LINE: 490
+CODE: if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'checkbox') {
+LINE: 524
+CODE: $json[] = array(
+LINE: 540
+
+FILE: admin/controller/catalog/product.php
+CODE: $data['entry_option'] = $this->language->get('entry_option');
+LINE: 674
+CODE: foreach ($product_images as $product_image) {
+LINE: 1348
+CODE: $data['product_options'] = array();
+LINE: 1224
+CODE: if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_model'])) {
+LINE: 1509
+CODE: 'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
+LINE: 1369
+CODE: $product_option_value_data[] = array(
+LINE: 1239
+LINE: 1576
+CODE: $product_option['type'] == 'checkbox'
+LINE: 1268
+
+FILE: admin/language/ru-ru/catalog/product.php
+CODE: <?php
+LINE: 7
+
+FILE: admin/language/ru-ru/catalog/option.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/model/catalog/product.php
+CODE: $product_option['type'] == 'image'
+LINE: 38
+LINE: 176
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 220
+CODE: $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape($product_image['image']) . "', sort_order = '" . (int)$product_image['sort_order'] . "'");
+LINE: 236
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 365
+CODE: public function copyProduct($product_id) {
+LINE: 332
+CODE: weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "'");
+LINE: 47
+LINE: 187
+CODE: $product_option_value_data[] = array(
+LINE: 581
+
+FILE: admin/view/template/catalog/option_form.tpl
+CODE: <optgroup label="<?php echo $text_file; ?>">
+LINE: 84
+CODE: if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image') {
+LINE: 160
+
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: $product_option['type'] == 'image'
+LINE: 588
+CODE: <td class="text-left"><?php echo $entry_subtract; ?></td>
+LINE: 602
+CODE: <td colspan="6"></td>
+LINE: 680
+CODE: html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
+LINE: 1280
+CODE: html += '        <td colspan="6"></td>';
+LINE: 1291
+CODE: <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
+LINE: 646
+CODE: html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
+LINE: 1384
+CODE: item['type'] == 'image'
+LINE: 1278
+CODE: <td class="text-left"><?php echo $entry_image; ?></td>
+LINE: 894
+CODE: <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
+LINE: 946
+CODE: html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+LINE: 1522
+
+FILE: admin/controller/sale/order.php
+CODE: public function info() {
+LINE: 764
+CODE: $data['direction'] = $this->language->get('direction');
+LINE: 1591
+LINE: 1829
+CODE: $option_data[] = array(
+LINE: 1034
+LINE: 1051
+LINE: 1770
+LINE: 1997
+CODE: $data['text_customer_detail'] = $this->language->get('text_customer_detail');
+LINE: 790
+
+FILE: admin/language/ru-ru/sale/order.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 163
+
+FILE: admin/view/template/sale/order_invoice.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 81
+
+FILE: admin/view/template/sale/order_shipping.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 97
+
+FILE: system/library/cart/cart.php
+CODE: pov.weight,
+LINE: 54
+LINE: 99
+CODE: if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
+LINE: 68
+CODE: foreach ($value as $product_option_value_id) {
+LINE: 128
+CODE: 'option_value_id'         => $option_value_query->row['option_value_id'],
+LINE: 104
+LINE: 170
+CODE: } elseif ($option_query->row['type'] == 'text' || $option_query->row['type'] == 'textarea' || $option_query->row['type'] == 'file' || $option_query->row['type'] == 'date' || $option_query->row['type'] == 'datetime' || $option_query->row['type'] == 'time') {
+LINE: 245
+
+FILE: catalog/controller/account/order.php
+CODE: $data['text_order_detail'] = $this->language->get('text_order_detail');
+LINE: 168
+CODE: $option_data[] = array(
+LINE: 323
+
+FILE: catalog/language/ru-ru/account/order.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/checkout/cart.php
+CODE: $data['button_checkout'] = $this->language->get('button_checkout');
+LINE: 43
+CODE: $option_data[] = array(
+LINE: 125
+
+FILE: catalog/language/ru-ru/checkout/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/product/product.php
+CODE: public function index() {
+LINE: 101
+CODE: public function index() {
+LINE: 110
+CODE: if ($product_info) {
+LINE: 276
+CODE: if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+LINE: 467
+CODE: $product_option_value_data[] = array(
+LINE: 487
+CODE: $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
+LINE: 424
+CODE: public function index() {
+LINE: 162
+
+FILE: catalog/language/ru-ru/product/product.php
+CODE: <?php
+LINE: 10
+CODE: $data['products'][] = array(
+LINE: 279
+CODE: $data['products'][] = array(
+LINE: 284
+CODE: $data['products'][] = array(
+LINE: 302
+CODE: $data['products'][] = array(
+LINE: 307
+CODE: $data['products'][] = array(
+LINE: 187
+CODE: $data['products'][] = array(
+LINE: 192
+CODE: $data['products'][] = array(
+LINE: 289
+CODE: $data['products'][] = array(
+LINE: 294
+
+FILE: catalog/model/catalog/product.php
+CODE: public function getProductImages($product_id) {
+LINE: 404
+CODE: $product_option_value_data[] = array(
+LINE: 354
+CODE: public function getProductOptions($product_id) {
+LINE: 337
+
+FILE: catalog/model/checkout/order.php
+CODE: `type` = '" . $this->db->escape($option['type']) . "'
+LINE: 15
+LINE: 63
+CODE: $data['title'] = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_id);
+LINE: 399
+CODE: $option_data[] = array(
+LINE: 549
+
+FILE: catalog/language/ru-ru/mail/order.php
+CODE: <?php
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Blog
+
+FILE: catalog/controller/startup/seo_url.php
+CODE: if ($url[0] == 'manufacturer_id') {
+LINE: 64
+CODE: if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+LINE: 72
+CODE: } elseif (isset($this->request->get['manufacturer_id'])) {
+LINE: 112
+CODE: if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+LINE: 132
+CODE: } elseif ($key == 'path') {
+LINE: 187
+
+FILE: catalog/controller/startup/seo_pro.php
+CODE: } elseif (count($url) > 1) {
+LINE: 90
+CODE: } elseif (isset($this->request->get['path'])) {
+LINE: 127
+CODE: case 'product/product/review':
+LINE: 245
+CODE: case 'information_id':
+LINE: 284
+CODE: case 'path':
+LINE: 312
+CODE: private function validate() {
+LINE: 542
+
+FILE: catalog/controller/information/sitemap.php
+CODE: $data['categories'] = array();
+LINE: 98
+
+FILE: catalog/controller/common/header.php
+CODE: $data['text_home'] = $this->language->get('text_home');
+LINE: 70
+----------------------------------------------------------------
+MOD: Phpner - Fast Order
+
+FILE: system/library/url.php
+CODE: public function link($route, $args = '', $secure = false) {
+LINE: 27
+----------------------------------------------------------------
+MOD: Phpner - Live search
+CODE: public function index() {
+LINE: 2
+
+FILE: catalog/controller/common/search.php
+CODE: if (isset($this->request->get['search'])) {
+LINE: 29
+----------------------------------------------------------------
+MOD: Phpner - Megamenu
+CODE: $data['language'] = $this->load->controller('common/language');
+LINE: 206
+----------------------------------------------------------------
+MOD: Phpner - Page Bar
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 55
+
+FILE: catalog/controller/product/compare.php
+CODE: public function add() {
+LINE: 163
+CODE: if (count($this->session->data['compare']) >= 4) {
+LINE: 184
+----------------------------------------------------------------
+MOD: Phpner - Call Phone
+CODE: public function index() {
+LINE: 9
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Cart
+
+FILE: catalog/controller/common/cart.php
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+----------------------------------------------------------------
+MOD: Phpner - Popup Found Cheaper
+
+FILE: admin/controller/common/header.php
+CODE: public function index() {
+LINE: 11
+CODE: $data['alerts'] = $customer_total + $product_total + $review_total + $return_total + $affiliate_total;
+LINE: 134
+
+FILE: admin/view/template/common/header.tpl
+CODE: <li class="dropdown-header"><?php echo $text_order; ?></li>
+LINE: 52
+
+FILE: catalog/language/en-gb/product/product.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/product/product.php
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 470
+----------------------------------------------------------------
+MOD: Phpner - Popup product options
+CODE: public function index() {
+LINE: 7
+CODE: $json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
+LINE: 410
+----------------------------------------------------------------
+MOD: Phpner - Popup Purchase
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 480
+----------------------------------------------------------------
+MOD: Phpner - Popup Subscribe
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Product View
+
+FILE: catalog/language/ru-ru/ru-ru.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/uk-ua/uk-ua.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/en-gb/en-gb.php
+CODE: <?php
+LINE: 3
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 166
+CODE: public function Index() {
+LINE: 94
+CODE: public function Index() {
+LINE: 6
+CODE: $manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);
+LINE: 124
+
+FILE: catalog/controller/extension/module/latest.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/special.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/bestseller.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/featured.php
+CODE: public function index($setting) {
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Auto Related Products
+CODE: $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+LINE: 658
+CODE: if ($result['image']) {
+LINE: 702
+CODE: 'thumb'       => $image,
+LINE: 734
+----------------------------------------------------------------
+MOD: Phpner - Product Filter
+CODE: public function addProduct($data) {
+LINE: 758
+CODE: public function deleteProduct($product_id) {
+LINE: 1131
+CODE: $product_id = $this->db->getLastId();
+LINE: 764
+CODE: public function editProduct($product_id, $data) {
+LINE: 901
+CODE: public function index() {
+LINE: 7
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 34
+CODE: $sort = $this->request->get['sort'];
+LINE: 39
+CODE: $order = $this->request->get['order'];
+LINE: 49
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+LINE: 106
+CODE: $data['categories'] = array();
+LINE: 216
+CODE: $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'canonical');
+LINE: 484
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'prev');
+LINE: 486
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page - 1), true), 'prev');
+LINE: 488
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1), true), 'next');
+LINE: 492
+CODE: public function info() {
+LINE: 74
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 97
+CODE: $sort = $this->request->get['sort'];
+LINE: 102
+CODE: $order = $this->request->get['order'];
+LINE: 112
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'] = array();
+LINE: 245
+CODE: $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] .  $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'canonical');
+LINE: 485
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'prev');
+LINE: 487
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page - 1), true), 'prev');
+LINE: 489
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page + 1), true), 'next');
+LINE: 493
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 243
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 255
+CODE: $sort_data = array(
+LINE: 159
+LINE: 214
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
+LINE: 93
+LINE: 569
+CODE: $sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
+LINE: 186
+LINE: 239
+CODE: $sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+LINE: 194
+CODE: $sql .= " ORDER BY " . $data['sort'];
+LINE: 202
+LINE: 259
+CODE: $sql .= " ORDER BY p.sort_order";
+LINE: 211
+LINE: 274
+CODE: $this->url->addRewrite($this);
+LINE: 391
+CODE: case 'manufacturer_id':
+LINE: 636
+CODE: case 'path':
+LINE: 707
+----------------------------------------------------------------
+MOD: Phpner - Product reviews
+
+FILE: admin/controller/catalog/review.php
+CODE: protected function getForm() {
+LINE: 427
+CODE: if (isset($this->request->post['product_id'])) {
+LINE: 571
+
+FILE: admin/model/catalog/review.php
+CODE: public function addReview($data) {
+LINE: 2
+CODE: public function editReview($review_id, $data) {
+LINE: 30
+CODE: public function getReview($review_id) {
+LINE: 62
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "review WHERE review_id = '" . (int)$review_id . "'");
+LINE: 67
+
+FILE: admin/view/template/catalog/review_form.tpl
+CODE: <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-review" class="form-horizontal">
+LINE: 62
+CODE: public function index() {
+LINE: 175
+CODE: $data['text_no_reviews'] = $this->language->get('text_no_reviews');
+LINE: 886
+CODE: $data['reviews'][] = array(
+LINE: 920
+CODE: $data['reviews'][] = array(
+LINE: 931
+CODE: public function review() {
+LINE: 871
+CODE: public function review() {
+LINE: 902
+
+FILE: catalog/model/catalog/review.php
+CODE: $review_id = $this->db->getLastId();
+LINE: 14
+CODE: public function getReviewsByProductId($product_id, $start = 0, $limit = 20) {
+LINE: 59
+----------------------------------------------------------------
+MOD: Phpner - Product stickers
+CODE: $this->load->model('design/layout');
+LINE: 1473
+
+FILE: admin/language/en-gb/catalog/product.php
+CODE: <?php
+LINE: 3
+CODE: <?php
+LINE: 3
+CODE: if (isset($data['image'])) {
+LINE: 773
+LINE: 918
+CODE: $data['product_attribute'] = $this->getProductAttributes($product_id);
+LINE: 1131
+CODE: <div class="tab-pane" id="tab-data">
+LINE: 122
+CODE: $data['products'][] = array(
+LINE: 634
+CODE: $data['products'][] = array(
+LINE: 637
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+LINE: 646
+CODE: $data['products'][] = array(
+LINE: 649
+CODE: $data['products'][] = array(
+LINE: 785
+CODE: $data['products'][] = array(
+LINE: 788
+CODE: $data['products'][] = array(
+LINE: 435
+CODE: $data['products'][] = array(
+LINE: 438
+CODE: $data['products'][] = array(
+LINE: 231
+CODE: $data['products'][] = array(
+LINE: 234
+CODE: $data['model'] = $product_info['model'];
+LINE: 520
+CODE: 'product_id'       => $query->row['product_id'],
+LINE: 14
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 95
+CODE: $data['products'][] = array(
+LINE: 98
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+----------------------------------------------------------------
+MOD: Phpner - Product tabs
+CODE: $this->load->model('design/layout');
+LINE: 1510
+CODE: <?php
+LINE: 7
+CODE: <?php
+LINE: 7
+CODE: if (isset($data['product_attribute'])) {
+LINE: 802
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
+LINE: 968
+LINE: 1209
+CODE: public function getProductAttributes($product_id) {
+LINE: 1402
+CODE: <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
+LINE: 35
+CODE: <div class="tab-pane" id="tab-option">
+LINE: 630
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 554
+----------------------------------------------------------------
+MOD: Phpner - Recently Viewed Products
+CODE: $this->model_catalog_product->updateViewed($this->request->get['product_id']);
+LINE: 882
+----------------------------------------------------------------
+MOD: Phpner - phpnerStore Template 1.0.0
+CODE: 'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
+LINE: 56
+CODE: public function index() {
+LINE: 10
+CODE: public function info() {
+LINE: 84
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/bestseller', $data);
+LINE: 113
+CODE: $data['products'][] = array(
+LINE: 101
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/latest', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/special', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/featured', $data);
+LINE: 123
+CODE: $data['products'][] = array(
+LINE: 108
+
+FILE: catalog/controller/information/contact.php
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 57
+LINE: 233
+CODE: if (isset($this->error['name'])) {
+LINE: 98
+CODE: if (!preg_match($this->config->get('config_mail_regexp'), $this->request->post['email'])) {
+LINE: 215
+
+FILE: catalog/controller/account/account.php
+CODE: $data['text_recurring'] = $this->language->get('text_recurring');
+LINE: 53
+
+FILE: catalog/controller/account/voucher.php
+CODE: if (isset($this->error['amount'])) {
+LINE: 123
+CODE: if (!isset($this->request->post['agree'])) {
+LINE: 267
+CODE: $data['telephone'] = $this->config->get('config_telephone');
+LINE: 170
+CODE: public function index() {
+LINE: 95
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 173
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 249
+CODE: $data['products'][] = array(
+LINE: 672
+CODE: $data['products'][] = array(
+LINE: 679
+CODE: $data['products'][] = array(
+LINE: 446
+CODE: $data['products'][] = array(
+LINE: 453
+CODE: public function index() {
+LINE: 176
+CODE: $data['model'] = $product_info['model'];
+LINE: 603
+CODE: if (empty($this->request->post['rating']) || $this->request->post['rating'] < 0 || $this->request->post['rating'] > 5) {
+LINE: 1205
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 7
+CODE: $data['button_grid'] = $this->language->get('button_grid');
+LINE: 169
+CODE: $data['categories'][] = array(
+LINE: 252
+CODE: $data['categories'][] = array(
+LINE: 257
+CODE: $data['products'][] = array(
+LINE: 676
+CODE: $data['products'][] = array(
+LINE: 683
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+CODE: $data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 63
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 408
+LINE: 517
+
+FILE: catalog/language/en-gb/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+
+FILE: catalog/controller/information/information.php
+CODE: $data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 46
+CODE: $data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 184
+CODE: $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 606
+----------------------------------------------------------------
+MOD: Phpner - Cool Email Template
+CODE: $data['products'] = array();
+LINE: 550
+CODE: $data['products'][] = array(
+LINE: 589
+CODE: $data['products'][] = array(
+LINE: 595
+----------------------------------------------------------------
+MOD: Phpner - phpner Store Template Left Menu
+
+FILE: admin/controller/common/column_left.php
+CODE: $catalog = array();
+LINE: 241
+
+FILE: admin/language/ru-ru/common/column_left.php
+CODE: <?php
+LINE: 33
+
+FILE: admin/language/en-gb/common/column_left.php
+CODE: <?php
+LINE: 23
+----------------------------------------------------------------
+MOD: Phpner HELPER - Module position
+
+FILE: catalog/controller/common/column_left.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/column_right.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_top.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_bottom.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/html.php
+CODE: $data['html'] = html_entity_decode($setting['module_description'][$this->config->get('config_language_id')]['description'], ENT_QUOTES, 'UTF-8');
+LINE: 6
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/phpner_p_special_timer.php
+CODE: $this->load->model('phpner/p_special_timer');
+LINE: 27
+----------------------------------------------------------------
+MOD: Phpner - Preorder and Stock status
+CODE: public function index() {
+LINE: 100
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/en-gb/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/manufacturer.php
+CODE: <?php
+LINE: 6
+CODE: 'viewed'           => $query->row['viewed']
+LINE: 60
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 639
+CODE: $data['products'][] = array(
+LINE: 970
+CODE: $data['products'][] = array(
+LINE: 975
+CODE: $data['products'][] = array(
+LINE: 692
+CODE: 'price'       => $price,
+LINE: 722
+CODE: $data['products'][] = array(
+LINE: 460
+CODE: 'price'       => $price,
+LINE: 490
+CODE: $data['products'][] = array(
+LINE: 256
+CODE: 'price'       => $price,
+LINE: 286
+CODE: $data['products'][] = array(
+LINE: 686
+CODE: 'price'       => $price,
+LINE: 716
+CODE: $data['products'][] = array(
+LINE: 110
+CODE: 'price'       => $price,
+LINE: 128
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+
+FILE: catalog/controller/account/wishlist.php
+CODE: $data['products'][] = array(
+LINE: 115
+CODE: $data['products'][] = array(
+LINE: 120
+CODE: $data['products'][$product_id] = array(
+LINE: 129
+CODE: $data['products'][$product_id] = array(
+LINE: 134
+----------------------------------------------------------------
+MOD: OcStore 2.3.x track number
+CODE: $data['shipping_method'] = $order_info['shipping_method'];
+LINE: 567
+LINE: 953
+CODE: public function history() {
+LINE: 1572
+
+FILE: admin/model/sale/order.php
+CODE: $order_query->row['order_id'],
+LINE: 96
+CODE: $order_query->row['order_id'],
+LINE: 170
+CODE: <td><?php echo $text_reward; ?></td>
+LINE: 100
+CODE: <?php echo $footer; ?>
+LINE: 712
+
+FILE: catalog/model/account/order.php
+CODE: $order_query->row['order_id'],
+LINE: 46
+CODE: if ($order_info['invoice_no']) {
+LINE: 217
+
+FILE: catalog/view/theme/default/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 49
+
+FILE: catalog/view/theme/phpner_store/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 46
+----------------------------------------------------------------
+MOD: OCMod Editor
+
+FILE: admin/controller/extension/modification.php
+CODE: $data['refresh'] = $this->url->link('extension/modification/refresh', 'token=' . $this->session->data['token'] . $url, true);
+LINE: 656
+CODE: $data['modifications'][] = array(
+LINE: 678
+CODE: $data['tab_log'] = $this->language->get('tab_log');
+LINE: 720
+CODE: $this->response->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, true));
+LINE: 510
+
+FILE: admin/view/template/extension/modification.tpl
+CODE: <div class="pull-right">
+LINE: 5
+CODE: <?php if (!$modification['enabled']) { ?>
+LINE: 98
+----------------------------------------------------------------
+MOD: Octemplates demo buttons
+
+FILE: catalog/view/theme/phpner_store/template/common/header.tpl
+CODE: </header>
+LINE: 281
+----------------------------------------------------------------
+MOD: Octemplates - Categorywall sorting by sort_order
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Octemplates - Slideshow autoplay
+
+FILE: catalog/view/theme/phpner_store/template/extension/module/phpner_slideshow_plus.tpl
+CODE: autoPlay: false,
+LINE: 21
+----------------------------------------------------------------
+MOD: Octemplates - Megamenu sorting by sort_order
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Y.CMS for Opencart 2.0.x - 2.3.x
+CODE: // History
+LINE: 388
+CODE: </tfoot>
+LINE: 132
+REGEX: ~o.date_added, o.date_modified FROM~
+LINE: 175
+
+FILE: admin/language/en-gb/sale/order.php
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 8
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 14
+
+FILE: system/library/mail.php
+CODE: basename(urlencode($attachment))
+NOT FOUND - OPERATIONS ABORTED!
+CODE: 'shipping_code' => $result['shipping_code'],
+LINE: 220
+CODE: $data['button_add'] = $this->language->get('button_add');
+LINE: 256
+
+FILE: admin/view/template/sale/order_list.tpl
+CODE: <div class="pull-right">
+LINE: 7
+REGEX: ~(\<\/i\>\<\/)(button|a)(\>)(\<\/td\>)~
+LINE: 150
+CODE: $data['newsletter'] = $this->url->link('account/newsletter'
+LINE: 187
+
+FILE: catalog/controller/checkout/success.php
+CODE: if (isset($this->session->data['order_id'])) {
+LINE: 8
+
+FILE: catalog/view/theme/default/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 24
+
+FILE: catalog/view/theme/phpner_store/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 21
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+LINE: 93
+
+FILE: catalog/view/theme/phpner_store/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+NOT FOUND - OPERATIONS ABORTED!
+CODE: $('.alert').remove();
+LINE: 395
+LINE: 422
+LINE: 452
+LINE: 482
+LINE: 512
+LINE: 542
+LINE: 570
+LINE: 623
+LINE: 696
+CODE: $('#button-history').on('click', function() {
+LINE: 631
+----------------------------------------------------------------
+MOD: Local copy OCMOD
+
+FILE: admin/controller/extension/installer.php
+CODE: 'url'  => str_replace('&amp;', '&', $this->url->link('extension/installer/ftp', 'token=' . $this->session->data['token'],
+LINE: 131
+CODE: public function unzip() {
+LINE: 292
+----------------------------------------------------------------
+2019-06-17 16:04:05 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Phpner - Categorywall sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_category_wall.php
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 53
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 74
+----------------------------------------------------------------
+MOD: Phpner - Megamenu sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_megamenu.php
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 128
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 109
+----------------------------------------------------------------
+MOD: fondy_payment
+
+FILE: catalog/controller/checkout/checkout.php
+CODE: public function index() {
+LINE: 11
+
+FILE: catalog/view/theme/default/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+LINE: 26
+
+FILE: catalog/view/theme/phpner_store/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+MOD: Phpner - 3d level category module
+
+FILE: catalog/controller/extension/module/category.php
+CODE: public function index() {
+LINE: 2
+----------------------------------------------------------------
+MOD: Phpner - Advanced attributes settings
+
+FILE: catalog/controller/product/category.php
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 247
+
+FILE: catalog/controller/product/search.php
+CODE: $data['products'][] = array(
+LINE: 265
+CODE: $data['products'][] = array(
+LINE: 270
+
+FILE: catalog/controller/product/special.php
+CODE: $data['products'][] = array(
+LINE: 150
+CODE: $data['products'][] = array(
+LINE: 155
+
+FILE: catalog/controller/product/manufacturer.php
+CODE: $data['products'][] = array(
+LINE: 252
+CODE: $data['products'][] = array(
+LINE: 257
+----------------------------------------------------------------
+MOD: Phpner - Advanced options settings
+
+FILE: admin/controller/catalog/option.php
+CODE: protected function getForm() {
+LINE: 268
+CODE: public function autocomplete() {
+LINE: 469
+CODE: $option['type'] == 'image'
+LINE: 490
+CODE: if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'checkbox') {
+LINE: 524
+CODE: $json[] = array(
+LINE: 540
+
+FILE: admin/controller/catalog/product.php
+CODE: $data['entry_option'] = $this->language->get('entry_option');
+LINE: 674
+CODE: foreach ($product_images as $product_image) {
+LINE: 1348
+CODE: $data['product_options'] = array();
+LINE: 1224
+CODE: if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_model'])) {
+LINE: 1509
+CODE: 'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
+LINE: 1369
+CODE: $product_option_value_data[] = array(
+LINE: 1239
+LINE: 1576
+CODE: $product_option['type'] == 'checkbox'
+LINE: 1268
+
+FILE: admin/language/ru-ru/catalog/product.php
+CODE: <?php
+LINE: 7
+
+FILE: admin/language/ru-ru/catalog/option.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/model/catalog/product.php
+CODE: $product_option['type'] == 'image'
+LINE: 38
+LINE: 176
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 220
+CODE: $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape($product_image['image']) . "', sort_order = '" . (int)$product_image['sort_order'] . "'");
+LINE: 236
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 365
+CODE: public function copyProduct($product_id) {
+LINE: 332
+CODE: weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "'");
+LINE: 47
+LINE: 187
+CODE: $product_option_value_data[] = array(
+LINE: 581
+
+FILE: admin/view/template/catalog/option_form.tpl
+CODE: <optgroup label="<?php echo $text_file; ?>">
+LINE: 84
+CODE: if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image') {
+LINE: 160
+
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: $product_option['type'] == 'image'
+LINE: 588
+CODE: <td class="text-left"><?php echo $entry_subtract; ?></td>
+LINE: 602
+CODE: <td colspan="6"></td>
+LINE: 680
+CODE: html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
+LINE: 1280
+CODE: html += '        <td colspan="6"></td>';
+LINE: 1291
+CODE: <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
+LINE: 646
+CODE: html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
+LINE: 1384
+CODE: item['type'] == 'image'
+LINE: 1278
+CODE: <td class="text-left"><?php echo $entry_image; ?></td>
+LINE: 894
+CODE: <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
+LINE: 946
+CODE: html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+LINE: 1522
+
+FILE: admin/controller/sale/order.php
+CODE: public function info() {
+LINE: 764
+CODE: $data['direction'] = $this->language->get('direction');
+LINE: 1591
+LINE: 1829
+CODE: $option_data[] = array(
+LINE: 1034
+LINE: 1051
+LINE: 1770
+LINE: 1997
+CODE: $data['text_customer_detail'] = $this->language->get('text_customer_detail');
+LINE: 790
+
+FILE: admin/language/ru-ru/sale/order.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 163
+
+FILE: admin/view/template/sale/order_invoice.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 81
+
+FILE: admin/view/template/sale/order_shipping.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 97
+
+FILE: system/library/cart/cart.php
+CODE: pov.weight,
+LINE: 54
+LINE: 99
+CODE: if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
+LINE: 68
+CODE: foreach ($value as $product_option_value_id) {
+LINE: 128
+CODE: 'option_value_id'         => $option_value_query->row['option_value_id'],
+LINE: 104
+LINE: 170
+CODE: } elseif ($option_query->row['type'] == 'text' || $option_query->row['type'] == 'textarea' || $option_query->row['type'] == 'file' || $option_query->row['type'] == 'date' || $option_query->row['type'] == 'datetime' || $option_query->row['type'] == 'time') {
+LINE: 245
+
+FILE: catalog/controller/account/order.php
+CODE: $data['text_order_detail'] = $this->language->get('text_order_detail');
+LINE: 168
+CODE: $option_data[] = array(
+LINE: 323
+
+FILE: catalog/language/ru-ru/account/order.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/checkout/cart.php
+CODE: $data['button_checkout'] = $this->language->get('button_checkout');
+LINE: 43
+CODE: $option_data[] = array(
+LINE: 125
+
+FILE: catalog/language/ru-ru/checkout/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/product/product.php
+CODE: public function index() {
+LINE: 101
+CODE: public function index() {
+LINE: 110
+CODE: if ($product_info) {
+LINE: 276
+CODE: if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+LINE: 467
+CODE: $product_option_value_data[] = array(
+LINE: 487
+CODE: $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
+LINE: 424
+CODE: public function index() {
+LINE: 162
+
+FILE: catalog/language/ru-ru/product/product.php
+CODE: <?php
+LINE: 10
+CODE: $data['products'][] = array(
+LINE: 279
+CODE: $data['products'][] = array(
+LINE: 284
+CODE: $data['products'][] = array(
+LINE: 302
+CODE: $data['products'][] = array(
+LINE: 307
+CODE: $data['products'][] = array(
+LINE: 187
+CODE: $data['products'][] = array(
+LINE: 192
+CODE: $data['products'][] = array(
+LINE: 289
+CODE: $data['products'][] = array(
+LINE: 294
+
+FILE: catalog/model/catalog/product.php
+CODE: public function getProductImages($product_id) {
+LINE: 404
+CODE: $product_option_value_data[] = array(
+LINE: 354
+CODE: public function getProductOptions($product_id) {
+LINE: 337
+
+FILE: catalog/model/checkout/order.php
+CODE: `type` = '" . $this->db->escape($option['type']) . "'
+LINE: 15
+LINE: 63
+CODE: $data['title'] = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_id);
+LINE: 399
+CODE: $option_data[] = array(
+LINE: 549
+
+FILE: catalog/language/ru-ru/mail/order.php
+CODE: <?php
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Blog
+
+FILE: catalog/controller/startup/seo_url.php
+CODE: if ($url[0] == 'manufacturer_id') {
+LINE: 64
+CODE: if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+LINE: 72
+CODE: } elseif (isset($this->request->get['manufacturer_id'])) {
+LINE: 112
+CODE: if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+LINE: 132
+CODE: } elseif ($key == 'path') {
+LINE: 187
+
+FILE: catalog/controller/startup/seo_pro.php
+CODE: } elseif (count($url) > 1) {
+LINE: 90
+CODE: } elseif (isset($this->request->get['path'])) {
+LINE: 127
+CODE: case 'product/product/review':
+LINE: 245
+CODE: case 'information_id':
+LINE: 284
+CODE: case 'path':
+LINE: 312
+CODE: private function validate() {
+LINE: 542
+
+FILE: catalog/controller/information/sitemap.php
+CODE: $data['categories'] = array();
+LINE: 98
+
+FILE: catalog/controller/common/header.php
+CODE: $data['text_home'] = $this->language->get('text_home');
+LINE: 70
+----------------------------------------------------------------
+MOD: Phpner - Fast Order
+
+FILE: system/library/url.php
+CODE: public function link($route, $args = '', $secure = false) {
+LINE: 27
+----------------------------------------------------------------
+MOD: Phpner - Live search
+CODE: public function index() {
+LINE: 2
+
+FILE: catalog/controller/common/search.php
+CODE: if (isset($this->request->get['search'])) {
+LINE: 29
+----------------------------------------------------------------
+MOD: Phpner - Megamenu
+CODE: $data['language'] = $this->load->controller('common/language');
+LINE: 206
+----------------------------------------------------------------
+MOD: Phpner - Page Bar
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 55
+
+FILE: catalog/controller/product/compare.php
+CODE: public function add() {
+LINE: 163
+CODE: if (count($this->session->data['compare']) >= 4) {
+LINE: 184
+----------------------------------------------------------------
+MOD: Phpner - Call Phone
+CODE: public function index() {
+LINE: 9
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Cart
+
+FILE: catalog/controller/common/cart.php
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+----------------------------------------------------------------
+MOD: Phpner - Popup Found Cheaper
+
+FILE: admin/controller/common/header.php
+CODE: public function index() {
+LINE: 11
+CODE: $data['alerts'] = $customer_total + $product_total + $review_total + $return_total + $affiliate_total;
+LINE: 134
+
+FILE: admin/view/template/common/header.tpl
+CODE: <li class="dropdown-header"><?php echo $text_order; ?></li>
+LINE: 52
+
+FILE: catalog/language/en-gb/product/product.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/product/product.php
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 470
+----------------------------------------------------------------
+MOD: Phpner - Popup product options
+CODE: public function index() {
+LINE: 7
+CODE: $json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
+LINE: 410
+----------------------------------------------------------------
+MOD: Phpner - Popup Purchase
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 480
+----------------------------------------------------------------
+MOD: Phpner - Popup Subscribe
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Product View
+
+FILE: catalog/language/ru-ru/ru-ru.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/uk-ua/uk-ua.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/en-gb/en-gb.php
+CODE: <?php
+LINE: 3
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 166
+CODE: public function Index() {
+LINE: 94
+CODE: public function Index() {
+LINE: 6
+CODE: $manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);
+LINE: 124
+
+FILE: catalog/controller/extension/module/latest.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/special.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/bestseller.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/featured.php
+CODE: public function index($setting) {
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Auto Related Products
+CODE: $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+LINE: 658
+CODE: if ($result['image']) {
+LINE: 702
+CODE: 'thumb'       => $image,
+LINE: 734
+----------------------------------------------------------------
+MOD: Phpner - Product Filter
+CODE: public function addProduct($data) {
+LINE: 758
+CODE: public function deleteProduct($product_id) {
+LINE: 1131
+CODE: $product_id = $this->db->getLastId();
+LINE: 764
+CODE: public function editProduct($product_id, $data) {
+LINE: 901
+CODE: public function index() {
+LINE: 7
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 34
+CODE: $sort = $this->request->get['sort'];
+LINE: 39
+CODE: $order = $this->request->get['order'];
+LINE: 49
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+LINE: 106
+CODE: $data['categories'] = array();
+LINE: 216
+CODE: $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'canonical');
+LINE: 484
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'prev');
+LINE: 486
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page - 1), true), 'prev');
+LINE: 488
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1), true), 'next');
+LINE: 492
+CODE: public function info() {
+LINE: 74
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 97
+CODE: $sort = $this->request->get['sort'];
+LINE: 102
+CODE: $order = $this->request->get['order'];
+LINE: 112
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'] = array();
+LINE: 245
+CODE: $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] .  $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'canonical');
+LINE: 485
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'prev');
+LINE: 487
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page - 1), true), 'prev');
+LINE: 489
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page + 1), true), 'next');
+LINE: 493
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 243
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 255
+CODE: $sort_data = array(
+LINE: 159
+LINE: 214
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
+LINE: 93
+LINE: 569
+CODE: $sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
+LINE: 186
+LINE: 239
+CODE: $sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+LINE: 194
+CODE: $sql .= " ORDER BY " . $data['sort'];
+LINE: 202
+LINE: 259
+CODE: $sql .= " ORDER BY p.sort_order";
+LINE: 211
+LINE: 274
+CODE: $this->url->addRewrite($this);
+LINE: 391
+CODE: case 'manufacturer_id':
+LINE: 636
+CODE: case 'path':
+LINE: 707
+----------------------------------------------------------------
+MOD: Phpner - Product reviews
+
+FILE: admin/controller/catalog/review.php
+CODE: protected function getForm() {
+LINE: 427
+CODE: if (isset($this->request->post['product_id'])) {
+LINE: 571
+
+FILE: admin/model/catalog/review.php
+CODE: public function addReview($data) {
+LINE: 2
+CODE: public function editReview($review_id, $data) {
+LINE: 30
+CODE: public function getReview($review_id) {
+LINE: 62
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "review WHERE review_id = '" . (int)$review_id . "'");
+LINE: 67
+
+FILE: admin/view/template/catalog/review_form.tpl
+CODE: <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-review" class="form-horizontal">
+LINE: 62
+CODE: public function index() {
+LINE: 175
+CODE: $data['text_no_reviews'] = $this->language->get('text_no_reviews');
+LINE: 886
+CODE: $data['reviews'][] = array(
+LINE: 920
+CODE: $data['reviews'][] = array(
+LINE: 931
+CODE: public function review() {
+LINE: 871
+CODE: public function review() {
+LINE: 902
+
+FILE: catalog/model/catalog/review.php
+CODE: $review_id = $this->db->getLastId();
+LINE: 14
+CODE: public function getReviewsByProductId($product_id, $start = 0, $limit = 20) {
+LINE: 59
+----------------------------------------------------------------
+MOD: Phpner - Product stickers
+CODE: $this->load->model('design/layout');
+LINE: 1473
+
+FILE: admin/language/en-gb/catalog/product.php
+CODE: <?php
+LINE: 3
+CODE: <?php
+LINE: 3
+CODE: if (isset($data['image'])) {
+LINE: 773
+LINE: 918
+CODE: $data['product_attribute'] = $this->getProductAttributes($product_id);
+LINE: 1131
+CODE: <div class="tab-pane" id="tab-data">
+LINE: 122
+CODE: $data['products'][] = array(
+LINE: 634
+CODE: $data['products'][] = array(
+LINE: 637
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+LINE: 646
+CODE: $data['products'][] = array(
+LINE: 649
+CODE: $data['products'][] = array(
+LINE: 785
+CODE: $data['products'][] = array(
+LINE: 788
+CODE: $data['products'][] = array(
+LINE: 435
+CODE: $data['products'][] = array(
+LINE: 438
+CODE: $data['products'][] = array(
+LINE: 231
+CODE: $data['products'][] = array(
+LINE: 234
+CODE: $data['model'] = $product_info['model'];
+LINE: 520
+CODE: 'product_id'       => $query->row['product_id'],
+LINE: 14
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 95
+CODE: $data['products'][] = array(
+LINE: 98
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+----------------------------------------------------------------
+MOD: Phpner - Product tabs
+CODE: $this->load->model('design/layout');
+LINE: 1510
+CODE: <?php
+LINE: 7
+CODE: <?php
+LINE: 7
+CODE: if (isset($data['product_attribute'])) {
+LINE: 802
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
+LINE: 968
+LINE: 1209
+CODE: public function getProductAttributes($product_id) {
+LINE: 1402
+CODE: <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
+LINE: 35
+CODE: <div class="tab-pane" id="tab-option">
+LINE: 630
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 554
+----------------------------------------------------------------
+MOD: Phpner - Recently Viewed Products
+CODE: $this->model_catalog_product->updateViewed($this->request->get['product_id']);
+LINE: 882
+----------------------------------------------------------------
+MOD: Phpner - phpnerStore Template 1.0.0
+CODE: 'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
+LINE: 56
+CODE: public function index() {
+LINE: 10
+CODE: public function info() {
+LINE: 84
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/bestseller', $data);
+LINE: 113
+CODE: $data['products'][] = array(
+LINE: 101
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/latest', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/special', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/featured', $data);
+LINE: 123
+CODE: $data['products'][] = array(
+LINE: 108
+
+FILE: catalog/controller/information/contact.php
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 57
+LINE: 233
+CODE: if (isset($this->error['name'])) {
+LINE: 98
+CODE: if (!preg_match($this->config->get('config_mail_regexp'), $this->request->post['email'])) {
+LINE: 215
+
+FILE: catalog/controller/account/account.php
+CODE: $data['text_recurring'] = $this->language->get('text_recurring');
+LINE: 53
+
+FILE: catalog/controller/account/voucher.php
+CODE: if (isset($this->error['amount'])) {
+LINE: 123
+CODE: if (!isset($this->request->post['agree'])) {
+LINE: 267
+CODE: $data['telephone'] = $this->config->get('config_telephone');
+LINE: 170
+CODE: public function index() {
+LINE: 95
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 173
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 249
+CODE: $data['products'][] = array(
+LINE: 672
+CODE: $data['products'][] = array(
+LINE: 679
+CODE: $data['products'][] = array(
+LINE: 446
+CODE: $data['products'][] = array(
+LINE: 453
+CODE: public function index() {
+LINE: 176
+CODE: $data['model'] = $product_info['model'];
+LINE: 603
+CODE: if (empty($this->request->post['rating']) || $this->request->post['rating'] < 0 || $this->request->post['rating'] > 5) {
+LINE: 1205
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 7
+CODE: $data['button_grid'] = $this->language->get('button_grid');
+LINE: 169
+CODE: $data['categories'][] = array(
+LINE: 252
+CODE: $data['categories'][] = array(
+LINE: 257
+CODE: $data['products'][] = array(
+LINE: 676
+CODE: $data['products'][] = array(
+LINE: 683
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+CODE: $data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 63
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 408
+LINE: 517
+
+FILE: catalog/language/en-gb/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+
+FILE: catalog/controller/information/information.php
+CODE: $data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 46
+CODE: $data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 184
+CODE: $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 606
+----------------------------------------------------------------
+MOD: Phpner - Cool Email Template
+CODE: $data['products'] = array();
+LINE: 550
+CODE: $data['products'][] = array(
+LINE: 589
+CODE: $data['products'][] = array(
+LINE: 595
+----------------------------------------------------------------
+MOD: Phpner - phpner Store Template Left Menu
+
+FILE: admin/controller/common/column_left.php
+CODE: $catalog = array();
+LINE: 241
+
+FILE: admin/language/ru-ru/common/column_left.php
+CODE: <?php
+LINE: 33
+
+FILE: admin/language/en-gb/common/column_left.php
+CODE: <?php
+LINE: 23
+----------------------------------------------------------------
+MOD: Phpner HELPER - Module position
+
+FILE: catalog/controller/common/column_left.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/column_right.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_top.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_bottom.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/html.php
+CODE: $data['html'] = html_entity_decode($setting['module_description'][$this->config->get('config_language_id')]['description'], ENT_QUOTES, 'UTF-8');
+LINE: 6
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/phpner_p_special_timer.php
+CODE: $this->load->model('phpner/p_special_timer');
+LINE: 27
+----------------------------------------------------------------
+MOD: Phpner - Preorder and Stock status
+CODE: public function index() {
+LINE: 100
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/en-gb/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/manufacturer.php
+CODE: <?php
+LINE: 6
+CODE: 'viewed'           => $query->row['viewed']
+LINE: 60
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 639
+CODE: $data['products'][] = array(
+LINE: 970
+CODE: $data['products'][] = array(
+LINE: 975
+CODE: $data['products'][] = array(
+LINE: 692
+CODE: 'price'       => $price,
+LINE: 722
+CODE: $data['products'][] = array(
+LINE: 460
+CODE: 'price'       => $price,
+LINE: 490
+CODE: $data['products'][] = array(
+LINE: 256
+CODE: 'price'       => $price,
+LINE: 286
+CODE: $data['products'][] = array(
+LINE: 686
+CODE: 'price'       => $price,
+LINE: 716
+CODE: $data['products'][] = array(
+LINE: 110
+CODE: 'price'       => $price,
+LINE: 128
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+
+FILE: catalog/controller/account/wishlist.php
+CODE: $data['products'][] = array(
+LINE: 115
+CODE: $data['products'][] = array(
+LINE: 120
+CODE: $data['products'][$product_id] = array(
+LINE: 129
+CODE: $data['products'][$product_id] = array(
+LINE: 134
+----------------------------------------------------------------
+MOD: OcStore 2.3.x track number
+CODE: $data['shipping_method'] = $order_info['shipping_method'];
+LINE: 567
+LINE: 953
+CODE: public function history() {
+LINE: 1572
+
+FILE: admin/model/sale/order.php
+CODE: $order_query->row['order_id'],
+LINE: 96
+CODE: $order_query->row['order_id'],
+LINE: 170
+CODE: <td><?php echo $text_reward; ?></td>
+LINE: 100
+CODE: <?php echo $footer; ?>
+LINE: 712
+
+FILE: catalog/model/account/order.php
+CODE: $order_query->row['order_id'],
+LINE: 46
+CODE: if ($order_info['invoice_no']) {
+LINE: 217
+
+FILE: catalog/view/theme/default/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 49
+
+FILE: catalog/view/theme/phpner_store/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 46
+----------------------------------------------------------------
+MOD: OCMod Editor
+
+FILE: admin/controller/extension/modification.php
+CODE: $data['refresh'] = $this->url->link('extension/modification/refresh', 'token=' . $this->session->data['token'] . $url, true);
+LINE: 656
+CODE: $data['modifications'][] = array(
+LINE: 678
+CODE: $data['tab_log'] = $this->language->get('tab_log');
+LINE: 720
+CODE: $this->response->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, true));
+LINE: 510
+
+FILE: admin/view/template/extension/modification.tpl
+CODE: <div class="pull-right">
+LINE: 5
+CODE: <?php if (!$modification['enabled']) { ?>
+LINE: 98
+----------------------------------------------------------------
+MOD: Octemplates demo buttons
+
+FILE: catalog/view/theme/phpner_store/template/common/header.tpl
+CODE: </header>
+LINE: 281
+----------------------------------------------------------------
+MOD: Octemplates - Categorywall sorting by sort_order
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Octemplates - Slideshow autoplay
+
+FILE: catalog/view/theme/phpner_store/template/extension/module/phpner_slideshow_plus.tpl
+CODE: autoPlay: false,
+LINE: 21
+----------------------------------------------------------------
+MOD: Octemplates - Megamenu sorting by sort_order
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Y.CMS for Opencart 2.0.x - 2.3.x
+CODE: // History
+LINE: 388
+CODE: </tfoot>
+LINE: 132
+REGEX: ~o.date_added, o.date_modified FROM~
+LINE: 175
+
+FILE: admin/language/en-gb/sale/order.php
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 8
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 14
+
+FILE: system/library/mail.php
+CODE: basename(urlencode($attachment))
+NOT FOUND - OPERATIONS ABORTED!
+CODE: 'shipping_code' => $result['shipping_code'],
+LINE: 220
+CODE: $data['button_add'] = $this->language->get('button_add');
+LINE: 256
+
+FILE: admin/view/template/sale/order_list.tpl
+CODE: <div class="pull-right">
+LINE: 7
+REGEX: ~(\<\/i\>\<\/)(button|a)(\>)(\<\/td\>)~
+LINE: 150
+CODE: $data['newsletter'] = $this->url->link('account/newsletter'
+LINE: 187
+
+FILE: catalog/controller/checkout/success.php
+CODE: if (isset($this->session->data['order_id'])) {
+LINE: 8
+
+FILE: catalog/view/theme/default/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 24
+
+FILE: catalog/view/theme/phpner_store/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 21
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+LINE: 93
+
+FILE: catalog/view/theme/phpner_store/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+NOT FOUND - OPERATIONS ABORTED!
+CODE: $('.alert').remove();
+LINE: 395
+LINE: 422
+LINE: 452
+LINE: 482
+LINE: 512
+LINE: 542
+LINE: 570
+LINE: 623
+LINE: 696
+CODE: $('#button-history').on('click', function() {
+LINE: 631
+----------------------------------------------------------------
+MOD: Local copy OCMOD
+
+FILE: admin/controller/extension/installer.php
+CODE: 'url'  => str_replace('&amp;', '&', $this->url->link('extension/installer/ftp', 'token=' . $this->session->data['token'],
+LINE: 131
+CODE: public function unzip() {
+LINE: 292
+----------------------------------------------------------------
+2019-06-17 16:11:50 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Phpner - Categorywall sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_category_wall.php
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 53
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 74
+----------------------------------------------------------------
+MOD: Phpner - Megamenu sorting by sort_order
+
+FILE: catalog/controller/extension/module/phpner_megamenu.php
+CODE: $c_sort_order[$key] = $value['name'];
+LINE: 128
+CODE: $cs_sort_order[$key] = $value['name'];
+LINE: 109
+----------------------------------------------------------------
+MOD: fondy_payment
+
+FILE: catalog/controller/checkout/checkout.php
+CODE: public function index() {
+LINE: 11
+
+FILE: catalog/view/theme/default/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+LINE: 26
+
+FILE: catalog/view/theme/phpner_store/template/checkout/checkout.tpl
+CODE: <h1><?php echo $heading_title; ?></h1>
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+MOD: Phpner - 3d level category module
+
+FILE: catalog/controller/extension/module/category.php
+CODE: public function index() {
+LINE: 2
+----------------------------------------------------------------
+MOD: Phpner - Advanced attributes settings
+
+FILE: catalog/controller/product/category.php
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 247
+
+FILE: catalog/controller/product/search.php
+CODE: $data['products'][] = array(
+LINE: 265
+CODE: $data['products'][] = array(
+LINE: 270
+
+FILE: catalog/controller/product/special.php
+CODE: $data['products'][] = array(
+LINE: 150
+CODE: $data['products'][] = array(
+LINE: 155
+
+FILE: catalog/controller/product/manufacturer.php
+CODE: $data['products'][] = array(
+LINE: 252
+CODE: $data['products'][] = array(
+LINE: 257
+----------------------------------------------------------------
+MOD: Phpner - Advanced options settings
+
+FILE: admin/controller/catalog/option.php
+CODE: protected function getForm() {
+LINE: 268
+CODE: public function autocomplete() {
+LINE: 469
+CODE: $option['type'] == 'image'
+LINE: 490
+CODE: if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'checkbox') {
+LINE: 524
+CODE: $json[] = array(
+LINE: 540
+
+FILE: admin/controller/catalog/product.php
+CODE: $data['entry_option'] = $this->language->get('entry_option');
+LINE: 674
+CODE: foreach ($product_images as $product_image) {
+LINE: 1348
+CODE: $data['product_options'] = array();
+LINE: 1224
+CODE: if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_model'])) {
+LINE: 1509
+CODE: 'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
+LINE: 1369
+CODE: $product_option_value_data[] = array(
+LINE: 1239
+LINE: 1576
+CODE: $product_option['type'] == 'checkbox'
+LINE: 1268
+
+FILE: admin/language/ru-ru/catalog/product.php
+CODE: <?php
+LINE: 7
+
+FILE: admin/language/ru-ru/catalog/option.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/model/catalog/product.php
+CODE: $product_option['type'] == 'image'
+LINE: 38
+LINE: 176
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 220
+CODE: $this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape($product_image['image']) . "', sort_order = '" . (int)$product_image['sort_order'] . "'");
+LINE: 236
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+LINE: 365
+CODE: public function copyProduct($product_id) {
+LINE: 332
+CODE: weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "'");
+LINE: 47
+LINE: 187
+CODE: $product_option_value_data[] = array(
+LINE: 581
+
+FILE: admin/view/template/catalog/option_form.tpl
+CODE: <optgroup label="<?php echo $text_file; ?>">
+LINE: 84
+CODE: if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox' || this.value == 'image') {
+LINE: 160
+
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: $product_option['type'] == 'image'
+LINE: 588
+CODE: <td class="text-left"><?php echo $entry_subtract; ?></td>
+LINE: 602
+CODE: <td colspan="6"></td>
+LINE: 680
+CODE: html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
+LINE: 1280
+CODE: html += '        <td colspan="6"></td>';
+LINE: 1291
+CODE: <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
+LINE: 646
+CODE: html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
+LINE: 1384
+CODE: item['type'] == 'image'
+LINE: 1278
+CODE: <td class="text-left"><?php echo $entry_image; ?></td>
+LINE: 894
+CODE: <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
+LINE: 946
+CODE: html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+LINE: 1522
+
+FILE: admin/controller/sale/order.php
+CODE: public function info() {
+LINE: 764
+CODE: $data['direction'] = $this->language->get('direction');
+LINE: 1591
+LINE: 1829
+CODE: $option_data[] = array(
+LINE: 1034
+LINE: 1051
+LINE: 1770
+LINE: 1997
+CODE: $data['text_customer_detail'] = $this->language->get('text_customer_detail');
+LINE: 790
+
+FILE: admin/language/ru-ru/sale/order.php
+CODE: <?php
+LINE: 6
+
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 163
+
+FILE: admin/view/template/sale/order_invoice.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 81
+
+FILE: admin/view/template/sale/order_shipping.tpl
+CODE: <small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+LINE: 97
+
+FILE: system/library/cart/cart.php
+CODE: pov.weight,
+LINE: 54
+LINE: 99
+CODE: if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
+LINE: 68
+CODE: foreach ($value as $product_option_value_id) {
+LINE: 128
+CODE: 'option_value_id'         => $option_value_query->row['option_value_id'],
+LINE: 104
+LINE: 170
+CODE: } elseif ($option_query->row['type'] == 'text' || $option_query->row['type'] == 'textarea' || $option_query->row['type'] == 'file' || $option_query->row['type'] == 'date' || $option_query->row['type'] == 'datetime' || $option_query->row['type'] == 'time') {
+LINE: 245
+
+FILE: catalog/controller/account/order.php
+CODE: $data['text_order_detail'] = $this->language->get('text_order_detail');
+LINE: 168
+CODE: $option_data[] = array(
+LINE: 323
+
+FILE: catalog/language/ru-ru/account/order.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/checkout/cart.php
+CODE: $data['button_checkout'] = $this->language->get('button_checkout');
+LINE: 43
+CODE: $option_data[] = array(
+LINE: 125
+
+FILE: catalog/language/ru-ru/checkout/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/controller/product/product.php
+CODE: public function index() {
+LINE: 101
+CODE: public function index() {
+LINE: 110
+CODE: if ($product_info) {
+LINE: 276
+CODE: if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+LINE: 467
+CODE: $product_option_value_data[] = array(
+LINE: 487
+CODE: $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
+LINE: 424
+CODE: public function index() {
+LINE: 162
+
+FILE: catalog/language/ru-ru/product/product.php
+CODE: <?php
+LINE: 10
+CODE: $data['products'][] = array(
+LINE: 279
+CODE: $data['products'][] = array(
+LINE: 284
+CODE: $data['products'][] = array(
+LINE: 302
+CODE: $data['products'][] = array(
+LINE: 307
+CODE: $data['products'][] = array(
+LINE: 187
+CODE: $data['products'][] = array(
+LINE: 192
+CODE: $data['products'][] = array(
+LINE: 289
+CODE: $data['products'][] = array(
+LINE: 294
+
+FILE: catalog/model/catalog/product.php
+CODE: public function getProductImages($product_id) {
+LINE: 404
+CODE: $product_option_value_data[] = array(
+LINE: 354
+CODE: public function getProductOptions($product_id) {
+LINE: 337
+
+FILE: catalog/model/checkout/order.php
+CODE: `type` = '" . $this->db->escape($option['type']) . "'
+LINE: 15
+LINE: 63
+CODE: $data['title'] = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_id);
+LINE: 399
+CODE: $option_data[] = array(
+LINE: 549
+
+FILE: catalog/language/ru-ru/mail/order.php
+CODE: <?php
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Blog
+
+FILE: catalog/controller/startup/seo_url.php
+CODE: if ($url[0] == 'manufacturer_id') {
+LINE: 64
+CODE: if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+LINE: 72
+CODE: } elseif (isset($this->request->get['manufacturer_id'])) {
+LINE: 112
+CODE: if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+LINE: 132
+CODE: } elseif ($key == 'path') {
+LINE: 187
+
+FILE: catalog/controller/startup/seo_pro.php
+CODE: } elseif (count($url) > 1) {
+LINE: 90
+CODE: } elseif (isset($this->request->get['path'])) {
+LINE: 127
+CODE: case 'product/product/review':
+LINE: 245
+CODE: case 'information_id':
+LINE: 284
+CODE: case 'path':
+LINE: 312
+CODE: private function validate() {
+LINE: 542
+
+FILE: catalog/controller/information/sitemap.php
+CODE: $data['categories'] = array();
+LINE: 98
+
+FILE: catalog/controller/common/header.php
+CODE: $data['text_home'] = $this->language->get('text_home');
+LINE: 70
+----------------------------------------------------------------
+MOD: Phpner - Fast Order
+
+FILE: system/library/url.php
+CODE: public function link($route, $args = '', $secure = false) {
+LINE: 27
+----------------------------------------------------------------
+MOD: Phpner - Live search
+CODE: public function index() {
+LINE: 2
+
+FILE: catalog/controller/common/search.php
+CODE: if (isset($this->request->get['search'])) {
+LINE: 29
+----------------------------------------------------------------
+MOD: Phpner - Megamenu
+CODE: $data['language'] = $this->load->controller('common/language');
+LINE: 206
+----------------------------------------------------------------
+MOD: Phpner - Page Bar
+
+FILE: catalog/controller/common/footer.php
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 55
+
+FILE: catalog/controller/product/compare.php
+CODE: public function add() {
+LINE: 163
+CODE: if (count($this->session->data['compare']) >= 4) {
+LINE: 184
+----------------------------------------------------------------
+MOD: Phpner - Call Phone
+CODE: public function index() {
+LINE: 9
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Cart
+
+FILE: catalog/controller/common/cart.php
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+----------------------------------------------------------------
+MOD: Phpner - Popup Found Cheaper
+
+FILE: admin/controller/common/header.php
+CODE: public function index() {
+LINE: 11
+CODE: $data['alerts'] = $customer_total + $product_total + $review_total + $return_total + $affiliate_total;
+LINE: 134
+
+FILE: admin/view/template/common/header.tpl
+CODE: <li class="dropdown-header"><?php echo $text_order; ?></li>
+LINE: 52
+
+FILE: catalog/language/en-gb/product/product.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/product/product.php
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 470
+----------------------------------------------------------------
+MOD: Phpner - Popup product options
+CODE: public function index() {
+LINE: 7
+CODE: $json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
+LINE: 410
+----------------------------------------------------------------
+MOD: Phpner - Popup Purchase
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 167
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 480
+----------------------------------------------------------------
+MOD: Phpner - Popup Subscribe
+CODE: public function index() {
+LINE: 8
+----------------------------------------------------------------
+MOD: Phpner - Popup Product View
+
+FILE: catalog/language/ru-ru/ru-ru.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/uk-ua/uk-ua.php
+CODE: <?php
+LINE: 3
+
+FILE: catalog/language/en-gb/en-gb.php
+CODE: <?php
+LINE: 3
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 6
+CODE: public function Index() {
+LINE: 166
+CODE: public function Index() {
+LINE: 94
+CODE: public function Index() {
+LINE: 6
+CODE: $manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);
+LINE: 124
+
+FILE: catalog/controller/extension/module/latest.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/special.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/bestseller.php
+CODE: public function index($setting) {
+LINE: 6
+
+FILE: catalog/controller/extension/module/featured.php
+CODE: public function index($setting) {
+LINE: 6
+----------------------------------------------------------------
+MOD: Phpner - Auto Related Products
+CODE: $results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+LINE: 658
+CODE: if ($result['image']) {
+LINE: 702
+CODE: 'thumb'       => $image,
+LINE: 734
+----------------------------------------------------------------
+MOD: Phpner - Product Filter
+CODE: public function addProduct($data) {
+LINE: 758
+CODE: public function deleteProduct($product_id) {
+LINE: 1131
+CODE: $product_id = $this->db->getLastId();
+LINE: 764
+CODE: public function editProduct($product_id, $data) {
+LINE: 901
+CODE: public function index() {
+LINE: 7
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 34
+CODE: $sort = $this->request->get['sort'];
+LINE: 39
+CODE: $order = $this->request->get['order'];
+LINE: 49
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+LINE: 106
+CODE: $data['categories'] = array();
+LINE: 216
+CODE: $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'canonical');
+LINE: 484
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'], true), 'prev');
+LINE: 486
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page - 1), true), 'prev');
+LINE: 488
+CODE: $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1), true), 'next');
+LINE: 492
+CODE: public function info() {
+LINE: 74
+CODE: if (isset($this->request->get['sort'])) {
+LINE: 97
+CODE: $sort = $this->request->get['sort'];
+LINE: 102
+CODE: $order = $this->request->get['order'];
+LINE: 112
+CODE: $this->url->link('product/category', 'path=' . $path . $url)
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'] = array();
+LINE: 245
+CODE: $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] .  $url . '&page={page}');
+LINE: 476
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'canonical');
+LINE: 485
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'], true), 'prev');
+LINE: 487
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page - 1), true), 'prev');
+LINE: 489
+CODE: $this->document->addLink($this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. ($page + 1), true), 'next');
+LINE: 493
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 243
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 255
+CODE: $sort_data = array(
+LINE: 159
+LINE: 214
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
+LINE: 93
+LINE: 569
+CODE: $sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
+LINE: 186
+LINE: 239
+CODE: $sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
+LINE: 194
+CODE: $sql .= " ORDER BY " . $data['sort'];
+LINE: 202
+LINE: 259
+CODE: $sql .= " ORDER BY p.sort_order";
+LINE: 211
+LINE: 274
+CODE: $this->url->addRewrite($this);
+LINE: 391
+CODE: case 'manufacturer_id':
+LINE: 636
+CODE: case 'path':
+LINE: 707
+----------------------------------------------------------------
+MOD: Phpner - Product reviews
+
+FILE: admin/controller/catalog/review.php
+CODE: protected function getForm() {
+LINE: 427
+CODE: if (isset($this->request->post['product_id'])) {
+LINE: 571
+
+FILE: admin/model/catalog/review.php
+CODE: public function addReview($data) {
+LINE: 2
+CODE: public function editReview($review_id, $data) {
+LINE: 30
+CODE: public function getReview($review_id) {
+LINE: 62
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "review WHERE review_id = '" . (int)$review_id . "'");
+LINE: 67
+
+FILE: admin/view/template/catalog/review_form.tpl
+CODE: <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-review" class="form-horizontal">
+LINE: 62
+CODE: public function index() {
+LINE: 175
+CODE: $data['text_no_reviews'] = $this->language->get('text_no_reviews');
+LINE: 886
+CODE: $data['reviews'][] = array(
+LINE: 920
+CODE: $data['reviews'][] = array(
+LINE: 931
+CODE: public function review() {
+LINE: 871
+CODE: public function review() {
+LINE: 902
+
+FILE: catalog/model/catalog/review.php
+CODE: $review_id = $this->db->getLastId();
+LINE: 14
+CODE: public function getReviewsByProductId($product_id, $start = 0, $limit = 20) {
+LINE: 59
+----------------------------------------------------------------
+MOD: Phpner - Product stickers
+CODE: $this->load->model('design/layout');
+LINE: 1473
+
+FILE: admin/language/en-gb/catalog/product.php
+CODE: <?php
+LINE: 3
+CODE: <?php
+LINE: 3
+CODE: if (isset($data['image'])) {
+LINE: 773
+LINE: 918
+CODE: $data['product_attribute'] = $this->getProductAttributes($product_id);
+LINE: 1131
+CODE: <div class="tab-pane" id="tab-data">
+LINE: 122
+CODE: $data['products'][] = array(
+LINE: 634
+CODE: $data['products'][] = array(
+LINE: 637
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+NOT FOUND - OPERATION SKIPPED!
+CODE: $data['products'][] = array(
+LINE: 646
+CODE: $data['products'][] = array(
+LINE: 649
+CODE: $data['products'][] = array(
+LINE: 785
+CODE: $data['products'][] = array(
+LINE: 788
+CODE: $data['products'][] = array(
+LINE: 435
+CODE: $data['products'][] = array(
+LINE: 438
+CODE: $data['products'][] = array(
+LINE: 231
+CODE: $data['products'][] = array(
+LINE: 234
+CODE: $data['model'] = $product_info['model'];
+LINE: 520
+CODE: 'product_id'       => $query->row['product_id'],
+LINE: 14
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+CODE: $data['products'][] = array(
+LINE: 95
+CODE: $data['products'][] = array(
+LINE: 98
+CODE: $data['products'][] = array(
+LINE: 102
+CODE: $data['products'][] = array(
+LINE: 105
+----------------------------------------------------------------
+MOD: Phpner - Product tabs
+CODE: $this->load->model('design/layout');
+LINE: 1510
+CODE: <?php
+LINE: 7
+CODE: <?php
+LINE: 7
+CODE: if (isset($data['product_attribute'])) {
+LINE: 802
+CODE: $this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
+LINE: 968
+LINE: 1209
+CODE: public function getProductAttributes($product_id) {
+LINE: 1402
+CODE: <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
+LINE: 35
+CODE: <div class="tab-pane" id="tab-option">
+LINE: 630
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 554
+----------------------------------------------------------------
+MOD: Phpner - Recently Viewed Products
+CODE: $this->model_catalog_product->updateViewed($this->request->get['product_id']);
+LINE: 882
+----------------------------------------------------------------
+MOD: Phpner - phpnerStore Template 1.0.0
+CODE: 'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
+LINE: 56
+CODE: public function index() {
+LINE: 10
+CODE: public function info() {
+LINE: 84
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/bestseller', $data);
+LINE: 113
+CODE: $data['products'][] = array(
+LINE: 101
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/latest', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/special', $data);
+LINE: 120
+CODE: $data['products'][] = array(
+LINE: 108
+CODE: public function index($setting) {
+LINE: 3
+CODE: return $this->load->view('extension/module/featured', $data);
+LINE: 123
+CODE: $data['products'][] = array(
+LINE: 108
+
+FILE: catalog/controller/information/contact.php
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 57
+LINE: 233
+CODE: if (isset($this->error['name'])) {
+LINE: 98
+CODE: if (!preg_match($this->config->get('config_mail_regexp'), $this->request->post['email'])) {
+LINE: 215
+
+FILE: catalog/controller/account/account.php
+CODE: $data['text_recurring'] = $this->language->get('text_recurring');
+LINE: 53
+
+FILE: catalog/controller/account/voucher.php
+CODE: if (isset($this->error['amount'])) {
+LINE: 123
+CODE: if (!isset($this->request->post['agree'])) {
+LINE: 267
+CODE: $data['telephone'] = $this->config->get('config_telephone');
+LINE: 170
+CODE: public function index() {
+LINE: 95
+CODE: $data['contact'] = $this->url->link('information/contact');
+LINE: 173
+CODE: $data['products'][] = array(
+LINE: 242
+CODE: $data['products'][] = array(
+LINE: 249
+CODE: $data['products'][] = array(
+LINE: 672
+CODE: $data['products'][] = array(
+LINE: 679
+CODE: $data['products'][] = array(
+LINE: 446
+CODE: $data['products'][] = array(
+LINE: 453
+CODE: public function index() {
+LINE: 176
+CODE: $data['model'] = $product_info['model'];
+LINE: 603
+CODE: if (empty($this->request->post['rating']) || $this->request->post['rating'] < 0 || $this->request->post['rating'] > 5) {
+LINE: 1205
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: public function index() {
+LINE: 7
+CODE: $data['button_grid'] = $this->language->get('button_grid');
+LINE: 169
+CODE: $data['categories'][] = array(
+LINE: 252
+CODE: $data['categories'][] = array(
+LINE: 257
+CODE: $data['products'][] = array(
+LINE: 676
+CODE: $data['products'][] = array(
+LINE: 683
+CODE: $data['text_empty'] = $this->language->get('text_empty');
+LINE: 54
+CODE: $data['text_items'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 63
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+LINE: 408
+LINE: 517
+
+FILE: catalog/language/en-gb/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/common/cart.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/uk-ua/checkout/cart.php
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+CODE: <?php
+LINE: 4
+
+FILE: catalog/controller/information/information.php
+CODE: $data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 46
+CODE: $data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 184
+CODE: $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+LINE: 606
+----------------------------------------------------------------
+MOD: Phpner - Cool Email Template
+CODE: $data['products'] = array();
+LINE: 550
+CODE: $data['products'][] = array(
+LINE: 589
+CODE: $data['products'][] = array(
+LINE: 595
+----------------------------------------------------------------
+MOD: Phpner - phpner Store Template Left Menu
+
+FILE: admin/controller/common/column_left.php
+CODE: $catalog = array();
+LINE: 241
+
+FILE: admin/language/ru-ru/common/column_left.php
+CODE: <?php
+LINE: 33
+
+FILE: admin/language/en-gb/common/column_left.php
+CODE: <?php
+LINE: 23
+----------------------------------------------------------------
+MOD: Phpner HELPER - Module position
+
+FILE: catalog/controller/common/column_left.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/column_right.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_top.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+
+FILE: catalog/controller/common/content_bottom.php
+CODE: if ($setting_info && $setting_info['status']) {
+LINE: 62
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/html.php
+CODE: $data['html'] = html_entity_decode($setting['module_description'][$this->config->get('config_language_id')]['description'], ENT_QUOTES, 'UTF-8');
+LINE: 6
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+CODE: $this->load->model('catalog/product');
+LINE: 19
+
+FILE: catalog/controller/extension/module/phpner_p_special_timer.php
+CODE: $this->load->model('phpner/p_special_timer');
+LINE: 27
+----------------------------------------------------------------
+MOD: Phpner - Preorder and Stock status
+CODE: public function index() {
+LINE: 100
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+CODE: <?php
+LINE: 5
+
+FILE: catalog/language/en-gb/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/en-gb/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/ru-ru/product/manufacturer.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/category.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/search.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/special.php
+CODE: <?php
+LINE: 6
+
+FILE: catalog/language/uk-ua/product/manufacturer.php
+CODE: <?php
+LINE: 6
+CODE: 'viewed'           => $query->row['viewed']
+LINE: 60
+CODE: if ($product_info['quantity'] <= 0) {
+LINE: 639
+CODE: $data['products'][] = array(
+LINE: 970
+CODE: $data['products'][] = array(
+LINE: 975
+CODE: $data['products'][] = array(
+LINE: 692
+CODE: 'price'       => $price,
+LINE: 722
+CODE: $data['products'][] = array(
+LINE: 460
+CODE: 'price'       => $price,
+LINE: 490
+CODE: $data['products'][] = array(
+LINE: 256
+CODE: 'price'       => $price,
+LINE: 286
+CODE: $data['products'][] = array(
+LINE: 686
+CODE: 'price'       => $price,
+LINE: 716
+CODE: $data['products'][] = array(
+LINE: 110
+CODE: 'price'       => $price,
+LINE: 128
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+CODE: $data['products'][] = array(
+LINE: 117
+CODE: 'price'       => $price,
+LINE: 135
+
+FILE: catalog/controller/account/wishlist.php
+CODE: $data['products'][] = array(
+LINE: 115
+CODE: $data['products'][] = array(
+LINE: 120
+CODE: $data['products'][$product_id] = array(
+LINE: 129
+CODE: $data['products'][$product_id] = array(
+LINE: 134
+----------------------------------------------------------------
+MOD: OcStore 2.3.x track number
+CODE: $data['shipping_method'] = $order_info['shipping_method'];
+LINE: 567
+LINE: 953
+CODE: public function history() {
+LINE: 1572
+
+FILE: admin/model/sale/order.php
+CODE: $order_query->row['order_id'],
+LINE: 96
+CODE: $order_query->row['order_id'],
+LINE: 170
+CODE: <td><?php echo $text_reward; ?></td>
+LINE: 100
+CODE: <?php echo $footer; ?>
+LINE: 712
+
+FILE: catalog/model/account/order.php
+CODE: $order_query->row['order_id'],
+LINE: 46
+CODE: if ($order_info['invoice_no']) {
+LINE: 217
+
+FILE: catalog/view/theme/default/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 49
+
+FILE: catalog/view/theme/phpner_store/template/account/order_info.tpl
+CODE: <b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>
+LINE: 46
+----------------------------------------------------------------
+MOD: OCMod Editor
+
+FILE: admin/controller/extension/modification.php
+CODE: $data['refresh'] = $this->url->link('extension/modification/refresh', 'token=' . $this->session->data['token'] . $url, true);
+LINE: 656
+CODE: $data['modifications'][] = array(
+LINE: 678
+CODE: $data['tab_log'] = $this->language->get('tab_log');
+LINE: 720
+CODE: $this->response->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, true));
+LINE: 510
+
+FILE: admin/view/template/extension/modification.tpl
+CODE: <div class="pull-right">
+LINE: 5
+CODE: <?php if (!$modification['enabled']) { ?>
+LINE: 98
+----------------------------------------------------------------
+MOD: Octemplates demo buttons
+
+FILE: catalog/view/theme/phpner_store/template/common/header.tpl
+CODE: </header>
+LINE: 281
+----------------------------------------------------------------
+MOD: Octemplates - Categorywall sorting by sort_order
+CODE: $sub_categories[] = array(
+LINE: 43
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Octemplates - Slideshow autoplay
+
+FILE: catalog/view/theme/phpner_store/template/extension/module/phpner_slideshow_plus.tpl
+CODE: autoPlay: false,
+LINE: 21
+----------------------------------------------------------------
+MOD: Octemplates - Megamenu sorting by sort_order
+CODE: $c_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+CODE: $cs_sort_order[$key] = $value['name'];
+NOT FOUND - OPERATION SKIPPED!
+----------------------------------------------------------------
+MOD: Y.CMS for Opencart 2.0.x - 2.3.x
+CODE: // History
+LINE: 388
+CODE: </tfoot>
+LINE: 132
+REGEX: ~o.date_added, o.date_modified FROM~
+LINE: 175
+
+FILE: admin/language/en-gb/sale/order.php
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 8
+REGEX: ~(\$_\[\'text_add\'\])~
+LINE: 14
+
+FILE: system/library/mail.php
+CODE: basename(urlencode($attachment))
+NOT FOUND - OPERATIONS ABORTED!
+CODE: 'shipping_code' => $result['shipping_code'],
+LINE: 220
+CODE: $data['button_add'] = $this->language->get('button_add');
+LINE: 256
+
+FILE: admin/view/template/sale/order_list.tpl
+CODE: <div class="pull-right">
+LINE: 7
+REGEX: ~(\<\/i\>\<\/)(button|a)(\>)(\<\/td\>)~
+LINE: 150
+CODE: $data['newsletter'] = $this->url->link('account/newsletter'
+LINE: 187
+
+FILE: catalog/controller/checkout/success.php
+CODE: if (isset($this->session->data['order_id'])) {
+LINE: 8
+
+FILE: catalog/view/theme/default/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 24
+
+FILE: catalog/view/theme/phpner_store/template/common/success.tpl
+CODE: <?php echo $footer; ?>
+LINE: 21
+
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+LINE: 93
+
+FILE: catalog/view/theme/phpner_store/template/common/footer.tpl
+CODE: <footer
+LINE: 47
+CODE: <p><?php echo $powered; ?></p>
+NOT FOUND - OPERATIONS ABORTED!
+CODE: $('.alert').remove();
+LINE: 395
+LINE: 422
+LINE: 452
+LINE: 482
+LINE: 512
+LINE: 542
+LINE: 570
+LINE: 623
+LINE: 696
+CODE: $('#button-history').on('click', function() {
+LINE: 631
+----------------------------------------------------------------
+MOD: Local copy OCMOD
+
+FILE: admin/controller/extension/installer.php
+CODE: 'url'  => str_replace('&amp;', '&', $this->url->link('extension/installer/ftp', 'token=' . $this->session->data['token'],
+LINE: 131
+CODE: public function unzip() {
+LINE: 292
+----------------------------------------------------------------

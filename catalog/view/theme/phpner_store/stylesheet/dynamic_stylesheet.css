@@ -1,289 +1,289 @@
 #top, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.wishlist, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.compare, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.wishlist, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.compare, .product-thumb .cart .phpner_-button.wishlist, .product-thumb .cart .phpner_-button.compare, .phpner_-day-goods-box .owl-carousel .owl-item .things-to-buy, .phpner_-product-tab ul.nav-tabs > li.active, .phpner_-product-tab ul.nav-tabs > li:hover, #back-top:hover, #uptocall-mini:hover .uptocall-mini-phone, .field-tip .tip-content, footer, .filtered input[type=checkbox]:checked+label::before, .filtered input[type=radio]:checked+label::before, #sstore-3-level>ul>li>a, .product-buttons-row .button-one-click, .product-buttons-row .button-wishlist, .product-buttons-row .button-compare, .product-tabs-row .nav-tabs>li.active>a, .product-tabs-row .nav-tabs>li.active>a:focus, .product-tabs-row .nav-tabs>li.active>a:hover, footer .actions button:hover, .popup-button:hover, #column-left .list-group, #column-right .list-group, .phpner_-news-panel .list-group {
-	background-color: #rgb(86, 255, 17);
+	background-color: rgb(79, 95, 111);
 }
 .phpner_-button:hover, .phpner_-button-inv {
-	background-color: #rgb(86, 255, 17) !important;
+	background-color: rgb(79, 95, 111) !important;
 }
 a, #search .btn-lg, .phones-dropdown a, #menu .nav > li > a, .phpner_-carousel-header, .phpner_-category-item-text ul li a, .phpner_-category-item-text ul li a:visited, .phpner_-category-item-text ul li.phpner_-category-see-more a:hover, .phpner_-product-tab .owl-carousel .owl-item .name a, .phpner_-carousel-row .owl-carousel .owl-item .name a, .phpner_-day-goods-box .owl-carousel .owl-wrapper-outer .item .phpner_-day-goods-item .name a, .news-carousel-box .owl-carousel .owl-wrapper-outer .item .phpner_-news-item .name a, .phpner_-product-tab .owl-carousel .owl-buttons div, .phpner_-carousel-row .owl-carousel .owl-buttons div, .phpner_-day-goods-box .owl-carousel .owl-buttons div, .news-carousel-box .owl-carousel .owl-buttons div, .brands-carousel-box .owl-carousel .owl-buttons div, .news-carousel-box .owl-carousel .owl-wrapper-outer .item .phpner_-news-item .news-date, .news-carousel-box .owl-carousel .owl-wrapper-outer .item .phpner_-news-item .news-date span, .breadcrumb > li a, h1.cat-header, .sort-row .input-group-addon, .appearance .btn-group button, .box-heading, a.list-group-item, button.list-group-item, input[type='text'].form-control, select.form-control, input[type='password'].form-control, .filtered .link i, .filtered .checkbox input[type=checkbox]+label, .filtered .checkbox-inline input[type=checkbox]+label, .filtered .radio input[type=radio]+label, .filtered .radio-inline input[type=radio]+label, #sstore-3-level ul ul ul li a, .product-thumb h4 a, .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover, .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover, .product-header, .after-header-item, .found-cheaper a, .found-cheaper a:visited, .product-price h3, .number .btn-minus button i, .number .btn-plus button i, .product-info-li span, .product-info-li a, .product-info-li a:visited, .product-advantages-box a span, h2.popup-header, .popup-form-box input[type='text'], .popup-form-box input[type='tel'], .popup-form-box input[type='email'], #auth-popup .auth-popup-links a.reg-popup-link, .popup-text, .popup-text a, #product .control-label, .popup-form-box textarea, .phpner_-bottom-cart-in-cart p, .account-content .buttons div .button-back, .account-content .table-div table .button-back, .popup-text a:hover, .phpner_-carousel-header a:hover, #column-left .panel-default>.panel-heading, .phpner_-news-panel>.panel-heading, #column-right .panel-default>.panel-heading, #oneclick-popup #main-price {
- color: #rgb(86, 255, 17);
+ color: rgb(79, 95, 111);
 }
 #menu .nav > li:hover, .phpner_-slideshow-box .owl-controls .owl-page span {
-	border-color: #rgb(86, 255, 17);
+	border-color: rgb(79, 95, 111);
 }
 #filter-products-form .expanded .item-content .filter-results:hover .filter-tooltip-corner {
-	border-right-color: #rgb(86, 255, 17);
+	border-right-color: rgb(79, 95, 111);
 }
 .product-tabs-row .nav-tabs>li.active>a:before {
-	border-top-color: #rgb(86, 255, 17);
+	border-top-color: rgb(79, 95, 111);
 }
 #menu .nav > li:hover, #menu ul.flexMenu-popup > li:hover, .phpner_-button, .phpner_-button:visited, .phpner_-button:focus, #back-top, #uptocall-mini .uptocall-mini-phone, .phpner_-day-goods-box .owl-carousel .owl-wrapper-outer .item .phpner_-day-goods-item:hover .things-to-buy, .phpner_-day-goods-box .owl-carousel .owl-wrapper-outer .item .phpner_-day-goods-item:hover .things-to-buy .flip-clock-wrapper ul li a div div.inn, footer .actions button, #sstore-3-level ul>li.has-sub>a.toggle-a:before, #sstore-3-level ul>li.has-sub>a.toggle-a:after, .product-tabs-row .nav-tabs>li>a, ul.account-ul li a:hover, .popup-button, .phpner_-fastorder-header span, #column-left .panel-default>.panel-heading, #column-right .panel-default>.panel-heading, .phpner_-news-panel>.panel-heading, #column-left .list-group a.active, #column-left .list-group a.active:hover, #column-left .list-group a:hover, #column-right .list-group a.active, #column-right .list-group a.active:hover, #column-right .list-group a:hover, .phpner_-news-panel .list-group a.active, .phpner_-news-panel .list-group a.active:hover, .phpner_-news-panel .list-group a:hover{
-	background-color: #rgb(118, 218, 18);
+	background-color: rgb(89, 194, 230);
 }
 .product-thumb .cart .phpner_-button.wishlist:hover, .product-thumb .cart .phpner_-button.compare:hover, .product-buttons-row .button-wishlist:hover, .product-buttons-row .button-compare:hover, .button-one-click:hover, .wishlist-tr, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.wishlist:hover, .phpner_-product-tab .owl-carousel .owl-item .cart .phpner_-button.compare:hover, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.wishlist:hover, .phpner_-carousel-row .owl-carousel .owl-item .cart .phpner_-button.compare:hover, .product-thumb .cart .phpner_-button.wishlist:hover, .product-thumb .cart .phpner_-button.compare:hover, .phpner_-button-inv:hover  {
-	background-color: #rgb(118, 218, 18)!important;
+	background-color: rgb(89, 194, 230)!important;
 }
 #top .btn-link.btn-language:hover, #top .btn-link.btn-currency:hover, #top #top-right-links .dropdown-menu li a:hover, header .dropdown-menu li a:hover, #cart .cart-total-price, .buttons-top-box div a:hover, #menu .sale-ul > div .megamenu-sale-item .dropprice, .phpner_-slideshow-box .owl-controls .owl-buttons div:hover, .phpner_-category-item-text ul li.phpner_-category-see-more a, .phpner_-product-tab .owl-carousel .owl-item .price .price-new, .phpner_-carousel-row .owl-carousel .owl-item .price .price-new, .phpner_-day-goods-box .owl-carousel .owl-item .price .price-new, .phpner_-product-tab .owl-carousel .owl-buttons div:hover, .phpner_-carousel-row .owl-carousel .owl-buttons div:hover, .phpner_-day-goods-box .owl-carousel .owl-buttons div:hover, .news-carousel-box .owl-carousel .owl-buttons div:hover, .brands-carousel-box .owl-carousel .owl-buttons div:hover, footer h5, footer .h5, footer .first-row .socials-box a:hover, footer a:hover, footer .footer-contacts ul li i, .breadcrumb > li span, .appearance .btn-group button.active, .appearance .btn-group button:hover, .product-list .product-thumb h4 a:hover, .rating .fa-star, .rating .fa-star + .fa-star-o, .phpner_-product-stock span, .pagination>li:first-child>a, .pagination>li:first-child>span, .pagination>li>a, .pagination>li>span, .after-header-item .blue, .product-price h2, .number .btn-minus button:hover i, .number .btn-plus button:hover i, .product-advantages-box i, ul.account-ul li a, .account-content form legend, .account-content h2, .account-content .buttons div .button-back:hover, .account-content .table-div table .button-back:hover, .popup-text .item-link, .popup-text .blue, #product-options-popup .blue, #auth-popup .auth-popup-links a.forget-popup-link, #main-price, #cheaper-popup .main-price, .popup-text a, .phpner_-product-tab ul.nav-tabs > li a, .phpner_-fastorder-header, #checkout-fastorder-page .table .phpner_-bottom-cart-table-text, .fastorder-panel-group .phpner_-bottom-cart-total-cart .total-text span, .phpner_-carousel-header a, .phpner_-carousel-header a:visited, .phpner-category-item-box .phpner_-category-item-text .phpner_-category-item-header, .main-advantage-item .main-advantage-item-icon i, #oneclick-popup #main-price.oneclick-main-price, .phpner_-category-item-text ul li a:hover, .breadcrumb > li a:hover, #subcats .subcat-box:hover a, #cart-popup .popup-text span {
-	color: #rgb(118, 218, 18);
+	color: rgb(89, 194, 230);
 }
 #top #top-right-links .dropdown-menu li a:hover, header .dropdown-menu li a:hover, #menu .megamenu-full-width a:hover, #menu .megamenu-full-width a.megamenu-parent-img:hover + a, .phpner_-product-tab .owl-carousel .owl-item .name a:hover, .phpner_-product-tab .owl-carousel .owl-item .image:hover + .name a, .phpner_-carousel-row .owl-carousel .owl-item .name a:hover, .phpner_-carousel-row .owl-carousel .owl-item .image:hover + .name a, .phpner_-day-goods-box .owl-carousel .owl-item .name a:hover, .phpner_-day-goods-box .owl-carousel .owl-item .image:hover + .name a, .news-carousel-box .owl-carousel .owl-item .name a:hover, .news-carousel-box .owl-carousel .owl-item .image:hover + .name a, #top .btn-link.language-select:hover, #top .btn-link.currency-select:hover, #menu .megamenu-full-width .see-all, footer .phpner_-text-terms a:hover, .popup-cart-box .phpner_-popup-cart-link {
-	color: #rgb(118, 218, 18)!important;
+	color: rgb(89, 194, 230)!important;
 }
 @media only screen and (min-width: 1024px) {
 	.product-grid .product-thumb:hover h4 a {
-		color: #rgb(118, 218, 18);
+		color: rgb(89, 194, 230);
 	}
 }
 .phpner_-slideshow-box .owl-controls .owl-page.active span, .phpner_-slideshow-box .owl-controls .owl-page span:hover, .filtered input[type=checkbox]+label::before, .filtered input[type=radio]+label::before {
-	border-color: #rgb(118, 218, 18);
+	border-color: rgb(89, 194, 230);
 }
 .selected-thumb {
-	border-color: #rgb(118, 218, 18)!important;
+	border-color: rgb(89, 194, 230)!important;
 }
 #top #top-left-links ul li a:hover, #top #top-right-links > ul > li:hover {
-	border-bottom-color: #rgb(118, 218, 18);
+	border-bottom-color: rgb(89, 194, 230);
 }
 #top {
-	background-color: #4F5F6F;
+	background-color: rgb(79, 95, 111);
 }
 header, .menu-row {
-	background-color: #FFFFFF;
+	background-color: FFFFFF;
 }
 #top #top-left-links ul li a, #top #top-left-links ul li a:visited, #top .btn-link.btn-language, #top .btn-link.btn-currency, #top #top-right-links > ul > li a, #top #top-right-links > ul > li a:visited, #top #top-right-links > ul > li a:hover {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 #top #top-left-links ul li a:hover, #top .btn-link.btn-language:hover, #top .btn-link.btn-currency:hover, #top #top-right-links > ul > li a:hover {
-	color: #C9E7F1;
+	color: C9E7F1;
 }
 #top #top-left-links ul li a:hover {
-	background-color: #57697A;
+	background-color: 57697A;
 }
 #top #top-right-links > ul > li {
-	background-color: #57697A;
+	background-color: 57697A;
 }
 #top #top-left-links ul li a:hover, #top #top-right-links > ul > li:hover {
-	border-bottom-color: #00D4FB;
+	border-bottom-color: 00D4FB;
 }
 #top .dropdown-menu, header .dropdown-menu {
-	background-color: #FFFFFF;
+	background-color: FFFFFF;
 }
 #top .btn-link.language-select, #top .btn-link.currency-select, #top-links li, #top-links a, #top #top-right-links .dropdown-menu li span, #top #top-right-links .dropdown-menu li a, header .dropdown-menu li a {
-	color: #000000!important;
+	color: 000000!important;
 }
 #top #form-currency .currency-select:hover, #top #form-language .language-select:hover, #top #top-right-links .dropdown-menu li a:hover, header .dropdown-menu li a:hover {
-	color: #00D4FB;
+	color: 00D4FB;
 }
 .phones-dropdown a {
-	color: #566072;
+	color: 566072;
 }
 .phones-dropdown a i.fa-phone, .phones-dropdown a.show-phones {
-	color: #CECECE;
+	color: CECECE;
 }
 #cart {
-	background-color: #F7F9FA;
+	background-color: F7F9FA;
 }
 .buttons-top-box div a {
-	color: #CECECE;
+	color: CECECE;
 }
 #cart .cart-total-price {
-	color: #59C2E6;
+	color: 59C2E6;
 }
 .buttons-top-box div a:hover {
-	color: #00D4FB;
+	color: 00D4FB;
 }
 #menu .nav > li:hover {
-	background-color: #59C2E6;
+	background-color: 59C2E6;
 }
 #menu .nav > li:hover {
-	border-color: #647382;
+	border-color: 647382;
 }
 #menu .nav > li > a {
-	color: #4F5F6F;
+	color: 4F5F6F;
 }
 #menu .nav > li:hover > a {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 #menu .dropdown-menu {
-	background-color: #FFFFFF;
+	background-color: FFFFFF;
 }
 #menu .dropdown-inner a {
-	color: #333333;
+	color: 333333;
 }
 #menu .dropdown-menu .has-child:hover i, #menu .dropdown-menu .has-child:hover a, #menu .dropdown-menu .has-child a:hover, #menu .phpner_-mm-info .dropdown-menu .has-child a:hover {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 @media only screen and (min-width: 992px) {#menu .second-level-li.has-child:hover > a, #menu .second-level-li.has-child:hover > a:visited, #menu .phpner_-mm-info .dropdown-menu ul li.second-level-li:hover a, #menu .phpner_-mm-simplecat .dropdown-menu ul li.second-level-li:hover > a {
-	color: #FFFFFF !important;
+	color: FFFFFF !important;
 }}
 #menu .dropdown-menu li.second-level-li:hover {
-	background-color: #59C2E6;
+	background-color: 59C2E6;
 }
 #menu .sale-ul > div .megamenu-sale-item .dropprice {
-	color: #34BBE3;
+	color: 34BBE3;
 }
 #menu .sale-ul > div .megamenu-sale-item .dropprice span {
-	color: #9E9E9E;
+	color: 9E9E9E;
 }
 footer {
-	background-color: #4F5F6F;
+	background-color: 4F5F6F;
 }
 footer a, footer a:visited, footer .third-row ul li {
-	color: #E6E6E6 !important;
+	color: E6E6E6 !important;
 }
 footer a:hover {
-	color: #86D0EB !important;
+	color: 86D0EB !important;
 }
 footer .footer-advantages-box .footer-advantages a, footer .footer-advantages-box .footer-advantages a:visited {
-	color: #F5F5F6 !important;
+	color: F5F5F6 !important;
 }
 footer .footer-advantages-box .footer-advantages:hover a {
-	color: #85D0EB !important;
+	color: 85D0EB !important;
 }
 footer .footer-advantages span, footer .copyright-footer {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 footer h5, footer .h5 {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 footer .footer-contacts ul li i {
-	color: #8A3838;
+	color: 8A3838;
 }
 #phpner_-slide-panel .phpner_-slide-panel-heading {
-	background-color: #4F5F6F;
+	background-color: 4F5F6F;
 }
 #phpner_-last-seen-link:hover, #phpner_-favorite-link:hover, #phpner_-compare-link:hover, #phpner_-bottom-cart-link:hover, .phpner_-panel-link-active, #hide-slide-panel {
-	background-color: #4F5F6F;
+	background-color: 4F5F6F;
 }
 .phpner_-panel-link, .phpner_-panel-link:focus, .phpner_-panel-link:visited {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 .phpner_-panel-link:hover, .phpner_-panel-link-active a {
-	color: #C9E7F1!important;
+	color: C9E7F1!important;
 }
 .phpner_-discount-item {
-	background-color: #E91E63;
+	background-color: E91E63;
 }
 .phpner_-discount-item {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 .product-thumb .price, .phpner_-price-normal  {
-	color: #59C2E6 !important;
+	color: 59C2E6 !important;
 }
 .product-thumb .price-old, .phpner_-price-old  {
-	color: #CECECE !important;
+	color: rgb(232, 37, 81) !important;
 }
 .product-thumb .price-new, .phpner_-price-new {
-	color: #CE0E5A !important;
+	color: rgb(5, 67, 220) !important;
 }
 .box-heading {
-	color: #4F5F6F;
+	color: 4F5F6F;
 }
 .box-heading {
-	background-color: #F1F5F5;
+	background-color: F1F5F5;
 }
 .box-content, .box-content.filtered {
-	background-color: #FBFCFC;
+	background-color: FBFCFC;
 }
 .filtered .list-group-item.item-name, .filtered .list-group-item.item-name:hover {
-	background-color: #F1F5F5;
+	background-color: F1F5F5;
 }
 .filtered .link i {
-	color: #4F5F6F!important;
+	color: 4F5F6F!important;
 }
 .filtered input[type=checkbox]+label::before, .filtered input[type=radio]+label::before {
-	border-color: #59C2E6;
+	border-color: 59C2E6;
 }
 .filtered input[type=checkbox]:checked+label::before, .filtered input[type=radio]:checked+label::before {
-	background-color: #4F5F6F;
+	background-color: 4F5F6F;
 }
 #sstore-3-level>ul>li>a {
-	background-color: #4F5F6F;
+	background-color: 4F5F6F;
 }
 #sstore-3-level>ul>li>a {
-	color: #59C2E6;
+	color: 59C2E6;
 }
 #sstore-3-level ul ul li a {
-	background-color: #59C2E6;
+	background-color: 59C2E6;
 }
 #sstore-3-level ul ul li a {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 #sstore-3-level ul ul ul li a {
-	background-color: #59C2E6;
+	background-color: 59C2E6;
 }
 #sstore-3-level ul ul ul li a {
-	color: #4F5F6F;
+	color: 4F5F6F;
 }
 #sstore-3-level ul ul ul li a.current-link {
-	background-color: #59C2E6;
+	background-color: 59C2E6;
 }
 #sstore-3-level ul ul ul li a.current-link {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 .product-buttons-box #button-cart {
-	background-color: #59C2E6;
+	background-color: 59C2E6;
 }
 .product-buttons-box #button-cart:hover {
-	background-color: #4F5F6F!important;
+	background-color: 4F5F6F!important;
 }
 .product-buttons-row .button-one-click, .product-buttons-row .button-wishlist, .product-buttons-row .button-compare {
-	background-color: #4F5F6F;
+	background-color: 4F5F6F;
 }
 .product-buttons-row .button-one-click:hover, .product-buttons-row .button-wishlist:hover, .product-buttons-row .button-compare:hover {
-	background-color: #59C2E6!important;
+	background-color: 59C2E6!important;
 }
 .number, .found-cheaper, .after-header-item {
-	background-color: #F4F6F8;
+	background-color: F4F6F8;
 }
 .product-tabs-row .nav-tabs>li>a {
-	background-color: #59C2E6;
+	background-color: 59C2E6;
 }
 .product-tabs-row .nav-tabs>li.active>a, .product-tabs-row .nav-tabs>li.active>a:focus, .product-tabs-row .nav-tabs>li.active>a:hover {
-	background-color: #4F5F6F;
+	background-color: 4F5F6F;
 }
 .product-tabs-row .nav-tabs>li.active>a:before {
-	border-top-color: #4F5F6F;
+	border-top-color: 4F5F6F;
 }
 .product-tabs-row .nav-tabs>li>a, .product-tabs-row .nav-tabs>li.active>a, .product-tabs-row .nav-tabs>li.active>a:focus, .product-tabs-row .nav-tabs>li.active>a:hover {
-	color: #FFFFFF;
+	color: FFFFFF;
 }
 .selected-thumb {
-	border-color: #59C2E6!important;
+	border-color: 59C2E6!important;
 }
 .product-advantages-box i {
-	color: #59C2E6;
+	color: 59C2E6;
 }
 .product-advantages-box a span {
-	color: #4F5F6F;
+	color: 4F5F6F;
 }
 .product-advantages-box a span {
-	color: #4F5F6F;
+	color: 4F5F6F;
 }
 .after-header-item {
-	color: #59C2E6;
+	color: 59C2E6;
 }
 .after-header-item .blue {
-	color: #59C2E6;
+	color: 59C2E6;
 }
 @media only screen and (max-width: 992px) {
  #top {
-	 background-color: #4F5F6F !important;
+	 background-color: 4F5F6F !important;
  }
  .top-mobile-item a {
-	 color: #FFFFFF;
+	 color: FFFFFF;
  }
  .menu-mobile-header {
-	 background-color: #4F5F6F;
+	 background-color: 4F5F6F;
  }
  .menu-mobile-header, .close-m-search a {
-	 color: #59C2E6 !important;
+	 color: 59C2E6 !important;
  }
  #info-mobile-box ul li a, #info-mobile-box > ul > li, #info-mobile ul div .btn-link.btn-language, #info-mobile ul div .btn-link.btn-currency {
-	 color: #4F5F6F !important;
+	 color: 4F5F6F !important;
  }
  .mobile-icons-box a {
-	 color: #4F5F6F !important;
+	 color: 4F5F6F !important;
  }
  .mobile-icons-box a span {
- 	 background-color: #59C2E6 !important;
+ 	 background-color: 59C2E6 !important;
  }
 }

@@ -579,8 +579,8 @@
           $data['economy'] = round((($product_info['price'] - $product_info['special'])/($product_info['price'] + 0.01))*100, 0);
           $saver = round($product_info['price'] - $product_info['special']);
           $data['you_save'] = $this->currency->format($this->tax->calculate($saver, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-          $this->load->model('phpner_store/p_special_timer');
-          $product_info_special = $this->model_phpner_store_p_special_timer->getProduct($product_id);
+          $this->load->model('phpner/p_special_timer');
+          $product_info_special = $this->model_phpner_p_special_timer->getProduct($product_id);
           if ($product_info_special) {
             $data['special_date_start']= $product_info_special['date_start'];
             $data['special_date_end'] = $product_info_special['date_end'];
